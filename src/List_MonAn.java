@@ -323,12 +323,11 @@ public class List_MonAn {
                         nuocUongCoDa++;
                     if (nu.isCoGas())
                         nuocUongCoGas++;
-                    if (nu.isLoaiChai())
-                        nuocUongLoaiChai++;
                     if (nu.isLoaiLon())
                         nuocUongLoaiLon++;
-                    else
+                    if (nu.isLoaiChai())
                         nuocUongLoaiChai++;
+
                 }
             }
         }
@@ -350,93 +349,6 @@ public class List_MonAn {
         System.out.println("Chon loai lon: " + nuocUongLoaiLon + "/" + soNuocUong);
         System.out.println("Chon loai chai: " + nuocUongLoaiChai + "/" + soNuocUong);
         System.out.println("-----------------------------------------------------");
-
-    }
-
-    public void menu() {
-        int luaChon = -1;
-        do {
-            System.out.println("\n--- MENU QUAN LY MON AN ---");
-            System.out.println("1.Nhap danh sach mon an: ");
-            System.out.println("2.Xuat danh sach mon an: ");
-            System.out.println("3.Them mot mon an: ");
-            System.out.println("4.Sua thong tin mon an:");
-            System.out.println("5.Xoa mot mon an: (Theo ma)");
-            System.out.println("6.Xoa mot mon an(Theo ten)");
-            System.out.println("7.Tim mot mon an(Theo Ma)");
-            System.out.println("8.Tim mot mon an(Theo ten)");
-            System.out.println("9.Thong ke danh sach mon an");
-            System.out.println("0.Thoat");
-            System.out.println("Vui long chon: ");
-            luaChon = sc.nextInt();
-            sc.nextLine();
-            switch (luaChon) {
-                case 1:
-                    nhapds();
-                    break;
-                case 2:
-                    xuat();
-                    break;
-                case 3:
-                    them();
-                    break;
-                case 4:
-                    sua();
-                    break;
-                case 5:
-                    if (ds.length == 0) {
-                        System.out.println("Danh sach empty ");
-                    } else {
-                        System.out.print("Nhap ma san pham can xoa: ");
-                        String maCanXoa = sc.nextLine();
-                        xoaTheoMa(maCanXoa);
-                    }
-                    break;
-                case 6:
-                    if (ds.length == 0) {
-                        System.out.println("Danh sach empty ");
-                    } else {
-                        System.out.print("Nhap ten can xoa: ");
-                        String tenCanXoa = sc.nextLine();
-                        xoaTheoTen(tenCanXoa);
-                    }
-                    break;
-                case 7:
-                    if (ds.length == 0) {
-                        System.out.println("Danh sach empty");
-                    } else {
-                        System.out.print("Nhap ma can tim: ");
-                        String maCanTim = sc.nextLine();
-                        timKiemMa(maCanTim);
-                    }
-                    break;
-                case 8:
-                    if (ds.length == 0) {
-                        System.out.println("Danh sach empty");
-                    } else {
-                        System.out.print("Nhap ten can tim: ");
-                        String tenCanTim = sc.nextLine();
-                        timKiemTen(tenCanTim);
-                    }
-                    break;
-                case 9:
-                    thongKe();
-                    break;
-                case 0:
-                    System.out.println("Xong");
-                    break;
-                default:
-                    System.out.println("Lua chon khong hop le, vui long chon lai.");
-                    break;
-            }
-        } while (luaChon != 0);
-        sc.close();
-
-    }
-
-    public static void main(String[] args) {
-        List_MonAn quanly = new List_MonAn();
-        quanly.menu();
 
     }
 
