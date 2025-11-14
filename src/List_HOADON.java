@@ -126,4 +126,20 @@ class List_HOADON {
         }
     }
 
+<<<<<<< HEAD
+=======
+    public void thongkenhanvien() {
+        int d = 0;
+        System.out.print("Nhap ma nhan vien can thong ke: ");
+        int manhanvien = sc.nextInt();
+        for (int i=0; i<n; i++){
+            if(dshd[i].getManv() == manhanvien){
+                d++;
+            }
+        }
+        if(d>=5){
+            System.out.println("Nhan vien uu tu");
+        }
+    }
+>>>>>>> df45054ca0e43f6773bda41f28a23e79dd6f9e8f
 }

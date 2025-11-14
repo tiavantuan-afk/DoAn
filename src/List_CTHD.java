@@ -130,12 +130,12 @@ class List_CTHD {
             System.out.println("Khong tim thay chi tiet hoa don co ma: "+mahd);
         }
     }
-    public void thongkesanpham(int doanhthusanpham){
+    public void thongkesanpham(){
         int d=0 ;
         System.out.print("Nhap ma san pham can thong ke: ");
-        doanhthusanpham = sc.nextInt();
+        int masanpham = sc.nextInt();
         for (int i=0; i<n; i++){
-            if (dscthd[i].getMasp() == doanhthusanpham){
+            if (dscthd[i].getMasp() == masanpham){
                 d++;
             }
         }

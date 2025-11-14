@@ -113,12 +113,12 @@ class List_KHACHHANG {
 
     }
 
-    public void thongkekhachhang(int khthongke) {
+    public void thongkekhachhang() {
         int d = 0;
         System.out.print("Nhap ma khach hang can thong ke: ");
-        khthongke = sc.nextInt();
+        int makhachhang = sc.nextInt();
         for (int i = 0; i < n; i++) {
-            if (dskh[i].getMaKH() == khthongke) {
+            if (dskh[i].getMaKH() == makhachhang) {
                 d++;
             }
         }
