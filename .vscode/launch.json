@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Menu_KH",
+            "request": "launch",
+            "mainClass": "Menu_KH",
+            "projectName": "DoAn_d1382049"
+        },
+        {
+            "type": "java",
             "name": "List_MonAn",
             "request": "launch",
             "mainClass": "List_MonAn",
