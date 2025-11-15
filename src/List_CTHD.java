@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 class List_CTHD {
@@ -20,9 +21,8 @@ class List_CTHD {
             dscthd[i].xuat();
         }
     }
-    public void timkiemtheomahoadon(){
+    public void timkiemtheomahoadon(int mahdcantim){
         System.out.print("Nhap ma hoa don can tim: ");
-        int mahdcantim = sc.nextInt();
         boolean timkiem = false;
         for (int i=0; i<n; i++){
             if (dscthd[i].getMahd() == mahdcantim){
@@ -34,9 +34,8 @@ class List_CTHD {
             System.out.println("Khong co trong danh sach.");
         }
     }
-    public void timkiemtheomasanpham(){
+    public void timkiemtheomasanpham(int maspcantim){
         System.out.print("Nhap ma san pham can tim: ");
-        int maspcantim = sc.nextInt();
         boolean timkiem = false;
         for (int i=0; i<n; i++){
             if (dscthd[i].getMasp() == maspcantim){
@@ -48,9 +47,8 @@ class List_CTHD {
             System.out.println("Khong co trong danh sach.");
         }
     }
-    public void timkiemtheomakhachhang(){
+    public void timkiemtheomakhachhang(int makhcantim){
         System.out.print("Nhap ma khach hang can tim: ");
-        int makhcantim = sc.nextInt();
         boolean timkiem = false;
         for (int i=0; i<n; i++){
             if (dscthd[i].getMakh() == makhcantim){
@@ -62,9 +60,8 @@ class List_CTHD {
             System.out.println("Khong co trong danh sach.");
         }
     }
-    public void timkiemtheosoluong(){
+    public void timkiemtheosoluong(int soluongcantim){
         System.out.print("Nhap so luong can tim: ");
-        int soluongcantim = sc.nextInt();
         boolean timkiem = false;
         for (int i=0; i<n; i++){
             if (dscthd[i].getSL() == soluongcantim){
@@ -76,9 +73,8 @@ class List_CTHD {
             System.out.println("Khong co trong danh sach.");
         }
     }
-    public void timkiemtheodongia(){
+    public void timkiemtheodongia(double dongiacantim){
         System.out.print("Nhap don gia can tim: ");
-        double dongiacantim = sc.nextDouble();
         boolean timkiem = false;
         for (int i=0; i<n; i++){
             if (dscthd[i].getDG() == dongiacantim){
@@ -90,9 +86,8 @@ class List_CTHD {
             System.out.println("Khong co trong danh sach. ");
         }
     }
-    public void timkiemtheothanhtien(){
+    public void timkiemtheothanhtien(double thanhtiencantim){
         System.out.print("Nhap thanh tien can tim: ");
-        double thanhtiencantim = sc.nextDouble();
         boolean timkiem = false;
         for (int i=0; i<n; i++){
             if (dscthd[i].getThanhtien() == thanhtiencantim){
@@ -115,13 +110,36 @@ class List_CTHD {
                 break;
             }
         }
-        if(!timkiem){
+        if(!timkiem){ 
             System.out.println("Khong tim thay ma hoa don de sua");
         }
     }  
-    public void xoachitietmahd(){
+    public boolean IDCTHD(int maspham){
+        if (maspham == 0){
+            return true;
+        }
+        for (int i=0; i<n; i++){
+            if(dscthd[i] != null && dscthd[i].getMasp()!= 0 && dscthd[i].getMasp() == maspham){
+                return false;
+            }
+        }
+        return true;
+    }
+    public void themchitiet(){
+        System.out.println("Nhap ma san pham can them: ");
+        CHITIETHOADON ctmoi = new CHITIETHOADON();
+        ctmoi.nhap();
+        if (!IDCTHD(ctmoi.getMasp())){
+            System.out.println("Ma san pham da ton tai");
+            return;
+        }
+        dscthd = Arrays.copyOf(dscthd, n+1);
+        dscthd[n-1] = ctmoi;
+        System.out.println("Da them ma san pham moi");
+
+    }
+    public void xoachitietmahd(int mahd){
         System.out.println("Nhap ma hoa don can sua chi tiet: ");
-        int mahd = sc.nextInt();
         boolean timkiem = false;
         for(int i=0; i<n; i++){
             if (dscthd[i].getMahd() == mahd){

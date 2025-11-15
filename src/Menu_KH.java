@@ -5,6 +5,7 @@ public class Menu_KH {
     public Menu_KH(){
         quanly = new List_KHACHHANG();
         Scanner sc = new Scanner(System.in);
+        sc.close();
     }
     public void menu(){
         int chon = -1;
@@ -39,19 +40,29 @@ public class Menu_KH {
                     quanly.suakhachhang();
                     break;
                 case 5:
-                    quanly.xoakhachhang();
+                    System.out.println("Nhap ma khach hang can xoa: ");
+                    int khcanxoa = sc.nextInt();
+                    quanly.xoakhachhang(khcanxoa);
                     break;
                 case 6:
-                    quanly.timkiemtheoma();
+                    System.out.println("Nhap ma khach hang can tim: ");
+                    int makhcantim = sc.nextInt();
+                    quanly.timkiemtheoma(makhcantim);
                     break;
                 case 7:
-                    quanly.timkiemtheoten();
+                    System.out.println("Nhap ho khach hang can tim: ");
+                    String hokhcantim = sc.nextLine();
+                    quanly.timkiemtheoten(hokhcantim);
                     break;
                 case 8:
-                    quanly.timkiemtheoho();
+                    System.out.println("Nhap ten khach hang can tim: ");
+                    String tenkhcantim = sc.nextLine();
+                    quanly.timkiemtheoho(tenkhcantim);
                     break;
                 case 9:
-                    quanly.timkiemtheosdt();
+                    System.out.println("Nhap sdt khach hang can tim: ");
+                    int sdtkhcantim = sc.nextInt();
+                    quanly.timkiemtheosdt(sdtkhcantim);
                     break;
                 case 10:
                     quanly.thongkekhachhang();
