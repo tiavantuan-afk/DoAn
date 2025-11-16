@@ -11,77 +11,51 @@ public class Menu_NV {
 
     public void menu() {
         int luaChon = -1;
+        quanLy.docFile();
         do {
             System.out.println("\n--- MENU QUAN LY NHAN VIEN ---");
-            System.out.println("1.Doc file nhan vien: ");
-            System.out.println("2.Ghi file nhan vien: ");
-            System.out.println("3.Nhap danh sach nhan vien: ");
-            System.out.println("4.Xuat danh sach nhan vien: ");
-            System.out.println("5.Them nhan vien: ");
-            System.out.println("6.Sua thong tin nhan vien:");
-            System.out.println("7.Xoa mot nhan vien(Theo ma):");
-            System.out.println("8.Xoa mot nhan vien(Theo ho):");
-            System.out.println("9.Tim mot nhan vien(Theo Ma):");
-            System.out.println("10.Tim mot nhan vien(Theo Ho):");
-            System.out.println("11.Tim mot nhan vien(Theo Ten):");
-            System.out.println("12.Thong ke luong nhan vien:");
+            System.out.println("1.Nhap danh sach nhan vien: ");
+            System.out.println("2.Xuat danh sach nhan vien: ");
+            System.out.println("3.Them nhan vien: ");
+            System.out.println("4.Sua thong tin nhan vien:");
+            System.out.println("5.Xoa mot nhan vien(Theo ma):");
+            System.out.println("6.Tim mot nhan vien(Theo Ma):");
+            System.out.println("7.Tim mot nhan vien(Theo Ho khong tham so):");
+            System.out.println("8.Thong ke luong nhan vien:");
             System.out.println("0.Thoat");
             System.out.print("Vui long chon: ");
             luaChon = sc.nextInt();
             sc.nextLine();
             switch (luaChon) {
                 case 1:
-                    quanLy.docFile();
-                    break;
-                case 2:
-                    quanLy.ghiFile();
-                case 3:
                     quanLy.nhapds();
                     break;
 
-                case 4:
+                case 2:
                     quanLy.xuatds();
                     break;
 
-                case 5:
+                case 3:
                     quanLy.them();
                     break;
 
-                case 6:
+                case 4:
                     quanLy.suaNV();
                     break;
-
-                case 7:
+                case 5:
                     System.out.print("Nhap ma nhan vien can xoa: ");
                     String maCanXoa = sc.nextLine();
                     quanLy.xoaMaNV(maCanXoa);
                     break;
-
-                case 8:
-                    System.out.print("Nhap ho nhan vien can xoa: ");
-                    String hoCanXoa = sc.nextLine();
-                    quanLy.xoaHoNV(hoCanXoa);
-                    break;
-
-                case 9:
+                case 6:
                     System.out.print("Nhap ma nhan vien can tim: ");
                     String maCanTim = sc.nextLine();
                     quanLy.timNVMa(maCanTim);
                     break;
-
-                case 10:
-                    System.out.print("Nhap ho nhan vien can tim: ");
-                    String hoCanTim = sc.nextLine();
-                    quanLy.timNVHo(hoCanTim);
+                case 7:
+                    quanLy.timNVHo();
                     break;
-
-                case 11:
-                    System.out.print("Nhap ten nhan vien can tim: ");
-                    String tenCanTim = sc.nextLine();
-                    quanLy.timNVTen(tenCanTim);
-                    break;
-
-                case 12:
+                case 8:
                     quanLy.ThongKeLuongCoBan();
                     break;
 

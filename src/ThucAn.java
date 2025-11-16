@@ -10,7 +10,7 @@ public class ThucAn extends MonAn {
         super();
     }
 
-    public ThucAn(String maSP, String tenSP, double giaBan, String soLuong, boolean coThit, boolean coTinhBot,
+    public ThucAn(String maSP, String tenSP, double giaBan, int soLuong, boolean coThit, boolean coTinhBot,
             boolean coBotNgot) {
         super(maSP, tenSP, giaBan, soLuong);
         this.coThit = coThit;
@@ -35,7 +35,24 @@ public class ThucAn extends MonAn {
         coTinhBot = sc.nextBoolean();
         System.out.print("Nhap co bot ngot (true/false): ");
         coBotNgot = sc.nextBoolean();
-        sc.close();
+        sc.nextLine();
+    }
+
+    @Override
+    public String getLoai() {
+        return "T";
+    }
+
+    @Override
+    public String toString() {
+        return String.join("-", getLoai(),
+                maSP,
+                tenSP,
+                String.valueOf(giaBan),
+                String.valueOf(soLuong),
+                String.valueOf(coThit),
+                String.valueOf(coTinhBot),
+                String.valueOf(coBotNgot));
     }
 
     @Override
@@ -43,7 +60,7 @@ public class ThucAn extends MonAn {
         super.xuat();
         System.out.printf("%-10s ", (coThit ? "True " : "False"));
         System.out.printf("%-10s ", (coTinhBot ? "True" : "False"));
-        System.out.printf("%-10\n ", (coBotNgot ? "True" : "False"));
+        System.out.printf("%-10s\n", (coBotNgot ? "True" : "False"));
     }
 
     // GetSet

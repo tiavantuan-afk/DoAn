@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "List_KHACHHANG",
+            "request": "launch",
+            "mainClass": "List_KHACHHANG",
+            "projectName": "DoAn_d1382049"
+        },
+        {
+            "type": "java",
             "name": "List_NCC",
             "request": "launch",
             "mainClass": "List_NCC",

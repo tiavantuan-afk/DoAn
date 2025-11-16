@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class NuocUong extends MonAn {
@@ -12,7 +11,7 @@ public class NuocUong extends MonAn {
         super();
     }
 
-    public NuocUong(String maSP, String tenSP, double giaBan, String soLuong, boolean coGas, boolean loaiChai,
+    public NuocUong(String maSP, String tenSP, double giaBan, int soLuong, boolean coGas, boolean loaiChai,
             boolean coDa, boolean loaiLon) {
         super(maSP, tenSP, giaBan, soLuong);
         this.coGas = coGas;
@@ -49,7 +48,25 @@ public class NuocUong extends MonAn {
             loaiLon = false;
             loaiChai = true;
         }
-        sc.close();
+        sc.nextLine();
+    }
+
+    @Override
+    public String getLoai() {
+        return "N";
+    }
+
+    @Override
+    public String toString() {
+        return String.join("-", getLoai(),
+                maSP,
+                tenSP,
+                String.valueOf(giaBan),
+                String.valueOf(soLuong),
+                String.valueOf(coGas),
+                String.valueOf(loaiChai),
+                String.valueOf(coDa),
+                String.valueOf(loaiLon));
     }
 
     @Override
@@ -57,7 +74,7 @@ public class NuocUong extends MonAn {
         super.xuat();
         System.out.printf("%-10s ", (coDa ? "True" : "False"));
         System.out.printf("%-10s ", (coGas ? "True" : "False"));
-        System.out.printf("%-10s\n ", (loaiChai ? "Lon" : "Chai"));
+        System.out.printf("%-10s\n ", (loaiChai ? "Chai" : "Lon"));
     }
 
     // GetSet
