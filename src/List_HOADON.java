@@ -105,7 +105,7 @@ class List_HOADON {
             }
         }
         if (!timkiem) {
-            System.out.println("Khong ti thay hoa don de sua. ");
+            System.out.println("Khong tim thay hoa don de sua. ");
         }
     }
     public boolean IDHD(int mahdon){

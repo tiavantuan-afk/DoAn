@@ -25,6 +25,12 @@ public class Chitietphieunhap{
         this.soluong = soluong;
         this.dongia = dongia;
     }
+    public Chitietphieunhap(Chitietphieunhap ct){
+        this.maNH = ct.maNH;
+        this.maSP = ct.maSP;
+        this.soluong = ct.soluong;
+        this.dongia = ct.dongia;
+    }
 
     public void nhap(){
         System.out.println("Mã nhập hàng: ");
