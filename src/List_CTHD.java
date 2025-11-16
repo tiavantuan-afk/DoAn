@@ -26,6 +26,21 @@ class List_CTHD {
             dscthd[i].xuat();
         }
     }
+<<<<<<< HEAD
+=======
+    public CHITIETHOADON[] getDscthd(){
+        return dscthd;
+    }
+    public void setDscthd(CHITIETHOADON[] dscthd){
+        this.dscthd = dscthd;
+    }
+    public int getN(){
+        return n;
+    }
+    public void setN(int n){
+        this.n = n;
+    }
+>>>>>>> 3972c5d6ddb938f5cbc76ce297153f28353977ee
     public void timkiemtheomahoadon(String mahdcantim){
         System.out.print("Nhap ma hoa don can tim: ");
         boolean timkiem = false;

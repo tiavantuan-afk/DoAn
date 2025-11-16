@@ -7,6 +7,7 @@ class List_KHACHHANG {
     private int n;
     private KHACHHANG[] dskh = new KHACHHANG[100];
 
+    
     public void nhap() {
         System.out.print("Nhap n khach hang: ");
         n = sc.nextInt();
@@ -22,6 +23,18 @@ class List_KHACHHANG {
         for (int i = 0; i < n; i++) {
             dskh[i].xuat();
         }
+    }
+    public KHACHHANG[] getDskh(){
+        return dskh;
+    }
+    public void setDskh(KHACHHANG[] dskh){
+        this.dskh = dskh;
+    }
+    public int getN(){
+        return n;
+    }
+    public void setN(int n){
+        this.n = n;
     }
 
     public void timkiemtheoma(String macantim) {

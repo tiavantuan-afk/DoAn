@@ -22,6 +22,15 @@ public class Nhacungcap{
         this.sdt = sdt;
     }
 
+    public Nhacungcap(Nhacungcap ncc) {
+        this.maNCC = ncc.maNCC;
+        this.hoNCC = ncc.hoNCC;
+        this.tenNCC = ncc.tenNCC;
+        this.diachi = ncc.diachi;
+        this.sdt = ncc.sdt;
+    }
+
+
     public void nhap(){
         System.out.print("Nhập mã nhà cung cấp: ");
         maNCC = sc.nextLine();
