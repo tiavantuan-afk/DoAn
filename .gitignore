@@ -2,4 +2,6 @@
 *.class
 
 # Ignore the bin directory
-/bin/
+/bin//bin/
+*.class
+TuanKiet3108/TuanKiet3108/

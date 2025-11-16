@@ -1,20 +1,20 @@
 import java.util.Scanner;
 public class CHITIETHOADON {
-    private int Mahd;
-    private int Masp;
-    private int Makh;
+    private String Mahd;
+    private String Masp;
+    private String Makh;
     private int SL;
-    private int DG;
+    private double DG;
     private double Thanhtien;
     public CHITIETHOADON(){
-        Mahd = 0;
-        Masp = 0;
-        Makh = 0;
+        Mahd = "";
+        Masp = "";
+        Makh = "";
         SL = 0;
         DG = 0;
         Thanhtien = 0.0;
     }
-    public CHITIETHOADON(int Mahd, int Masp, int Makh, int SL, int DG, double Thanhtien){
+    public CHITIETHOADON(String Mahd, String Masp, String Makh, int SL, double DG, double Thanhtien){
         this.Mahd = Mahd;
         this.Masp = Masp;
         this.Makh = Makh;
@@ -35,11 +35,11 @@ public class CHITIETHOADON {
     public void nhap(){
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ma hoa don: ");
-        Mahd = sc.nextInt();
+        Mahd = sc.nextLine();
         System.out.print("Nhap ma san pham:");
-        Masp = sc.nextInt();
+        Masp = sc.nextLine();
         System.out.print("Nhap ma khach hang: ");
-        Makh = sc.nextInt();
+        Makh = sc.nextLine();
         System.out.print("Nhap so luong: ");
         SL = sc.nextInt();
         System.out.print("Nhap don gia: ");
@@ -57,37 +57,37 @@ public class CHITIETHOADON {
         System.out.println("Don gia: "+DG);
         System.out.println("Thanh tien: "+Thanhtien);
     }
-    public int getMahd(){
+    public String getMahd(){
         return Mahd;
     }
-    public int getMasp(){
+    public String getMasp(){
         return Masp;
     }
-    public int getMakh(){
+    public String getMakh(){
         return Makh;
     }
     public int getSL(){
         return SL;
     }
-    public int getDG(){
+    public double getDG(){
         return DG;
     }
     public double getThanhtien(){
         return Thanhtien;
     }
-    public void setMahd(int Mahd){
+    public void setMahd(String Mahd){
         this.Mahd = Mahd;
     }
-    public void setMasp(int Masp){
+    public void setMasp(String Masp){
         this.Masp = Masp;
     }
-    public void setMakh(int Makh){
+    public void setMakh(String Makh){
         this.Makh = Makh;
     }
     public void setSL(int SL){
         this.SL = SL;
     }
-    public void setDG(int DG){
+    public void setDG(double DG){
         this.DG = DG;
     }
     public void setThanhtien(double Thanhtien){

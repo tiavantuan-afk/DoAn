@@ -1,0 +1,7 @@
+==== DANH SACH NHAN VIEN ====
+So luong nhan vien: 5
+NV-NV001-Nguyen_Van-An-5000000
+NV-NV002-Tran_Thi-Binh-7500000
+NV-NV003-Le_Van-Cuong-12000000
+NV-NV004-Pham_Thi-Dung-4500000
+NV-NV005-Hoang_Van-Em-8000000

@@ -6,6 +6,7 @@
     "configurations": [
         {
             "type": "java",
+<<<<<<< HEAD
             "name": "Menu_MonAn",
             "request": "launch",
             "mainClass": "Menu_MonAn",
@@ -17,6 +18,47 @@
             "request": "launch",
             "mainClass": "Menu_KHO",
             "projectName": "DoAn_75d2812f"
+=======
+            "name": "List_NCC",
+            "request": "launch",
+            "mainClass": "List_NCC",
+            "projectName": "đồ án oop_dae54c87"
+        },
+        {
+            "type": "java",
+            "name": "Menu_KH",
+            "request": "launch",
+            "mainClass": "Menu_KH",
+            "projectName": "DoAn_d1382049"
+        },
+        {
+            "type": "java",
+            "name": "List_MonAn",
+            "request": "launch",
+            "mainClass": "List_MonAn",
+            "projectName": "DoAn_d1382049"
+        },
+        {
+            "type": "java",
+            "name": "Menu_MonAn",
+            "request": "launch",
+            "mainClass": "Menu_MonAn",
+            "projectName": "DoAn_d1382049"
+        },
+        {
+            "type": "java",
+            "name": "Menu_NV",
+            "request": "launch",
+            "mainClass": "Menu_NV",
+            "projectName": "DoAn_d1382049"
+        },
+        {
+            "type": "java",
+            "name": "List_NhanVien",
+            "request": "launch",
+            "mainClass": "List_NhanVien",
+            "projectName": "DoAn_d1382049"
+>>>>>>> 6d3a0bc6c69247dbfe4c8bdae553084d94ddd165
         },
         {
             "type": "java",

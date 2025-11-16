@@ -1,5 +1,10 @@
 import java.util.Scanner;
-public class Danhsachncc {
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+public class List_NCC {
     Scanner sc = new Scanner(System.in);
     private int n;
     private Nhacungcap[] dsncc = new Nhacungcap[100];
@@ -12,11 +17,12 @@ public class Danhsachncc {
             dsncc[i] = new Nhacungcap();
             dsncc[i].nhap();
         }
+ 
     }
     public void xuat(){
         System.out.println("Danh sách nhà cung cấp");
         for(int i = 0;i < n; i++){
-            dsncc[i].toString();
+            dsncc[i].xuat();
         }
     }
     public void timkiemtheoma(){
@@ -26,7 +32,7 @@ public class Danhsachncc {
         for(int i = 0;i < n; i++){
             if(dsncc[i].getmaNCC().equalsIgnoreCase(macantim)){
                 timkiem = true;
-                dsncc[i].toString();
+                dsncc[i].xuat();
             }
         }
         if(!timkiem){
@@ -40,7 +46,7 @@ public class Danhsachncc {
         for(int i = 0; i < n; i++){
             if(dsncc[i].gethoNCC().equalsIgnoreCase(hocantim)){
                 timkiem = true;
-                dsncc[i].toString();
+                dsncc[i].xuat();
             }
         }
         if(!timkiem){
@@ -54,7 +60,7 @@ public class Danhsachncc {
         for(int i = 0; i < n; i++){
             if(dsncc[i].gettenNCC().equalsIgnoreCase(tencantim)){
                 timkiem = true;
-                dsncc[i].toString();
+                dsncc[i].xuat();
             }
         }
         if(!timkiem){
@@ -152,10 +158,10 @@ public class Danhsachncc {
         for(int i = 0; i < n; i++){
             if(dsncc[i].getmaNCC().equalsIgnoreCase(macansua)){
                 System.out.println("Tìm thấy nhà cung cấp: ");
-                dsncc[i].toString();
+                dsncc[i].xuat();
                 System.out.println("Thông tin cần sửa cho nhà cung cấp: ");
                 dsncc[i] = new Nhacungcap();
-                dsncc[i].toString();
+                dsncc[i].xuat();
                 System.out.println("Đã sửa thông tin cho nhà cung cấp có mã "+ macansua);
                 dasua = true;
                 break;
@@ -164,5 +170,114 @@ public class Danhsachncc {
         if(!dasua){
             System.out.println("Không tìm thấy nhà cung cấp có mã "+ macansua);
         }
+    }
+
+    public void docFileTXT(String tenFile) {
+        try (BufferedReader br = new BufferedReader(new FileReader(tenFile))) {
+            String line;
+            n = 0;
+            while ((line = br.readLine()) != null && n < 100) {
+                String[] parts = line.split(",");
+                if (parts.length >= 5) {
+                    dsncc[n] = new Nhacungcap();
+                    dsncc[n].setmaNCC(parts[0].trim());
+                    dsncc[n].sethoNCC(parts[1].trim());
+                    dsncc[n].settenNCC(parts[2].trim());
+                    dsncc[n].setdiachi(parts[3].trim());
+                    dsncc[n].setsdt(parts[4].trim());
+                    n++;
+                }
+            }
+            System.out.println("Đọc file thành công, tổng số nhà cung cấp: " + n);
+        } catch (IOException e) {
+            System.out.println("Lỗi khi đọc file: " + e.getMessage());
+        }
+    }
+
+    public void ghiFileTXT(String tenFile) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(tenFile))) {
+            for (int i = 0; i < n; i++) {
+                String line = dsncc[i].getmaNCC() + "," + dsncc[i].gethoNCC() + "," + dsncc[i].gettenNCC() + "," + dsncc[i].getdiachi() + "," + dsncc[i].getsdt();
+                bw.write(line);
+                bw.newLine();
+            }
+            System.out.println("Ghi file thành công!");
+        }catch(IOException e){
+            System.out.println("Lỗi khi ghi file: " + e.getMessage());
+        }
+    }
+    public void menu() {
+        int chon = -1;
+        do {
+            System.out.println("\n1.Nhập danh sách nhà cung cấp");
+            System.out.println("2.Xuất danh sách nhà cung cấp");
+            System.out.println("3.Tìm kiếm nhà cung cấp theo mã");
+            System.out.println("4.Tìm kiếm nhà cung cấp theo họ");
+            System.out.println("5.Tìm kiếm nhà cung cấp theo tên");
+            System.out.println("6.Thêm nhà cung cấp theo mã");
+            System.out.println("7.Thêm nhà cung cấp theo địa chỉ");
+            System.out.println("8.Xoá nhà cung cấp theo mã");
+            System.out.println("9.Xoá nhà cung cấp theo số điện thoại");
+            System.out.println("10.Sửa nhà cung cấp theo mã");
+            System.out.println("11.Đọc danh sách nhà cung cấp từ file");
+            System.out.println("12.Ghi danh sách nhà cung cấp ra file ");
+            System.out.println("0.Thoát");
+            System.out.print("Chọn chức năng: ");
+            chon = sc.nextInt();
+            sc.nextLine();
+            switch(chon){
+                case 1:
+                    nhap();
+                    break;
+                case 2:
+                    xuat();
+                    break;
+                case 3:
+                    timkiemtheoho();
+                    break;
+                   case 4:
+                    timkiemtheoten();
+                    break;
+                case 5:
+                    timkiemtheoma();
+                    break;
+                case 6:
+                    themtheoma();
+                    break;
+                case 7:
+                    themtheodiachi();
+                    break;
+                case 8:
+                    xoatheoma();
+                    break;
+                case 9:
+                    xoatheosdt();
+                    break;
+                case 10:
+                    suatheoma();
+                    break;
+                case 11:
+                    System.out.print("Nhập tên file TXT cần đọc: ");
+                    String fileDoc = sc.nextLine();
+                    docFileTXT(fileDoc);
+                    break;
+                case 12:
+                    System.out.print("Nhập tên file TXT cần ghi: ");
+                    String fileGhi = sc.nextLine();
+                    ghiFileTXT(fileGhi);
+                    break;
+                case 0:
+                    System.out.println("Thoát");
+                    return;
+                default:
+                    System.out.println("Lua chon khong hop le, vui long chon lai");
+                    break;
+            }
+        }while (chon != 0);
+        sc.close();
+    }
+    public static void main(String[] args){
+        List_NCC qly = new List_NCC();
+        qly.menu();
     }
 }

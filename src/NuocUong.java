@@ -49,7 +49,7 @@ public class NuocUong extends MonAn {
             loaiLon = false;
             loaiChai = true;
         }
-
+        sc.close();
     }
 
     @Override

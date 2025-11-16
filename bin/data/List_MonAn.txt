@@ -1,0 +1,7 @@
+==== DANH SACH MON AN ====
+So luong mon an: 5
+T-MA001-Com Ga-10-25000-true-true-false
+N-NU001-Coca Cola-20-15000.0-true-true-false-false
+T-MA002-Bun Bo Hue-8-30000-true-true-true
+N-NU002-Nuoc Suoi-30-8000.0-false-false-false-true
+T-MA003-Banh Mi-15-12000-true-false-false

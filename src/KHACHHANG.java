@@ -2,15 +2,15 @@ import java.util.Scanner;
 public class KHACHHANG {
     private String ho;
     private String ten;
-    private int Makh;
-    private int SDT;
+    private String Makh;
+    private String SDT;
     public KHACHHANG(){
         ho = "";
         ten = "";
-        Makh = 0;
-        SDT = 0;
+        Makh = "";
+        SDT = "";
     }
-    public KHACHHANG(String ho, String ten, int Makh, int SDT){
+    public KHACHHANG(String ho, String ten, String Makh, String SDT){
         this.ho = ho;
         this.ten = ten;
         this.Makh = Makh;
@@ -31,9 +31,14 @@ public class KHACHHANG {
         System.out.print("Nhap ten: ");
         ten = sc.nextLine();
         System.out.print("Nhap ma khach hang: ");
-        Makh = sc.nextInt();
+        Makh = sc.nextLine();
         System.out.print("Nhap so dien thoai: ");
+<<<<<<< HEAD
         SDT = sc.nextInt();
+=======
+        SDT = sc.nextLine();
+        sc.close();
+>>>>>>> 6d3a0bc6c69247dbfe4c8bdae553084d94ddd165
     }
     public void xuat(){
         System.out.println("Thong tin khach hang: ");
@@ -48,10 +53,10 @@ public class KHACHHANG {
     public String getTen(){
         return ten;
     }
-    public int getMaKH(){
+    public String getMaKH(){
         return Makh;
     }
-    public int getSDT(){
+    public String getSDT(){
         return SDT;
     }
     public void setHo(String ho){
@@ -60,10 +65,10 @@ public class KHACHHANG {
     public void setTen(String ten){
         this.ten = ten;
     }
-    public void setMakh(int Makh){
+    public void setMakh(String Makh){
         this.Makh = Makh;
     }
-    public void setSDT(int SDT){
+    public void setSDT(String SDT){
         this.SDT = SDT;
     }
 }
