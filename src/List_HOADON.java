@@ -27,7 +27,18 @@ class List_HOADON {
             dshd[i].xuat();
         }
     }
-
+    public HOADON[] getDshd(){
+        return dshd;
+    }
+    public void setDshd(HOADON[] dshd){
+        this.dshd = dshd;
+    }
+    public int getN(){
+        return n;
+    }
+    public void setN(int n){
+        this.n = n;
+    }
     public void timkiemtheomahd(String hdcantim ) {
         System.out.print("Nhap ma hoa don can tim: ");
         boolean timkiem = false;
