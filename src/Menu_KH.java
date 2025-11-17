@@ -24,10 +24,7 @@ public class Menu_KH {
             System.out.println("4. Sua thong tin khach hang: ");
             System.out.println("5. Xoa mot khach hang (theo ma): ");
             System.out.println("6. Tim mot khach hang (theo ma): ");
-            System.out.println("7. Tim mot khach hang (theo ho): ");
-            System.out.println("8. Tim mot khach hang (theo ten): ");
-            System.out.println("9. Tim mot khach hang (theo so dien thoai): ");
-            System.out.println("10. Thong ke khach hang: ");
+            System.out.println("7. Thong ke khach hang: ");
             System.out.println("0. Thoat.");
             System.out.print("Vui long chon: ");
             chon = sc.nextInt();
@@ -46,7 +43,7 @@ public class Menu_KH {
                     quanly.suakhachhang();
                     break;
                 case 5:
-                    System.out.print("\nNhap ma khach hang can xoa: ");
+                    System.out.print("Nhap ma khach hang can xoa: ");
                     String khcanxoa = sc.nextLine();
                     quanly.xoakhachhang(khcanxoa);
                     break;
@@ -56,21 +53,6 @@ public class Menu_KH {
                     quanly.timkiemtheoma(makhcantim);
                     break;
                 case 7:
-                    System.out.print("Nhap ho khach hang can tim: ");
-                    String hokhcantim = sc.nextLine();
-                    quanly.timkiemtheoten(hokhcantim);
-                    break;
-                case 8:
-                    System.out.print("Nhap ten khach hang can tim: ");
-                    String tenkhcantim = sc.nextLine();
-                    quanly.timkiemtheoho(tenkhcantim);
-                    break;
-                case 9:
-                    System.out.print("Nhap sdt khach hang can tim: ");
-                    String sdtkhcantim = sc.nextLine();
-                    quanly.timkiemtheosdt(sdtkhcantim);
-                    break;
-                case 10:
                     quanly.thongkekhachhang();
                     break;
                 case 0:

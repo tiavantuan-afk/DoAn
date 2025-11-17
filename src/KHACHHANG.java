@@ -39,18 +39,14 @@ public class KHACHHANG {
         Makh = sc.nextLine();
         System.out.print("Nhap so dien thoai: ");
         SDT = sc.nextLine();
-<<<<<<< HEAD
-
-=======
->>>>>>> eba791e72eb44a2b234d9b861ddd8c27fc60af83
     }
 
     public void xuat() {
         System.out.println("Thong tin khach hang: ");
-        System.out.println("Ho: " + ho);
-        System.out.println("Ten: " + ten);
-        System.out.println("Ma khach hang: " + Makh);
-        System.out.println("So dien thoai: " + SDT);
+        System.out.print("Ho: " + ho+"\n");
+        System.out.print("Ten: " + ten+"\n");
+        System.out.print("Ma khach hang: " + Makh+"\n");
+        System.out.print("So dien thoai: " + SDT+"\n");
     }
 
     public String getHo() {
