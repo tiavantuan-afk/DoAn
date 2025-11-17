@@ -61,8 +61,6 @@ public class Menu_KHO {
 					quanLy.timkiemtheoma(maCanTim);
 					break;
 				case 8:
-					System.out.print("Nhap ten hang can tim: ");
-					String tenCanTim = sc.nextLine();
 					quanLy.timkiemtheoten();
 					break;
 				case 9:
