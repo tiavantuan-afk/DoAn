@@ -20,7 +20,7 @@ public class List_CTPN {
         for (int i = 0; i < n; i++) {
             System.out.println("Chi tiet phieu nhap " + (i + 1) + ":");
             ds[i] = new Chitietphieunhap();
-            ds[i].nhap();
+            ds[i].nhap(true);
         }
     }
 
@@ -129,7 +129,7 @@ public class List_CTPN {
 
         System.out.println("Nhập thông tin chi tiết phiếu nhập mới có mã " + macanthem);
         ds[n] = new Chitietphieunhap();
-        ds[n].nhap();
+        ds[n].nhap(true);
         ds[n].setmaNH(macanthem);
         n++;
         System.out.println("Đã thêm chi tiết phiếu nhập có mã " + macanthem);
@@ -182,8 +182,8 @@ public class List_CTPN {
             if(ds[i].getmaNH().equalsIgnoreCase(macansua)){
                 System.out.println("Tìm thấy chi tiết phiếu nhập: " + ds[i]);
                 System.out.println("Nhập thông tin mới cho chi tiết phiếu nhập (mã giữ nguyên): ");
-                ds[i].nhap(); // nhập thông tin mới
-                ds[i].setmaNH(macansua); // giữ nguyên mã
+                ds[i].nhap(true);
+                ds[i].setmaNH(macansua);
                 System.out.println("Đã sửa thông tin cho chi tiết phiếu nhập có mã " + macansua);
                 dasua = true;
                 break;
