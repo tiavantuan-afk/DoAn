@@ -16,14 +16,12 @@ public class Menu_ncc {
             System.out.println("\n1.Nhập danh sách nhà cung cấp");
             System.out.println("2.Xuất danh sách nhà cung cấp");
             System.out.println("3.Tìm kiếm nhà cung cấp theo mã");
-            System.out.println("4.Tìm kiếm nhà cung cấp theo họ");
-            System.out.println("5.Tìm kiếm nhà cung cấp theo tên");
-            System.out.println("6.Thêm nhà cung cấp theo mã");
-            System.out.println("7.Thêm nhà cung cấp theo địa chỉ");
-            System.out.println("8.Xoá nhà cung cấp theo mã");
-            System.out.println("9.Xoá nhà cung cấp theo số điện thoại");
-            System.out.println("10.Sửa nhà cung cấp theo mã");
-            System.out.println("11.Thong ke nha cung cap theo ho");
+            System.out.println("4.Thêm nhà cung cấp theo mã");
+            System.out.println("5.Thêm nhà cung cấp theo địa chỉ");
+            System.out.println("6.Xoá nhà cung cấp theo mã");
+            System.out.println("7.Xoá nhà cung cấp theo số điện thoại");
+            System.out.println("8.Sửa nhà cung cấp theo mã");
+            System.out.println("9.Thong ke nha cung cap theo ho");
             System.out.println("0.Thoát");
             System.out.print("Chọn chức năng: ");
             chon = sc.nextInt();
@@ -36,30 +34,24 @@ public class Menu_ncc {
                     list.xuat();
                     break;
                 case 3:
-                    list.timkiemtheoho();
-                    break;
-                   case 4:
-                    list.timkiemtheoten();
-                    break;
-                case 5:
                     list.timkiemtheoma();
                     break;
-                case 6:
+                case 4:
                     list.themtheoma();
                     break;
-                case 7:
+                case 5:
                     list.themtheodiachi();
                     break;
-                case 8:
+                case 6:
                     list.xoatheoma();
                     break;
-                case 9:
+                case 7:
                     list.xoatheosdt();
                     break;
-                case 10:
+                case 8:
                     list.suatheoma();
                     break;
-                case 11:
+                case 9:
                     list.thongketheohoncc();
                     break;
                 case 0:

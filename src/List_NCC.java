@@ -39,34 +39,7 @@ public class List_NCC {
             System.out.print("Không có trong danh sách");
         }
     }
-    public void timkiemtheoho(){
-        System.out.println("Họ nhà cung cấp cần tìm: ");
-        String hocantim = sc.nextLine();
-        boolean timkiem = false;
-        for(int i = 0; i < n; i++){
-            if(dsncc[i].gethoNCC().equalsIgnoreCase(hocantim)){
-                timkiem = true;
-                dsncc[i].xuat();
-            }
-        }
-        if(!timkiem){
-            System.out.print("Không có trong danh sách");
-        }
-    }
-    public void timkiemtheoten(){
-        System.out.println("Tên nhà cung cấp cần tìm: ");
-        String tencantim = sc.nextLine();
-        boolean timkiem = false;
-        for(int i = 0; i < n; i++){
-            if(dsncc[i].gettenNCC().equalsIgnoreCase(tencantim)){
-                timkiem = true;
-                dsncc[i].xuat();
-            }
-        }
-        if(!timkiem){
-            System.out.println("Không có trong danh sách");
-        }
-    }
+
     public void themtheoma(){
         System.out.println("Mã nhà cung cấp cần thêm: ");
         String macanthem = sc.nextLine();
