@@ -142,11 +142,24 @@ public class List_MonAn {
                 temT = 0;
             }
         } while (temT != 1);
-        MonAnL.nhap();
+
+        boolean maTrung;
+        do {
+            MonAnL.nhap();
+
+            if (!OneIDFood(MonAnL.getMaSP())) {
+                System.out.println("Ma san pham: " + MonAnL.getMaSP() + "Da ton tai");
+                System.out.println("Vui long nhap lai ma khac ");
+                maTrung = true;
+            } else {
+                maTrung = false;
+            }
+        } while (maTrung);
         ds[ds.length - 1] = MonAnL;
 
         // THÊM: Tự động lưu file
         tuDongCapNhatFile();
+        System.out.println("Da them mon an thanh cong ");
     }
 
     public void sua() {
@@ -262,7 +275,7 @@ public class List_MonAn {
                     }
                     break;
 
-                case 7: // Thuộc tính đặc biệt 3
+                case 7: // Thuộc tính ThucAn
                     if (ds[v] instanceof ThucAn) {
                         System.out.print("Co bot ngot khong? (true/false): ");
                         boolean coBotNgot = sc.nextBoolean();
@@ -277,7 +290,7 @@ public class List_MonAn {
                         System.out.println("Da cap nhat loai lon!");
                     }
                     break;
-                case 8: // Thuộc tính đặc biệt 4 (chỉ NuocUong)
+                case 8: // Thuộc tính NuocUong
                     if (ds[v] instanceof NuocUong) {
                         System.out.print("Loai chai khong? (true/false): ");
                         boolean loaiChai = sc.nextBoolean();

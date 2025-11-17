@@ -1,21 +1,31 @@
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-public class THONGKETOANBO {
+public class ThongKe {
     private Scanner sc = new Scanner(System.in);
     private List_MonAn dsMonAn;
     private List_NhanVien dsNhanVien;
     private List_TonKho dsTonKho;
+    private List_KHO dsKHO;
+    private List_Nguyenlieu dsNguyenLieu;
+    private List_COMBO dsCOMBO;
 
-    public THONGKETOANBO() {
+    public ThongKe() {
         dsMonAn = new List_MonAn();
         dsNhanVien = new List_NhanVien();
         dsTonKho = new List_TonKho();
+        dsKHO = new List_KHO();
+        dsNguyenLieu = new List_Nguyenlieu();
+        dsCOMBO = new List_COMBO();
+
 
         // Đọc dữ liệu từ file
         dsMonAn.docFile("src/data/List_MonAn.txt");
         dsNhanVien.docFile("src/data/List_NV.txt");
         dsTonKho.docFile("src/data/List_TonKho.txt");
+        dsKHO.docFile("src/data/List_KHO.txt");
+        dsNguyenLieu.docFile("src/data/List_Nguyenlieu.txt");
+        dsCOMBO.docFile("src/data/List_COMBO.txt");
     }
 
     public void menu() {
@@ -56,7 +66,7 @@ public class THONGKETOANBO {
     }
 
     private void thongKeChi() {
-        DecimalFormat df = new DecimalFormat(/* pattern: */ "#,###");
+        DecimalFormat df = new DecimalFormat("#,###");
         System.out.println("\n===== THONG KE CHI TIET =====");
         System.out.printf(/* format: */ "%-15s | ", "Loai");
 
@@ -135,7 +145,7 @@ public class THONGKETOANBO {
                 NhanVien[] ds = dsNhanVien.getDs();
                 for (int j = 0; j < ds.length; j++) {
                     if (ds[j] != null) {
-                        tongGiaTri += ds[j].getLuongCoBan() * 3; // 3 tháng/quý
+                        tongGiaTri += ds[j].getLuongCoBan() * 3; // 3 tháng
                     }
                 }
             } else { // Tồn kho
@@ -207,6 +217,8 @@ public class THONGKETOANBO {
             }
         }
 
+
+        
         // Hiển thị kết quả
         double giaTBThucAn = soThucAn > 0 ? tongGiaThucAn / soThucAn : 0;
         double giaTBNuocUong = soNuocUong > 0 ? tongGiaNuocUong / soNuocUong : 0;
@@ -230,10 +242,11 @@ public class THONGKETOANBO {
             System.out.printf("- Ty trong Nuoc Uong: %.1f%%\n", (doanhThuNuocUong / tongDoanhThu) * 100);
 
             if (doanhThuThucAn > doanhThuNuocUong) {
-                System.out.println("- Thuc An la san pham chinh 🍛");
+                System.out.println("- Thuc An la san pham chinh ");
             } else {
-                System.out.println("- Nuoc Uong la san pham chinh 🥤");
+                System.out.println("- Nuoc Uong la san pham chinh ");
             }
         }
     }
 }
+

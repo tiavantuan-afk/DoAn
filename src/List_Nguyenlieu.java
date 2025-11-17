@@ -178,7 +178,7 @@ class List_Nguyenlieu {
 
 
 	//Doc ghi file
-	public void docFile() {
+	public void docFile(String tenFile){ {
 		try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_Nguyenlieu.txt"))) {
 			String line;
 			Nguyenlieu x = null;
@@ -208,6 +208,7 @@ class List_Nguyenlieu {
 			System.out.println("Loi doc file: " + e.toString());
 		} 
 
+	}
 	}
 
 	//ghi file

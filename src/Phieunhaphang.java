@@ -55,7 +55,7 @@ public class Phieunhaphang {
         for(int i = 0;i<n;i++){
             System.out.println("Chi tiết hàng "+(i+1));
             Chitietphieunhap ct = new Chitietphieunhap();
-            ct.nhap();
+            ct.nhap(true);
             Danhsachchitiet.add(ct);
         }
     }

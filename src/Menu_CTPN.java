@@ -6,7 +6,7 @@ public class Menu_CTPN {
     public Menu_CTPN() {
         list = new List_CTPN();
         sc = new Scanner(System.in);
-        fileName = "src/data/List_NV.txt";
+        fileName = "src/data/List_CTPN.txt";
         list.docFile(fileName);
     }
     public void menu(){
