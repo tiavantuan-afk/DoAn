@@ -325,8 +325,8 @@ public class List_TonKho {
 
         int tongSoLuongTon = 0;
         double tongGiaTriTon = 0;
-        int sanPhamSapHet = 0; // < 10
-        int sanPhamTonNhieu = 0; // > 100
+        int sanPhamSapHet = 0;
+        int sanPhamTonNhieu = 0;
 
         for (int i = 0; i < ds.length; i++) {
             if (ds[i] != null) {

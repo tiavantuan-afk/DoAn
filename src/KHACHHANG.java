@@ -39,10 +39,7 @@ public class KHACHHANG {
         Makh = sc.nextLine();
         System.out.print("Nhap so dien thoai: ");
         SDT = sc.nextLine();
-<<<<<<< HEAD
 
-=======
->>>>>>> eba791e72eb44a2b234d9b861ddd8c27fc60af83
     }
 
     public void xuat() {
