@@ -34,34 +34,34 @@ public class Menu_TonKho {
                 case 1:
                     quanLy.nhapds();
                     break;
-                case 2: // ĐỌC FILE MỚI TRƯỚC KHI XUẤT
+                case 2:
                     quanLy.docFile(fileName);
                     quanLy.xuat();
                     break;
                 case 3:
                     quanLy.them();
                     break;
-                case 4: // ĐỌC FILE TRƯỚC KHI SỬA
+                case 4:
                     quanLy.docFile(fileName);
                     quanLy.sua();
                     break;
-                case 5: // ĐỌC FILE TRƯỚC KHI XÓA
+                case 5:
                     quanLy.docFile(fileName);
                     System.out.print("Nhap ma kho can xoa: ");
                     String maCanXoa = sc.nextLine();
                     quanLy.xoaTheoMa(maCanXoa);
                     break;
-                case 6: // ĐỌC FILE TRƯỚC KHI TÌM
+                case 6:
                     quanLy.docFile(fileName);
                     System.out.print("Nhap ma kho can tim: ");
                     String maCanTim = sc.nextLine();
                     quanLy.timKiemMa(maCanTim);
                     break;
-                case 7: // ĐỌC FILE TRƯỚC KHI TÌM
+                case 7:
                     quanLy.docFile(fileName);
                     quanLy.timKiemTen();
                     break;
-                case 8: // ĐỌC FILE TRƯỚC KHI THỐNG KÊ
+                case 8:
                     quanLy.docFile(fileName);
                     quanLy.thongKe();
                     break;

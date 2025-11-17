@@ -90,6 +90,22 @@ class List_COMBO {
         if (!timkiem) System.out.println("Khong tim thay combo co ma: " + MAC);
     }
     
+    //xóa combo theo ten
+    public void xoacombotheoten(String TEN) {
+        boolean timkiem = false;
+        for (int i = 0; i < n; i++) {
+            if (ds[i] != null && ds[i].tenSP != null && ds[i].tenSP.equalsIgnoreCase(TEN)) {
+                for (int j = i; j < n - 1; j++) ds[j] = ds[j + 1];
+                ds[n - 1] = null;
+                n--;
+                System.out.println("Da xoa combo co ten: " + TEN);
+                timkiem = true;
+                break;
+            }
+        }
+        if (!timkiem) System.out.println("Khong tim thay combo co ten: " + TEN);
+    }
+    
     //thêm một combo
     public void them() {
         if (n >= ds.length) {
@@ -103,16 +119,81 @@ class List_COMBO {
     }
     
     // thống kê combo theo mã
-    public void thongkecombo() {
-        System.out.print("Nhap ma combo can thong ke: ");
-        String macantke = sc.nextLine();
-        int d = 0;
-        for (int i = 0; i < n; i++) {
-            if (ds[i] != null && ds[i].maSP != null && ds[i].maSP.equalsIgnoreCase(macantke)) d++;
-        }
-        if (d >= 1) System.out.println("Combo ton tai");
-        else System.out.println("Combo khong ton tai");
+    public void thongKeCombo() {
+    if (n == 0) {
+        System.out.println("Danh sach combo rong!");
+        return;
     }
+
+    System.out.println("=== THONG KE COMBO ===");
+    System.out.println("Tong so combo: " + n);
+
+    // Biến phục vụ thống kê
+    double tongDoanhThu = 0;
+
+    // Tính doanh thu combo đầu tiên
+    double doanhThuDau = ds[0].getGiaBan() * ds[0].getSoLuong();
+
+    double doanhThuMax = doanhThuDau;
+    double doanhThuMin = doanhThuDau;
+
+    String comboMax = ds[0].getMaSP() + " - " + ds[0].getTenSP();
+    String comboMin = ds[0].getMaSP() + " - " + ds[0].getTenSP();
+
+    // Phân loại theo giá bán
+    int nRe = 0;
+    int nTrungBinh = 0;
+    int nCao = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (ds[i] != null) {
+
+            double doanhThu = ds[i].getGiaBan() * ds[i].getSoLuong();
+            tongDoanhThu += doanhThu;
+
+            // Tìm max
+            if (doanhThu > doanhThuMax) {
+                doanhThuMax = doanhThu;
+                comboMax = ds[i].getMaSP() + " - " + ds[i].getTenSP();
+            }
+
+            // Tìm min
+            if (doanhThu < doanhThuMin) {
+                doanhThuMin = doanhThu;
+                comboMin = ds[i].getMaSP() + " - " + ds[i].getTenSP();
+            }
+
+            // Phân loại theo giá Combo
+            double gia = ds[i].getGiaBan();
+
+            if (gia < 100000)
+                nRe++;
+            else if (gia <= 300000)
+                nTrungBinh++;
+            else
+                nCao++;
+        }
+    }
+
+    // Xuất kết quả
+    System.out.printf("Tong doanh thu: %.2f VND\n", tongDoanhThu);
+    System.out.printf("Doanh thu trung binh: %.2f VND\n", (tongDoanhThu / n));
+
+    System.out.println("\n--- PHAN LOAI COMBO THEO GIA ---");
+    System.out.println("Combo re (<100k): " + nRe);
+    System.out.println("Combo trung binh (100k - 300k): " + nTrungBinh);
+    System.out.println("Combo cao (>300k): " + nCao);
+
+    System.out.println("\n--- MIN / MAX DOANH THU ---");
+    System.out.printf("Doanh thu cao nhat: %.2f VND (%s)\n", doanhThuMax, comboMax);
+    System.out.printf("Doanh thu thap nhat: %.2f VND (%s)\n", doanhThuMin, comboMin);
+
+    System.out.println("\n--- TY LE PHAN TRAM ---");
+    System.out.printf("Combo re: %.1f%%\n", (double) nRe / n * 100);
+    System.out.printf("Combo trung binh: %.1f%%\n", (double) nTrungBinh / n * 100);
+    System.out.printf("Combo cao: %.1f%%\n", (double) nCao / n * 100);
+}
+
 
     // Đọc combo từ file
     public void docFile() {

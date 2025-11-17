@@ -11,6 +11,7 @@ public class Menu_Nguyenlieu {
 
 	public void menu() {
 		int luaChon = -1;
+		quanLy.docFile();
 		do {
 			System.out.println("\n--- MENU QUAN LY NGUYEN LIEU ---");
 			System.out.println("1. Nhap danh sach nguyen lieu: ");
@@ -64,9 +65,7 @@ public class Menu_Nguyenlieu {
 					quanLy.timkiemtheoten();
 					break;
 				case 9:
-					System.out.print("Nhap ma nguyen lieu can thong ke: ");
-					String macantke = sc.nextLine();
-					quanLy.thongkeguyen(macantke);
+					quanLy.thongkeNguyenLieu();
 					break;
 				case 0:
 					System.out.println("Thoat chuong trinh.");

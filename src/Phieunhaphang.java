@@ -2,20 +2,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Phieunhaphang {
     Scanner sc = new Scanner(System.in);
-    private String maNH;
+    private String maPNH;
     private String maNV;
     private String ngay;
-    private String maNCC;
+    private String maNcc;
     private ArrayList<Chitietphieunhap> Danhsachchitiet;
     
     public Phieunhaphang(){
         Danhsachchitiet = new ArrayList<>();
     }
-    public String getmaNH(){
-        return maNH;
+    public String getmaPNH(){
+        return maPNH;
     }
-    public void setmaPN(String maNH){
-        this.maNH = maNH;
+    public void setmaPNH(String maPNH){
+        this.maPNH = maPNH;
     }
     public String getmaNV(){
         return maNV;
@@ -29,11 +29,11 @@ public class Phieunhaphang {
     public void setngay(String ngay){
         this.ngay = ngay;
     }
-    public String getmaNCC(){
-        return maNCC;
+    public String getmaNcc(){
+        return maNcc;
     }
-    public void setncc(String maNCC){
-        this.maNCC = maNCC;
+    public void setmaNcc(String maNcc){
+        this.maNcc = maNcc;
     }
     public ArrayList<Chitietphieunhap> getDanhsachchitiet(){
         return Danhsachchitiet;
@@ -43,13 +43,13 @@ public class Phieunhaphang {
     }
     public void nhap(){
         System.out.println("Mã phiếu nhập hàng: ");
-        maNH = sc.nextLine();
+        maPNH = sc.nextLine();
         System.out.println("Mã nhân viên: ");
         maNV = sc.nextLine();
         System.out.println("Ngày nhập hàng: ");
         ngay = sc.nextLine();
         System.out.println("Nhà cung cấp: ");
-        maNCC = sc.nextLine();
+        maNcc = sc.nextLine();
         System.out.println("Số mặt hàng: ");
         int n = Integer.parseInt(sc.nextLine());
         for(int i = 0;i<n;i++){
@@ -69,8 +69,8 @@ public class Phieunhaphang {
     @Override
     public String toString(){
         String s = " Phiếu nhập hàng";
-        s+= "Mã PN: " + maNH +"| Ngày nhập hàng: " + ngay + "\n";
-        s+= "Nhà cung cấp: " + maNCC +"\n Danh sách chi tiết \n";
+        s+= "Mã PN: " + maPNH +"| Ngày nhập hàng: " + ngay + "\n";
+        s+= "Nhà cung cấp: " + maNcc +"\n Danh sách chi tiết \n";
 
         for(Chitietphieunhap ct : Danhsachchitiet){
             s+= ct.toString() + "\n";

@@ -3,33 +3,39 @@ public class Chitietphieunhap{
     Scanner sc= new Scanner(System.in);
     private String maNH;
     private String maSP;
+    private String ngay;
     private int soluong;
     private double dongia;
 
     public Chitietphieunhap(){
         maNH="";
         maSP="";
+        ngay="";
         soluong=0;
         dongia=0;
     }
-    public Chitietphieunhap(String maNH,String maSP,int soluong,double dongia){
+    public Chitietphieunhap(String maNH,String maSP,String ngay,int soluong,double dongia){
         this.maNH = maNH;
         this.maSP = maSP;
+        this.ngay = ngay;
         this.soluong = soluong;
         this.dongia = dongia;
     }
     public Chitietphieunhap(Chitietphieunhap ct){
         this.maNH = ct.maNH;
         this.maSP = ct.maSP;
+        this.ngay = ct.ngay;
         this.soluong = ct.soluong;
         this.dongia = ct.dongia;
     }
 
     public void nhap(){
-        System.out.println("Mã nhập hàng: ");
+        System.out.println("Mã chi tiet nhập hàng: ");
         maNH=sc.nextLine();
-        System.out.println("Mã sản phẩm: ");
+        System.out.println("Mã chi tiet sản phẩm: ");
         maSP=sc.nextLine();
+        System.out.println("ngay nhap chi tiet san pham: ");
+        ngay=sc.nextLine();
         System.out.println("Số lượng: ");
         soluong=sc.nextInt();
         System.out.println("Đơn giá: ");
@@ -41,6 +47,9 @@ public class Chitietphieunhap{
     }
     public String getmaSP(){
         return maSP;
+    }
+    public String getngay(){
+        return ngay;
     }
     public int getsoluong(){
         return soluong;
@@ -54,6 +63,9 @@ public class Chitietphieunhap{
     public void setmaSP(String maSP){
         this.maSP = maSP;
     }
+    public void setngay(String ngay){
+        this.ngay = ngay;
+    }
     public void setsoluong(int soluong){
         this.soluong = soluong;
     }
@@ -65,6 +77,6 @@ public class Chitietphieunhap{
     }
     @Override
     public String toString(){
-        return maNH +" | Sản phẩm: " + maSP + " | Số lượng: " + soluong + " | Đơn giá: " + dongia + " | Thành tiền: " +thanhTien();
+        return maNH +" | Sản phẩm: " + maSP + " | Số lượng: " + soluong +"| ngay nhap :" + ngay + " | Đơn giá: " + dongia + " | Thành tiền: " +thanhTien();
     }
 }

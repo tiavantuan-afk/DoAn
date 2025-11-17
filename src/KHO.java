@@ -1,23 +1,23 @@
 import java.util.Scanner;
 
 public class KHO {
-    private String tenHang;
-    private int maHang;
-    private int soLuong;
-    private double donGia;
+    public String maHang;
+    public String tenHang;
+    public int soLuong;
+    public double donGia;
 
     // Hàm thiết lập
     public KHO() {
-        tenHang = "";
-        maHang = 0;
-        soLuong = 0;
-        donGia = 0.0;
+        this.maHang = "";
+        this.tenHang = "";
+        this.soLuong = 0;
+        this.donGia = 0.0;
     }
 
     // Hàm thiết lập có tham số
-    public KHO(String tenHang, int maHang, int soLuong, double donGia) {
-        this.tenHang = tenHang;
+    public KHO(String maHang, String tenHang, int soLuong, double donGia) {
         this.maHang = maHang;
+        this.tenHang = tenHang;
         this.soLuong = soLuong;
         this.donGia = donGia;
     }
@@ -25,65 +25,71 @@ public class KHO {
     // Hàm sao chép
     public KHO(KHO t) {
         if (t != null) {
-            this.tenHang = t.tenHang;
             this.maHang = t.maHang;
+            this.tenHang = t.tenHang;
             this.soLuong = t.soLuong;
             this.donGia = t.donGia;
         }
-    }
-
+    }   
     // Nhập xuất
     public void nhap() {
         Scanner sc = new Scanner(System.in);
+        System.out.print("Nhap ma hang: ");
+        maHang = sc.nextLine();
 
-        System.out.print("Nhập tên hàng: ");
+        System.out.print("Nhap ten hang: ");
         tenHang = sc.nextLine();
 
-        System.out.print("Nhập mã hàng: ");
-        maHang = sc.nextInt();
+        System.out.print("Nhap so luong: ");
+        soLuong = Integer.parseInt(sc.nextLine());
 
-        System.out.print("Nhập số lượng: ");
-        soLuong = sc.nextInt();
+        System.out.print("Nhap don gia: ");
+        donGia = Double.parseDouble(sc.nextLine());
+    }
 
-        System.out.print("Nhập đơn giá: ");
-        donGia = sc.nextDouble();
+    //loai hang
+    public String getLoai() {
+        return "K";
+    }
+
+    @Override
+    public String toString() {
+        return "KHO [maHang=" + maHang + ", tenHang=" + tenHang + ", soLuong=" + soLuong + ", donGia=" + donGia + "]";
     }
 
     public void xuat() {
-        System.out.println("=== Thông tin hàng hóa ===");
-        System.out.println("Tên hàng: " + tenHang);
-        System.out.println("Mã hàng: " + maHang);
-        System.out.println("Số lượng: " + soLuong);
-        System.out.println("Đơn giá: " + donGia);
+        System.out.println("Ma hang: " + maHang);
+        System.out.println("Ten hang: " + tenHang);
+        System.out.println("So luong: " + soLuong);
+        System.out.println("Don gia: " + donGia);
     }
 
-    // GET
-    public String getTenHang() { 
-        return tenHang; 
+    // get/set
+    public String getMaHang() {
+        return maHang;
     }
-    public int getMaHang() { 
-        return maHang; 
+    public void setMaHang(String maHang) {
+        this.maHang = maHang;
     }
-    public int getSoLuong() { 
+
+    public String getTenHang() {
+        return tenHang;
+    }
+    public void setTenHang(String tenHang) {
+        this.tenHang = tenHang;
+    }
+
+    public int getSoLuong() {
         return soLuong;
     }
-    public double getDonGia() {
-        return donGia; 
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
     }
 
-    // SET
-    public void setTenHang(String tenHang) { 
-        this.tenHang = tenHang; 
+    public double getDonGia() {
+        return donGia;
     }
-    public void setMaHang(int maHang) { 
-        this.maHang = maHang; 
-    }
-    public void setSoLuong(int soLuong) { 
-        this.soLuong = soLuong; 
-    }
-    public void setDonGia(double donGia) { 
-        this.donGia = donGia; 
+    public void setDonGia(double donGia) {
+        this.donGia = donGia;
     }
 }
-
-

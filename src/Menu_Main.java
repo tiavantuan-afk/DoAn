@@ -19,7 +19,7 @@ public class Menu_Main {
             System.out.println("3. Quan ly Khach Hang");
             System.out.println("4. Quan ly Hoa Don");
             System.out.println("5. Quan ly Kho Hang");
-            System.out.println("6. Quan ly The Loai");
+            System.out.println("6. Quan ly Ton Kho");
             System.out.println("7. Thong ke tong quan");
             System.out.println("8. Sao luu du lieu");
             System.out.println("0. Thoat chuong trinh");
@@ -46,7 +46,7 @@ public class Menu_Main {
                     quanLyKhoHang();
                     break;
                 case 6:
-                    quanLyTheLoai();
+                    quanLyTonKho();
                     break;
                 case 7:
                     thongKeTongQuan();
@@ -67,18 +67,16 @@ public class Menu_Main {
         sc.close();
     }
 
-    // Gọi menu Mon An hiện tại của bạn
     private void quanLyMonAn() {
         System.out.println("\n=== CHUYEN DEN QUAN LY MON AN ===");
         Menu_MonAn menuMonAn = new Menu_MonAn();
         menuMonAn.menu();
     }
 
-    // Template cho các menu khác
     private void quanLyNhanVien() {
         System.out.println("\n=== CHUYEN DEN QUAN LY NHAN VIEN ===");
-        Menu_NV menNV = new Menu_NV();
-        menNV.menu();
+        Menu_NV menuNV = new Menu_NV();
+        menuNV.menu();
 
     }
 
@@ -100,11 +98,11 @@ public class Menu_Main {
 
     }
 
-    private void quanLyTheLoai() {
-        System.out.println("\n=== QUAN LY THE LOAI ===");
-        System.out.println("Chuc nang dang phat trien...");
-        // Menu_TheLoai menuTheLoai = new Menu_TheLoai();
-        // menuTheLoai.menu();
+    private void quanLyTonKho() {
+        System.out.println("\n=== QUAN LY TON KHO ===");
+        Menu_TonKho menuTK = new Menu_TonKho();
+        menuTK.menu();
+
     }
 
     private void thongKeTongQuan() {

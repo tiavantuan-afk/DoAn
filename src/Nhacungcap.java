@@ -42,7 +42,9 @@ public class Nhacungcap{
         diachi = sc.nextLine();
         System.out.print("Số điện thoại: ");
         sdt = sc.nextLine();
-
+    }
+    public void xuat(){
+        System.out.printf("%-8s %-15s %-10s %-20s %-10s\n", maNCC, hoNCC, tenNCC,diachi,sdt );
     }
     public String getmaNCC() {
         return maNCC;

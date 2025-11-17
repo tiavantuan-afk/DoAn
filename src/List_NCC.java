@@ -1,9 +1,11 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 public class List_NCC {
     Scanner sc = new Scanner(System.in);
     private int n;
@@ -39,34 +41,7 @@ public class List_NCC {
             System.out.print("Không có trong danh sách");
         }
     }
-    public void timkiemtheoho(){
-        System.out.println("Họ nhà cung cấp cần tìm: ");
-        String hocantim = sc.nextLine();
-        boolean timkiem = false;
-        for(int i = 0; i < n; i++){
-            if(dsncc[i].gethoNCC().equalsIgnoreCase(hocantim)){
-                timkiem = true;
-                dsncc[i].xuat();
-            }
-        }
-        if(!timkiem){
-            System.out.print("Không có trong danh sách");
-        }
-    }
-    public void timkiemtheoten(){
-        System.out.println("Tên nhà cung cấp cần tìm: ");
-        String tencantim = sc.nextLine();
-        boolean timkiem = false;
-        for(int i = 0; i < n; i++){
-            if(dsncc[i].gettenNCC().equalsIgnoreCase(tencantim)){
-                timkiem = true;
-                dsncc[i].xuat();
-            }
-        }
-        if(!timkiem){
-            System.out.println("Không có trong danh sách");
-        }
-    }
+
     public void themtheoma(){
         System.out.println("Mã nhà cung cấp cần thêm: ");
         String macanthem = sc.nextLine();
@@ -171,141 +146,72 @@ public class List_NCC {
             System.out.println("Không tìm thấy nhà cung cấp có mã "+ macansua);
         }
     }
-
-    public void docFileTXT(String tenFile) {
-        try (BufferedReader br = new BufferedReader(new FileReader(tenFile))) {
-            String line;
-            n = 0;
-            while ((line = br.readLine()) != null && n < 100) {
-                String[] parts = line.split(",");
-                if (parts.length >= 5) {
-                    dsncc[n] = new Nhacungcap();
-                    dsncc[n].setmaNCC(parts[0].trim());
-                    dsncc[n].sethoNCC(parts[1].trim());
-                    dsncc[n].settenNCC(parts[2].trim());
-                    dsncc[n].setdiachi(parts[3].trim());
-                    dsncc[n].setsdt(parts[4].trim());
-                    n++;
+    public void thongketheohoncc() {
+        String[] hoDaDem = new String[100];
+        int[] soLuong = new int[100];
+        int demHo = 0;
+        for (int i = 0; i < n; i++) {
+            String ho = dsncc[i].gethoNCC();
+            int index = -1;
+            for (int j = 0; j < demHo; j++) {
+                if (hoDaDem[j].equalsIgnoreCase(ho)) {
+                    index = j;
+                    break;
                 }
             }
-            System.out.println("Đọc file thành công, tổng số nhà cung cấp: " + n);
-        } catch (IOException e) {
-            System.out.println("Lỗi khi đọc file: " + e.getMessage());
+            if (index == -1) { 
+                hoDaDem[demHo] = ho;
+                soLuong[demHo] = 1;
+                demHo++;
+            } else {
+                soLuong[index]++;
+            }
+        }
+        System.out.println("\nThong ke theo ho");
+        System.out.printf("%-15s %-10s\n", "Họ", "Số lượng");
+        for (int i = 0; i < demHo; i++) {
+            System.out.printf("%-15s %-10d\n", hoDaDem[i], soLuong[i]);
         }
     }
 
-    public void WriteOne(String tenFile, int index) {
-        if (index < 0 || index >= n) {
-            System.out.println("Vị trí không hợp lệ!");
-            return;
-        }
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(tenFile))) {
-            String line =
-                dsncc[index].getmaNCC() + "," +
-                dsncc[index].gethoNCC() + "," +
-                dsncc[index].gettenNCC() + "," +
-                dsncc[index].getdiachi() + "," +
-                dsncc[index].getsdt();
-            bw.write(line);
-            bw.newLine();
-            System.out.println(">> Đã ghi ONE vào file!");
-       }catch (IOException e) {
-            System.out.println("Lỗi khi ghi file: " + e.getMessage());
-        }
-    }
-    public void WriteAll(String tenFile) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(tenFile))) {
-            for (int i = 0; i < n; i++) {
-                String line =
-                    dsncc[i].getmaNCC() + "," +
-                    dsncc[i].gethoNCC() + "," +
-                    dsncc[i].gettenNCC() + "," +
-                    dsncc[i].getdiachi() + "," +
-                    dsncc[i].getsdt();
-                bw.write(line);
-                bw.newLine();
-            }
-            System.out.println(">> Đã ghi ALL vào file!");
-        } catch (IOException e) {
-            System.out.println("Lỗi khi ghi file: " + e.getMessage());
-        }
-    }
+    public void docFile(String filename){
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))){
+            String line;
+            Nhacungcap x = null;
+            dsncc = new Nhacungcap[0];
+            while ((line = br.readLine()) != null){
+                if (line.trim().isEmpty()){
+                    continue;
+                }
+                String[] t = line.split("-");
+                if (t.length >= 4){
+                    x = new Nhacungcap();
+                    x.setmaNCC(t[0]);
+                    x.sethoNCC(t[1]); 
+                    x.settenNCC(t[2]);
+                    x.setdiachi((t[3]));
+                    x.setsdt(t[4]);
+                    dsncc = Arrays.copyOf(dsncc, dsncc.length + 1);
+                    dsncc[dsncc.length - 1] = x;
+                    System.out.println("Doc: " + x.getmaNCC() + " - " + x.gethoNCC() + " " + x.gettenNCC() + " " + x.getdiachi()+ " " +x.getsdt());
 
-    public void menu() {
-        int chon = -1;
-        do {
-            System.out.println("\n1.Nhập danh sách nhà cung cấp");
-            System.out.println("2.Xuất danh sách nhà cung cấp");
-            System.out.println("3.Tìm kiếm nhà cung cấp theo mã");
-            System.out.println("4.Tìm kiếm nhà cung cấp theo họ");
-            System.out.println("5.Tìm kiếm nhà cung cấp theo tên");
-            System.out.println("6.Thêm nhà cung cấp theo mã");
-            System.out.println("7.Thêm nhà cung cấp theo địa chỉ");
-            System.out.println("8.Xoá nhà cung cấp theo mã");
-            System.out.println("9.Xoá nhà cung cấp theo số điện thoại");
-            System.out.println("10.Sửa nhà cung cấp theo mã");
-            System.out.println("11.Đọc danh sách nhà cung cấp từ file");
-            System.out.println("12.Ghi danh sách nhà cung cấp ra file ");
-            System.out.println("0.Thoát");
-            System.out.print("Chọn chức năng: ");
-            chon = sc.nextInt();
-            sc.nextLine();
-            switch(chon){
-                case 1:
-                    nhap();
-                    break;
-                case 2:
-                    xuat();
-                    break;
-                case 3:
-                    timkiemtheoho();
-                    break;
-                   case 4:
-                    timkiemtheoten();
-                    break;
-                case 5:
-                    timkiemtheoma();
-                    break;
-                case 6:
-                    themtheoma();
-                    break;
-                case 7:
-                    themtheodiachi();
-                    break;
-                case 8:
-                    xoatheoma();
-                    break;
-                case 9:
-                    xoatheosdt();
-                    break;
-                case 10:
-                    suatheoma();
-                    break;
-                case 11:
-                    System.out.print("Nhập tên file TXT cần đọc: ");
-                    String fileDoc = sc.nextLine();
-                    docFileTXT(fileDoc);
-                    break;
-                case 12:
-                    System.out.print("Nhập vị trí muốn ghi ONE: ");
-                    int vt = sc.nextInt(); sc.nextLine();
-                    WriteOne("one.txt", vt);
-                    break;
-                case 13:
-                    WriteAll("all.txt");
-                    break;
-                case 0:
-                    System.out.println("Thoát");
-                    return;
-                default:
-                    System.out.println("Lua chon khong hop le, vui long chon lai");
-                    break;
+                } 
             }
-        }while (chon != 0);
-        sc.close();
+            System.out.println("Doc file thanh cong, So khach hang da doc: "+ n);
+        }catch (IOException e){
+            System.out.println("Loi doc file: "+e.getMessage());
+        }
     }
-    public static void main(String[] args){
-        List_NCC qly = new List_NCC();
-        qly.menu();
+    public void ghiFile(String filename){
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))){
+            for (int i=0; i<n; i++){
+                if (dsncc[i] != null){
+                    writer.println(dsncc[i].toString());
+                }
+            }
+            System.out.println("Ghi file thanh cong: "+n+ " khach");
+        }catch (IOException e){
+            System.out.println("Loi ghi file");
+        }   
     }
 }

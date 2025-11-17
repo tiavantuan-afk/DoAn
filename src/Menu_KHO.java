@@ -11,6 +11,7 @@ public class Menu_KHO {
 
 	public void menu() {
 		int luaChon = -1;
+		quanLy.docFile();
 		do {
 			System.out.println("\n--- MENU QUAN LY KHO HANG ---");
 			System.out.println("1. Nhap danh sach hang hoa: ");
@@ -38,8 +39,7 @@ public class Menu_KHO {
 					break;
 				case 4:
 					System.out.print("Nhap ma hang can sua: ");
-					int maSua = sc.nextInt();
-					sc.nextLine();
+					String maSua = sc.nextLine();
 					System.out.println("Nhap thong tin moi:");
 					KHO khoSua = new KHO();
 					khoSua.nhap();
@@ -47,9 +47,8 @@ public class Menu_KHO {
 					break;
 				case 5:
 					System.out.print("Nhap ma hang can xoa: ");
-					int maXoa = sc.nextInt();
-					sc.nextLine();
-					quanLy.xoahang(maXoa);
+					String maCanXoa = sc.nextLine();
+					quanLy.xoahang(maCanXoa);
 					break;
 				case 6:
 					System.out.print("Nhap ten can xoa: ");
@@ -58,8 +57,7 @@ public class Menu_KHO {
 					break;
 				case 7:
 					System.out.print("Nhap ma hang can tim: ");
-					int maCanTim = sc.nextInt();
-					sc.nextLine();
+					String maCanTim = sc.nextLine();
 					quanLy.timkiemtheoma(maCanTim);
 					break;
 				case 8:
@@ -68,10 +66,7 @@ public class Menu_KHO {
 					quanLy.timkiemtheoten();
 					break;
 				case 9:
-					System.out.print("Thuong ke hang hoa theo ma: ");
-					int macantke = sc.nextInt();
-					sc.nextLine();
-					quanLy.thongkehang(macantke);
+					quanLy.thongkeKho();
 					break;
 				case 0:
 					System.out.println("Thoat chuong trinh.");

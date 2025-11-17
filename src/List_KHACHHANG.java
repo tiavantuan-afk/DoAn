@@ -42,19 +42,18 @@ class List_KHACHHANG {
     public void setN(int n){
         this.n = n;
     }
-        private void tuDongCapNhatFile() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("src/data/List_KHACHHANG.txt"))) {
-            for (int i = 0; i < dskh.length; i++) {
-                if (dskh[i] != null) {
-                    writer.println(dskh[i].toString());
-                }
+    private void tuDongCapNhatFile() {
+    try (PrintWriter writer = new PrintWriter(new FileWriter("src/data/List_KHACHHANG.txt"))) {
+        for (int i = 0; i < dskh.length; i++) {
+            if (dskh[i] != null) {
+                writer.println(dskh[i].toString());
             }
-            System.out.println("Da tu dong luu thong tin vao file ");
-        } catch (IOException e) {
-            System.out.println("Loi ghi file " + e.getMessage());
         }
-        tuDongCapNhatFile();
-
+        System.out.println("Da tu dong luu thong tin vao file ");
+    } catch (IOException e) {
+        System.out.println("Loi ghi file " + e.getMessage());
+    }
+    tuDongCapNhatFile();
     }
         public void timkiemtheoma(String macantim) {
         boolean timkiem = false;
@@ -89,23 +88,6 @@ class List_KHACHHANG {
             System.out.println("Khong tim thay khach hang co ma: " + MAKH);
         }
     }
-
-    // public void suakhachhang() {
-    //     boolean timkiem = false;
-    //     System.out.println("Nhap ma khach hang can sua: ");
-    //     String MA = sc.nextLine();
-    //     for (int i = 0; i < dskh.length; i++) {
-    //         if (dskh[i].getMaKH().equalsIgnoreCase(MA)) {  
-    //             System.out.println("Da cap nhat thong tin khach hang: " + MA);
-    //             timkiem = true;
-    //             break;
-    //         }
-    //     }
-    //     tuDongCapNhatFile();
-    //     if (!timkiem) {
-    //         System.out.println("Khong tim thay khach hang de sua: ");
-    //     }
-    // }
     public void suakhachhang() {
         System.out.print("Nhap ma khach hang can sua: ");
         String MA = sc.nextLine();

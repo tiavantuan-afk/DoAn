@@ -74,7 +74,8 @@ public class Menu_COMBO {
 					quanLy.timkiemtheoten();
 					break;
 				case 9:
-					quanLy.thongkecombo();
+					System.out.print("Nhap ma combo can thong ke: ");
+					quanLy.thongKeCombo();
 					break;
 				case 0:
 					System.out.println("Thoat chuong trinh.");

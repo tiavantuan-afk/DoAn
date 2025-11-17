@@ -15,16 +15,17 @@ class List_HOADON {
     public void nhap() {
         System.out.print("Nhap n hoa don: ");
         n = sc.nextInt();
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < dshd.length; i++) {
             System.out.print("Nhap hoa don thu: " + (i + 1));
             dshd[i] = new HOADON();
             dshd[i].nhap();
+            sc.close();
         }
     }
 
     public void xuat() {
         System.out.println("Danh sach hoa don: ");
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < dshd.length; i++) {
             dshd[i].xuat();
         }
     }
@@ -44,98 +45,146 @@ class List_HOADON {
     public void setN(int n) {
         this.n = n;
     }
-
+        private void tuDongCapNhatFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("src/data/List_HOADON.txt"))) {
+        for (int i = 0; i < dshd.length; i++) {
+            if (dshd[i] != null) {
+                writer.println(dshd[i].toString());
+            }
+        }
+        System.out.println("Da tu dong luu thong tin vao file ");
+    } catch (IOException e) {
+        System.out.println("Loi ghi file " + e.getMessage());
+    }
+    tuDongCapNhatFile();
+    }
     public void timkiemtheomahd(String hdcantim) {
         System.out.print("Nhap ma hoa don can tim: ");
         boolean timkiem = false;
-        for (int i = 0; i < n; i++) {
-            if (dshd[i].getMahd().equalsIgnoreCase(hdcantim)) {
+        for (int i = 0; i < dshd.length; i++) {
+            if (dshd[i] != null && dshd[i].getMahd() != null && dshd[i].getMahd().equalsIgnoreCase(hdcantim)) {
                 timkiem = true;
                 dshd[i].xuat();
-            }
-        }
-        if (!timkiem) {
-            System.out.println("Khong co trong danh sach.");
-        }
-    }
-
-    public void timkiemtheomanv(String nvcantim) {
-        System.out.print("Nhap ma nhan vien can tim: ");
-        boolean timkiem = false;
-        for (int i = 0; i < n; i++) {
-            if (dshd[i].getManv().equalsIgnoreCase(nvcantim)) {
-                timkiem = true;
-                dshd[i].xuat();
-            }
-        }
-        if (!timkiem) {
-            System.out.println("Khong co trong danh sach.");
-        }
-    }
-
-    public void timkiemtheomakh(String khcantim) {
-        System.out.print("Nhap ma khach hang ");
-        boolean timkiem = false;
-        for (int i = 0; i < n; i++) {
-            if (dshd[i].getMakh().equalsIgnoreCase(khcantim)) {
-                timkiem = true;
-                dshd[i].xuat();
-            }
-        }
-        if (!timkiem) {
-            System.out.println("Khong co trong danh sach.");
-        }
-    }
-
-    public void timkiemtheongay(String ngaycantim) {
-        System.out.print("Nhap ngay can tim: ");
-        boolean timkiem = false;
-        for (int i = 0; i < n; i++) {
-            if (dshd[i].getNgay().equals(ngaycantim)) {
-                timkiem = true;
-                dshd[i].xuat();
-            }
-        }
-        if (!timkiem) {
-            System.out.println("Khong co trong danh sach. ");
-        }
-    }
-
-    public void timkiemtheotongtien(double tongcantim) {
-        System.out.print("Tong tien can tim: ");
-        boolean timkiem = false;
-        for (int i = 0; i < n; i++) {
-            if (dshd[i].getTongtien() == tongcantim) {
-                timkiem = true;
-                dshd[i].xuat();
-            }
-        }
-        if (!timkiem) {
-            System.out.println("Khong co trong danh sach.");
-        }
-    }
-
-    public void suahoadon() {
-        System.out.println("Nhap ma hoa don can sua: ");
-        String MA = sc.nextLine();
-        boolean timkiem = false;
-        for (int i = 0; i < n; i++) {
-            if (dshd[i].getMahd().equalsIgnoreCase(MA)) {
-                System.out.println("Da cap nhat thong tin hoa don.");
-                timkiem = true;
                 break;
             }
         }
         if (!timkiem) {
-            System.out.println("Khong tim thay hoa don de sua. ");
+            System.out.println("Khong co trong danh sach.");
         }
     }
+    //    public void suahoadon() {
+    //     System.out.println("Nhap ma hoa don can sua: ");
+    //     String MA = sc.nextLine();
+    //     boolean timkiem = false;
+    //     for (int i = 0; i < dshd.length; i++) {
+    //         if (dshd[i].getMahd().equalsIgnoreCase(MA)) {
+    //             System.out.println("Da cap nhat thong tin hoa don.");
+    //             timkiem = true;
+    //             break;
+    //         }
+    //     }
+    //     if (!timkiem) {
+    //         System.out.println("Khong tim thay hoa don de sua. ");
+    //     }
+    // }
+    public void suahoadon() {
+        System.out.print("Nhap ma hoa don can sua: ");
+        String MA = sc.nextLine();
 
+        int v = -1;
+        for (int i = 0; i < dshd.length; i++) {
+            if (dshd[i] != null && dshd[i].getMahd() != null && dshd[i].getMahd().equalsIgnoreCase(MA)) {
+                v = i;
+                break;
+            }
+        }
+        if (v == -1) {
+            System.out.println("Khong tim thay khach hang co ma: " + MA);
+            return;
+        }
+        System.out.println("--- THONG TIN HIEN TAI ---");
+        dshd[v].xuat();
+        System.out.println();
+
+        int choice;
+        do {
+            System.out.println("\n=== CHON THUOC TINH CAN SUA ===");
+            System.out.println("1. Sua ma hoa don");
+            System.out.println("2. Sua ma nhan vien");
+            System.out.println("3. Sua ma khach hang");
+            System.out.println("4. Sua ngay ");
+            System.out.println("5.Sua tong tien ");
+            System.out.println("0.Hoan thanh sua ");
+            System.out.print("Lua chon: ");
+
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Nhap ma hoa don moi: ");
+                    String maMoi = sc.nextLine();
+                    dshd[v].setMahd(maMoi);
+                    System.out.println("Da cap nhat ma hoa don");
+                    break;
+
+                case 2:
+                    System.out.print("Nhap ma nhan vien moi: ");
+                    String nvMoi = sc.nextLine();
+                    dshd[v].setManv(nvMoi);
+                    System.out.println("Da cap nhat ma nhan vien");
+                    break;
+
+                case 3:
+                    System.out.println("Nhap ma khach hang moi: ");
+                    String khMoi = sc.nextLine();
+                    dshd[v].setManv(khMoi);
+                    System.out.println("Da cap nhat ma khach hang");
+                    break;
+
+                case 4:
+                    System.out.println("Nhap so ngay moi: ");
+                    String ngayMoi = sc.nextLine();
+                    dshd[v].setNgay(ngayMoi);
+                    System.out.println("Da cap nhat ngay");
+                    break; 
+                case 5:
+                    System.out.println("Nhap tong tien moi: ");
+                    Double tongMoi = sc.nextDouble();
+                    sc.nextLine();
+                    dshd[v].setTongTien(tongMoi);
+                    System.out.println("Da cap nhat ngay");
+                    break; 
+                case 6: // Sửa tất cả
+                    System.out.println("Nhap lai tat ca thong tin:");
+                    dshd[v].nhap();
+                    System.out.println("Da cap nhat tat ca thong tin!");
+                    break;
+
+                case 0: // Hoàn thành
+                    System.out.println("Hoan thanh sua san pham!");
+                    break;
+
+                default:
+                    System.out.println("Lua chon khong hop le!");
+                    break;
+            }
+            if (choice >= 1 && choice <= 9) {
+                System.out.println("=== THONG TIN SAU KHI SUA ===");
+                dshd[v].xuat();
+                System.out.println();
+            }
+        } while (choice != 0);
+        tuDongCapNhatFile();
+        System.out.println("Da luu thay doi vao file");
+    }
+    //   tuDongCapNhatFile();
+    //     System.out.println("Da luu thay doi vao file");
     public boolean IDHD(String mahdon) {
-        if (mahdon == null) {
+        if (mahdon == null) { 
             return true;
         }
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < dshd.length; i++) {
             if (dshd[i] != null && dshd[i].getMahd() != null && dshd[i].getMahd().equalsIgnoreCase(mahdon)) {
                 return false;
             }
@@ -151,36 +200,60 @@ class List_HOADON {
             System.out.println("Ma hao don da ton tai");
             return;
         }
-        dshd = Arrays.copyOf(dshd, n + 1);
-        dshd[n - 1] = hdmoi;
+        dshd = Arrays.copyOf(dshd, dshd.length + 1);
+        dshd[dshd.length - 1] = hdmoi;
         System.out.println("Da them hoa don moi");
     }
 
+    // public void xoahoadon(String MAHD) {
+    //     System.out.println("Nhap ma hoa don can xoa: ");
+    //     boolean timkiem = false;
+    //     for (int i = 0; i < dshd.length; i++) {
+    //         if (dshd[i].getMahd().equalsIgnoreCase(MAHD)) {
+    //             for (int j = i; j < dshd.length - 1; j++) {
+    //                 dshd[i] = dshd[i + 1];
+    //             }
+    //             dshd[n - 1] = null;
+    //             n--;
+    //             System.out.println("Da xoa hoa don co ma: " + MAHD);
+    //             timkiem = true;
+    //             break;
+    //         }
+    //     }
+    //     if (!timkiem) {
+    //         System.out.println("Khong tim thay hoa don co ma: " + MAHD);
+    //     }
+    // }
     public void xoahoadon(String MAHD) {
-        System.out.println("Nhap ma hoa don can xoa: ");
-        boolean timkiem = false;
-        for (int i = 0; i < n; i++) {
-            if (dshd[i].getMahd().equalsIgnoreCase(MAHD)) {
-                for (int j = i; j < n; j++) {
-                    dshd[i] = dshd[i + 1];
+        boolean found = false;
+        for (int i = 0; i < dshd.length; i++) {
+            if (dshd[i] != null && dshd[i].getMahd() != null && dshd[i].getMahd().equalsIgnoreCase(MAHD)) {
+                System.out.println("Hoa don can xoa: ");
+                dshd[i].xuat();
+                System.out.println();
+
+                // Dich chuyen ob
+                for (int j = i; j < dshd.length - 1; j++) {
+                    dshd[j] = dshd[j + 1];
                 }
-                dshd[n - 1] = null;
-                n--;
-                System.out.println("Da xoa hoa don co ma: " + MAHD);
-                timkiem = true;
-                break;
+                // Giam kich thuoc cua Array
+                dshd = Arrays.copyOf(dshd, dshd.length - 1);
+                System.out.println("Da xoa thanh cong ");
+                found = true;
+
+                tuDongCapNhatFile();
+                return;
             }
         }
-        if (!timkiem) {
-            System.out.println("Khong tim thay hoa don co ma: " + MAHD);
+        if (!found) {
+            System.out.println("Khong tim thay san pham: " + MAHD);
         }
     }
-
     public void thongkenhanvien() {
         int d = 0;
         System.out.print("Nhap ma nhan vien can thong ke: ");
         String manhanvien = sc.nextLine();
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < dshd.length; i++) {
             if (dshd[i].getManv().equalsIgnoreCase(manhanvien)) {
                 d++;
             }
@@ -200,26 +273,19 @@ class List_HOADON {
                     continue;
                 }
                 String[] t = line.split("-");
-                if (t.length >= 5) {
-                    String type = t[0].toUpperCase();
-                    if (type.contains("HD")) {
-                        x = new HOADON(t[1], t[2], t[3], t[4], Double.parseDouble(t[5]));
+                if (t.length >= 5) {               
+                        x = new HOADON(t[0], t[1], t[2], t[3], Double.parseDouble(t[4]));
                         // x.setMahd();
                         // ((HOADON) x).setManv(());
                         // ((HOADON) x).setMakh();
                         // x.setNgay();
                         // x.setTongTien();
-                    } else {
-                         System.out.println("Bo qua dong khong hop le: " + line);
-                        continue;
-                    }
-                    if (x != null) {
-                        dshd = Arrays.copyOf(dshd, n+1);
-                        dshd[n-1] = x;
-                    }
+                        dshd = Arrays.copyOf(dshd, dshd.length+1);
+                        dshd[dshd.length-1] = x;
+                        System.out.println("Doc: "+x.getMahd()+"-"+x.getManv()+"-"+x.getMakh()+"-");         
                 }
             }
-            System.out.println("Doc file thanh cong, So khach hang da doc: "+ n);
+            System.out.println("Doc file thanh cong, So khach hang da doc: "+ dshd.length);
         } catch (IOException e) {
             System.out.println("Loi doc file: " + e.getMessage());
         } //catch (NumberFormatException e) {
@@ -229,22 +295,14 @@ class List_HOADON {
 
     public void ghiFile(String filename){
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))){
-            for (int i=0; i<n; i++){
+            for (int i=0; i<dshd.length; i++){
                 if (dshd[i] != null){
                     writer.println(dshd[i].toString());
                 }
             }
-            System.out.println("Ghi file thanh cong: "+n+ " hoa don");
+            System.out.println("Ghi file thanh cong: "+dshd.length+ " hoa don");
         }catch (IOException e){
             System.out.println("Loi ghi file");
         }   
-    }
-
-    public static void main(String[] args) {
-        List_HOADON dshd = new List_HOADON();
-        System.out.println("Bat dau doc file.........");
-        dshd.docfile("");
-        System.out.println("Hien thi ket qua: ");
-        dshd.xuat();
     }
 }
