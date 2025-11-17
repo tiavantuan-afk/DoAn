@@ -11,7 +11,7 @@ public class Menu_Nguyenlieu {
 
 	public void menu() {
 		int luaChon = -1;
-		quanLy.docFile();
+		quanLy.docFile(String.valueOf("src/data/List_Nguyenlieu.txt"));
 		do {
 			System.out.println("\n--- MENU QUAN LY NGUYEN LIEU ---");
 			System.out.println("1. Nhap danh sach nguyen lieu: ");

@@ -6,16 +6,26 @@ public class ThongKe {
     private List_MonAn dsMonAn;
     private List_NhanVien dsNhanVien;
     private List_TonKho dsTonKho;
+    private List_KHO dsKHO;
+    private List_Nguyenlieu dsNguyenLieu;
+    private List_COMBO dsCOMBO;
 
     public ThongKe() {
         dsMonAn = new List_MonAn();
         dsNhanVien = new List_NhanVien();
         dsTonKho = new List_TonKho();
+        dsKHO = new List_KHO();
+        dsNguyenLieu = new List_Nguyenlieu();
+        dsCOMBO = new List_COMBO();
+
 
         // Đọc dữ liệu từ file
         dsMonAn.docFile("src/data/List_MonAn.txt");
         dsNhanVien.docFile("src/data/List_NV.txt");
         dsTonKho.docFile("src/data/List_TonKho.txt");
+        dsKHO.docFile("src/data/List_KHO.txt");
+        dsNguyenLieu.docFile("src/data/List_Nguyenlieu.txt");
+        dsCOMBO.docFile("src/data/List_COMBO.txt");
     }
 
     public void menu() {
@@ -207,6 +217,8 @@ public class ThongKe {
             }
         }
 
+
+        
         // Hiển thị kết quả
         double giaTBThucAn = soThucAn > 0 ? tongGiaThucAn / soThucAn : 0;
         double giaTBNuocUong = soNuocUong > 0 ? tongGiaNuocUong / soNuocUong : 0;
@@ -237,3 +249,4 @@ public class ThongKe {
         }
     }
 }
+
