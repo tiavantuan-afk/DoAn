@@ -9,7 +9,7 @@ public class Menu_KH {
         quanLy = new List_KHACHHANG();
         sc = new Scanner(System.in);
         fileName = "src/data/List_KHACHHANG.txt";
-        quanLy.docfile(fileName); // SỬA: Đọc file trong constructor giống MonAn
+        quanLy.docfile(fileName);
     }
 
     public void menu() {
