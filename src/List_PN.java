@@ -46,10 +46,10 @@ public class List_PN {
                     x.setmaPNH(t[0]);
                     x.setmaNV(t[1]); 
                     x.setngay(t[2]);
-                    x.setmancc((t[3]));
+                    x.setmaNcc((t[3]));
                     ds = Arrays.copyOf(ds, ds.length + 1);
                     ds[ds.length - 1] = x;
-                    System.out.println("Doc: " + x.getmaPNH() + " - " + x.getmaNV() + " " + x.getngay()+" "+x.getmancc());
+                    System.out.println("Doc: " + x.getmaPNH() + " - " + x.getmaNV() + " " + x.getngay()+" "+x.getmaNcc());
 
                 } 
             }

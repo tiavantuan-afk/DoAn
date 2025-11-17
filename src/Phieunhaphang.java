@@ -5,7 +5,7 @@ public class Phieunhaphang {
     private String maPNH;
     private String maNV;
     private String ngay;
-    private String mancc;
+    private String maNcc;
     private ArrayList<Chitietphieunhap> Danhsachchitiet;
     
     public Phieunhaphang(){
@@ -29,11 +29,11 @@ public class Phieunhaphang {
     public void setngay(String ngay){
         this.ngay = ngay;
     }
-    public String getmancc(){
-        return mancc;
+    public String getmaNcc(){
+        return maNcc;
     }
-    public void setncc(String mancc){
-        this.mancc = mancc;
+    public void setmaNcc(String maNcc){
+        this.maNcc = maNcc;
     }
     public ArrayList<Chitietphieunhap> getDanhsachchitiet(){
         return Danhsachchitiet;
@@ -49,7 +49,7 @@ public class Phieunhaphang {
         System.out.println("Ngày nhập hàng: ");
         ngay = sc.nextLine();
         System.out.println("Nhà cung cấp: ");
-        mancc = sc.nextLine();
+        maNcc = sc.nextLine();
         System.out.println("Số mặt hàng: ");
         int n = Integer.parseInt(sc.nextLine());
         for(int i = 0;i<n;i++){
@@ -70,7 +70,7 @@ public class Phieunhaphang {
     public String toString(){
         String s = " Phiếu nhập hàng";
         s+= "Mã PN: " + maPNH +"| Ngày nhập hàng: " + ngay + "\n";
-        s+= "Nhà cung cấp: " + mancc +"\n Danh sách chi tiết \n";
+        s+= "Nhà cung cấp: " + maNcc +"\n Danh sách chi tiết \n";
 
         for(Chitietphieunhap ct : Danhsachchitiet){
             s+= ct.toString() + "\n";
