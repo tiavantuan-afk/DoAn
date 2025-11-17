@@ -6,6 +6,7 @@ public class NuocUong extends MonAn {
     private boolean loaiChai;
     private boolean loaiLon;
     private boolean coDa;
+    java.util.Scanner sc = new Scanner(System.in);
 
     public NuocUong() {
         super();
@@ -32,7 +33,6 @@ public class NuocUong extends MonAn {
     @Override
     public void nhap() {
         super.nhap();
-        Scanner sc = new Scanner(System.in);
         System.out.print("Nhap co da ? (true/false): ");
         coDa = sc.nextBoolean();
         System.out.print("Nhap co gas ? (true/false): ");
@@ -107,7 +107,7 @@ public class NuocUong extends MonAn {
     }
 
     public void setLoaiLon(boolean LoaiLon) {
-        this.loaiLon = loaiLon;
+        this.loaiLon = LoaiLon;
     }
 
     // @Override

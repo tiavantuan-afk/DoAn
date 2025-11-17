@@ -8,6 +8,8 @@ public abstract class MonAn {
     public double giaBan;
     public int soLuong;
 
+    java.util.Scanner sc = new Scanner(System.in);
+
     public abstract String getLoai();
 
     // Hàm thiết lập
@@ -32,7 +34,6 @@ public abstract class MonAn {
 
     // Nhập xuất
     public void nhap() {
-        java.util.Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ma SP: ");
         maSP = sc.nextLine();
         System.out.print("Nhap ten SP: ");

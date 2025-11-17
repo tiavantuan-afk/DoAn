@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-N-NU001-Coca Cola-15000-20-true-true-false-false
-T-MA002-Bun Bo Hue-30000-8-true-true-true
-N-NU002-Nuoc Suoi-8000-30-false-false-false-true
-T-MA003-Banh Mi-12000-15-true-false-false
-T-MA001-Com Ga-25000-10-true-true-false
-=======
-T-MA001-Com Ga-10.0-25000-true-true-false
-N-NU001-Coca Cola-20.0-15000-true-true-false-false
-T-MA002-Bun Bo Hue-8.0-30000-true-true-true
-N-NU002-Nuoc Suoi-30.0-8000-false-false-false-true
-T-MA003-Banh Mi-15.0-12000-true-false-false
->>>>>>> c576180ff9f4146e4f0a6a1463d7a5a685bfc8fd
+N-NU001-Coca Cola-15000.0-20-true-true-false-false
+T-MA002-Bun Bo Hue-30000.0-8-true-true-true
+N-NU002-Nuoc Suoi-8000.0-30-false-false-false-true
+T-MA003-Banh Mi-12000.0-15-true-false-false
+T-MA001-Com Ga-25000.0-10-true-true-false

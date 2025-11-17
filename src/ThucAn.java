@@ -5,6 +5,7 @@ public class ThucAn extends MonAn {
     private boolean coThit;
     private boolean coTinhBot;
     private boolean coBotNgot;
+    Scanner sc = new Scanner(System.in);
 
     public ThucAn() {
         super();
@@ -28,7 +29,7 @@ public class ThucAn extends MonAn {
     @Override
     public void nhap() {
         super.nhap();
-        Scanner sc = new Scanner(System.in);
+
         System.out.print("Nhap co thit (true/false): ");
         coThit = sc.nextBoolean();
         System.out.print("Nhap co tinh bot (true/false): ");
