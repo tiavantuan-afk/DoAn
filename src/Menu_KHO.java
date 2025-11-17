@@ -21,9 +21,7 @@ public class Menu_KHO {
 			System.out.println("6. Xoa mot hang hoa (Theo ten)");
 			System.out.println("7. Tim mot hang hoa (Theo ma)");
 			System.out.println("8. Tim mot hang hoa (Theo ten)");
-			System.out.println("9. Tim mot hang hoa (Theo gia)");
-			System.out.println("10. Tim mot hang hoa (Theo so luong)");
-			System.out.println("11. Thong ke hang hoa");
+			System.out.println("9. Thong ke hang hoa");
 			System.out.println("0. Thoat");
 			System.out.print("Vui long chon: ");
 			luaChon = sc.nextInt();
@@ -36,12 +34,7 @@ public class Menu_KHO {
 					quanLy.xuat();
 					break;
 				case 3:
-					System.out.println("Nhap thong tin hang hoa moi:");
-					KHO khoMoi = new KHO();
-					khoMoi.nhap();
-					quanLy.getDskho()[quanLy.getN()] = khoMoi;
-					quanLy.setN(quanLy.getN() + 1);
-					System.out.println("Da them hang hoa.");
+					quanLy.them();
 					break;
 				case 4:
 					System.out.print("Nhap ma hang can sua: ");
@@ -59,48 +52,26 @@ public class Menu_KHO {
 					quanLy.xoahang(maXoa);
 					break;
 				case 6:
-					System.out.print("Nhap ten hang can xoa: ");
+					System.out.print("Nhap ten can xoa: ");
 					String tenCanXoa = sc.nextLine();
-					boolean timThay = false;
-					for (int i = 0; i < quanLy.getN(); i++) {
-						if (quanLy.getDskho()[i].getTenHang().toLowerCase().equalsIgnoreCase(tenCanXoa.toLowerCase())) {
-							quanLy.xoahang(quanLy.getDskho()[i].getMaHang());
-							timThay = true;
-							break;
-						}
-					}
-					if (!timThay) {
-						System.out.println("Khong tim thay hang hoa co ten: " + tenCanXoa);
-					}
+					quanLy.xoahangtheoten(tenCanXoa);
 					break;
 				case 7:
 					System.out.print("Nhap ma hang can tim: ");
 					int maCanTim = sc.nextInt();
 					sc.nextLine();
-					quanLy.timkiemtheomaHang(maCanTim);
+					quanLy.timkiemtheoma(maCanTim);
 					break;
 				case 8:
 					System.out.print("Nhap ten hang can tim: ");
 					String tenCanTim = sc.nextLine();
-					quanLy.timkiemtheotenHang(tenCanTim);
+					quanLy.timkiemtheoten();
 					break;
 				case 9:
-					System.out.print("Nhap gia can tim: ");
-					double giaCanTim = sc.nextDouble();
+					System.out.print("Thuong ke hang hoa theo ma: ");
+					int macantke = sc.nextInt();
 					sc.nextLine();
-					quanLy.timkiemtheodonGia(giaCanTim);
-					break;
-				case 10:
-					System.out.print("Nhap so luong can tim: ");
-					int luongCanTim = sc.nextInt();
-					sc.nextLine();
-					quanLy.timkiemtheosoLuong(luongCanTim);
-					break;
-				case 11:
-					System.out.print("Nhap ma hang can thong ke: ");
-					int maThongKe = sc.nextInt();
-					sc.nextLine();
-					quanLy.thongkehang(maThongKe);
+					quanLy.thongkehang(macantke);
 					break;
 				case 0:
 					System.out.println("Thoat chuong trinh.");

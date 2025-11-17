@@ -23,32 +23,16 @@ class List_Nguyenlieu {
 		}
 	}
 
-	// tìm kiếm theo mã
-	public void timkiemtheoma() {
-		System.out.print("Nhap ma nguyen lieu can tim: ");
-		String macantim = sc.nextLine();
-		boolean timkiem = false;
-		for (int i = 0; i < n; i++) {
-			if (ds[i] != null && ds[i].getmaNL() != null && ds[i].getmaNL().equalsIgnoreCase(macantim)) {
-				timkiem = true;
-				ds[i].xuat();
-			}
+	// thêm một nguyen lieu
+	public void them() {
+		if (n >= ds.length) {
+			ds = java.util.Arrays.copyOf(ds, ds.length + 10);
 		}
-		if (!timkiem) System.out.println("Khong co trong danh sach.");
-	}
-
-	// tìm kiếm theo tên
-	public void timkiemtheoten() {
-		System.out.print("Nhap ten nguyen lieu can tim: ");
-		String tencantim = sc.nextLine();
-		boolean timkiem = false;
-		for (int i = 0; i < n; i++) {
-			if (ds[i] != null && ds[i].gettenNL() != null && ds[i].gettenNL().equalsIgnoreCase(tencantim)) {
-				timkiem = true;
-				ds[i].xuat();
-			}
-		}
-		if (!timkiem) System.out.println("Khong co trong danh sach.");
+		Nguyenlieu nguyen = new Nguyenlieu();
+		nguyen.nhap();
+		ds[n] = nguyen;
+		n++;
+		System.out.println("Da them nguyen lieu thanh cong.");
 	}
 
 	// sửa nguyen lieu theo mã
@@ -65,6 +49,34 @@ class List_Nguyenlieu {
 		if (!timkiem) System.out.println("Khong tim thay nguyen lieu de sua: " + MA);
 	}
 
+	// tìm kiếm theo mã có tham số
+	public void timkiemtheoma(String macantim) {
+		boolean timkiem = false;
+		for (int i = 0; i < n; i++) {
+			if (ds[i] != null && ds[i].getmaNL() != null && ds[i].getmaNL().equalsIgnoreCase(macantim)) {
+				timkiem = true;
+				ds[i].xuat();
+			}
+		}
+		if (!timkiem) System.out.println("Khong co trong danh sach.");
+	}
+
+	// tìm kiếm theo tên không tham số
+	public void timkiemtheoten() {
+		System.out.print("Nhap ten nguyen lieu can tim: ");
+		String tencantim = sc.nextLine();
+
+		boolean timkiem = false;
+		for (int i = 0; i < n; i++) {
+			if (ds[i] != null && ds[i].gettenNL() != null && ds[i].gettenNL().equalsIgnoreCase(tencantim)) {
+				timkiem = true;
+				ds[i].xuat();
+			}
+		}
+		if (!timkiem) System.out.println("Khong co trong danh sach.");
+	}
+
+	
 	// xóa nguyen lieu theo mã
 	public void xoanguyen(String MAC) {
 		boolean timkiem = false;
@@ -81,29 +93,32 @@ class List_Nguyenlieu {
 		if (!timkiem) System.out.println("Khong tim thay nguyen lieu co ma: " + MAC);
 	}
 
-	// thêm một nguyen lieu
-	public void them() {
-		if (n >= ds.length) {
-			ds = java.util.Arrays.copyOf(ds, ds.length + 10);
+	//xóa nguyen lieu theo ten
+	public void xoanguyentheoten(String TEN) {
+		boolean timkiem = false;
+		for (int i = 0; i < n; i++) {
+			if (ds[i] != null && ds[i].gettenNL() != null && ds[i].gettenNL().equalsIgnoreCase(TEN)) {
+				for (int j = i; j < n - 1; j++) ds[j] = ds[j + 1];
+				ds[n - 1] = null;
+				n--;
+				System.out.println("Da xoa nguyen lieu co ten: " + TEN);
+				timkiem = true;
+				break;
+			}
 		}
-		Nguyenlieu nguyen = new Nguyenlieu();
-		nguyen.nhap();
-		ds[n] = nguyen;
-		n++;
-		System.out.println("Da them nguyen lieu thanh cong.");
+		if (!timkiem) System.out.println("Khong tim thay nguyen lieu co ten: " + TEN);
 	}
 
 	// thống kê nguyen lieu theo mã
-	public void thongkeguyen(String macantke) {
-		System.out.print("Nhap ma nguyen lieu can thong ke: ");
-		macantke = sc.nextLine();
-		int d = 0;
+	public void thongkeguyen(String maCanTke) {
+		int d= 0;
 		for (int i = 0; i < n; i++) {
-			if (ds[i] != null && ds[i].getmaNL() != null && ds[i].getmaNL().equalsIgnoreCase(macantke)) d++;
+			if (ds[i] != null && ds[i].getmaNL() != null && ds[i].getmaNL().equalsIgnoreCase(maCanTke)) d++;
 		}
-		if (d >= 1) System.out.println("Nguyen lieu ton tai");
-		else System.out.println("Nguyen lieu khong ton tai");
+		System.out.println("So luong nguyen lieu co ma " + maCanTke + " la: " + d);
 	}
+
+
 
 	// get/set
 	public Nguyenlieu[] getDs() {

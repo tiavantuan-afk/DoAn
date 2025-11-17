@@ -4,6 +4,7 @@ public class Menu_COMBO {
 	private List_COMBO quanLy;
 	private Scanner sc;
 
+	//Hàm thiết lập
 	public Menu_COMBO() {
 		quanLy = new List_COMBO();
 		sc = new Scanner(System.in);
@@ -11,6 +12,7 @@ public class Menu_COMBO {
 
 	public void menu() {
 		int luaChon = -1;
+		quanLy.docFile();
 		do {
 			System.out.println("\n--- MENU QUAN LY COMBO ---");
 			System.out.println("1. Nhap danh sach combo: ");
@@ -64,13 +66,15 @@ public class Menu_COMBO {
 					if (!found) System.out.println("Khong tim thay combo co ten: " + tenCanXoa);
 					break;
 				case 7:
-					quanLy.timkiemtheoma("");
+					System.out.print("Nhap ma combo can tim: ");
+					String maCanTim = sc.nextLine();
+					quanLy.timKiemTheoMa(maCanTim);
 					break;
 				case 8:
-					quanLy.timkiemtheoten("");
+					quanLy.timkiemtheoten();
 					break;
 				case 9:
-					quanLy.thongkecombo("");
+					quanLy.thongkecombo();
 					break;
 				case 0:
 					System.out.println("Thoat chuong trinh.");

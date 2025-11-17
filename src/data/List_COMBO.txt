@@ -1,0 +1,59 @@
+CB001
+Combo Gà Rán 1
+59000
+2 phần
+65000
+
+CB002
+Combo Gà Rán 2
+89000
+3 phần
+95000
+
+CB003
+Combo Burger Bò
+69000
+1 phần
+75000
+
+CB004
+Combo Burger Gà
+65000
+1 phần
+72000
+
+CB005
+Combo Khoai + Pepsi
+39000
+1 phần
+45000
+
+CB006
+Combo Gia Đình 1
+159000
+5 phần
+179000
+
+CB007
+Combo Gia Đình 2
+199000
+6 phần
+220000
+
+CB008
+Combo Cơm Gà Viên
+49000
+1 phần
+55000
+
+CB009
+Combo Mì Ý + Gà
+79000
+2 phần
+85000
+
+CB010
+Combo Salad + Nước Ép
+59000
+1 phần
+65000

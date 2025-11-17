@@ -23,32 +23,18 @@ class List_KHO {
 		}
 	}
 
-	// tìm kiếm theo mã
-	public void timkiemtheoma(int mahang) {
-		boolean timkiem = false;
-		for (int i = 0; i < n; i++) {
-			if (ds[i] != null && ds[i].getMaHang() == mahang) {
-				timkiem = true;
-				ds[i].xuat();
-			}
+	// thêm một hàng
+	public void them() {
+		if (n >= ds.length) {
+			ds = java.util.Arrays.copyOf(ds, ds.length + 10);
 		}
-		if (!timkiem) System.out.println("Khong co trong danh sach.");
+		KHO hang = new KHO();
+		hang.nhap();
+		ds[n] = hang;
+		n++;
+		System.out.println("Da them hang hoa thanh cong.");
 	}
-
-	// tìm kiếm theo tên
-	public void timkiemtheoten() {
-		System.out.print("Nhap ten hang hoa can tim: ");
-		String tencantim = sc.nextLine();
-		boolean timkiem = false;
-		for (int i = 0; i < n; i++) {
-			if (ds[i] != null && ds[i].getTenHang() != null && ds[i].getTenHang().equalsIgnoreCase(tencantim)) {
-				timkiem = true;
-				ds[i].xuat();
-			}
-		}
-		if (!timkiem) System.out.println("Khong co trong danh sach.");
-	}
-
+	
 	// sửa hang theo mã
 	public void suahang(int MA, KHO kho) {
 		boolean timkiem = false;
@@ -63,7 +49,34 @@ class List_KHO {
 		if (!timkiem) System.out.println("Khong tim thay hang hoa de sua: " + MA);
 	}
 
-	// xóa hang theo mã
+	// tìm kiếm theo mã có tham số
+	public void timkiemtheoma(int macantim) {
+		boolean timkiem = false;
+		for (int i = 0; i < n; i++) {
+			if (ds[i] != null && ds[i].getMaHang() == macantim) {
+				timkiem = true;
+				ds[i].xuat();
+			}
+		}
+		if (!timkiem) System.out.println("Khong co trong danh sach.");
+	}
+
+	// tìm kiếm theo tên không tham số
+	public void timkiemtheoten() {
+		System.out.print("Nhap ten hang hoa can tim: ");
+		String tenCanTim = sc.nextLine();
+
+		boolean timkiem = false;
+		for (int i = 0; i < n; i++) {
+			if (ds[i] != null && ds[i].getTenHang() != null && ds[i].getTenHang().equalsIgnoreCase(tenCanTim)) {
+				timkiem = true;
+				ds[i].xuat();
+			}
+		}
+		if (!timkiem) System.out.println("Khong co trong danh sach.");
+	}
+
+	// xóa hàng theo mã
 	public void xoahang(int MAC) {
 		boolean timkiem = false;
 		for (int i = 0; i < n; i++) {
@@ -79,19 +92,23 @@ class List_KHO {
 		if (!timkiem) System.out.println("Khong tim thay hang hoa co ma: " + MAC);
 	}
 
-	// thêm một hang
-	public void them() {
-		if (n >= ds.length) {
-			ds = java.util.Arrays.copyOf(ds, ds.length + 10);
+	// xóa hàng theo tên
+	public void xoahangtheoten(String TENC) {
+		boolean timkiem = false;
+		for (int i = 0; i < n; i++) {
+			if (ds[i] != null && ds[i].getTenHang() != null && ds[i].getTenHang().equalsIgnoreCase(TENC)) {
+				for (int j = i; j < n - 1; j++) ds[j] = ds[j + 1];
+				ds[n - 1] = null;
+				n--;
+				System.out.println("Da xoa hang hoa co ten: " + TENC);
+				timkiem = true;
+				break;
+			}
 		}
-		KHO hang = new KHO();
-		hang.nhap();
-		ds[n] = hang;
-		n++;
-		System.out.println("Da them hang hoa thanh cong.");
+		if (!timkiem) System.out.println("Khong tim thay hang hoa co ten: " + TENC);
 	}
 
-	// thống kê hang theo mã
+	// thống kê hàng theo mã
 	public void thongkehang(int mahang) {
 		int d = 0;
 		for (int i = 0; i < n; i++) {

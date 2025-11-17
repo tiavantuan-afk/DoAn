@@ -42,30 +42,31 @@ public class Menu_Nguyenlieu {
 					System.out.println("Nhap thong tin moi:");
 					Nguyenlieu nlSua = new Nguyenlieu();
 					nlSua.nhap();
-					quanLy.sua();
+					quanLy.suanguyen(maSua, nlSua);
 					break;
 				case 5:
 					System.out.print("Nhap ma nguyen lieu can xoa: ");
 					String maCanXoa = sc.nextLine();
-					quanLy.xoaTheoMa(maCanXoa);
+					quanLy.xoanguyen(maCanXoa);
 					break;
 				case 6:
 					System.out.print("Nhap ten can xoa: ");
 					String tenCanXoa = sc.nextLine();
-					quanLy.xoaTheoTen(tenCanXoa);
+					quanLy.xoanguyentheoten(tenCanXoa);
 					break;
 				case 7:
 					System.out.print("Nhap ma can tim: ");
 					String maCanTim = sc.nextLine();
-					quanLy.timKiemMa(maCanTim);
-					break;
+					quanLy.timkiemtheoma(maCanTim);
 				case 8:
 					System.out.print("Nhap ten can tim: ");
 					String tenCanTim = sc.nextLine();
-					quanLy.timKiemTen(tenCanTim);
+					quanLy.timkiemtheoten();
 					break;
 				case 9:
-					quanLy.thongKe();
+					System.out.print("Nhap ma nguyen lieu can thong ke: ");
+					String macantke = sc.nextLine();
+					quanLy.thongkeguyen(macantke);
 					break;
 				case 0:
 					System.out.println("Thoat chuong trinh.");

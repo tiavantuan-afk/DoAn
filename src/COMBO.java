@@ -1,52 +1,82 @@
 import java.util.Scanner;
 
-//lớp COMBO kế thừa từ lớp MonAn
-public class COMBO extends MonAn {
+public class COMBO {
+	//thuộc tính
+	public String maSP;
+	public String tenSP;
+	public double giaBan;
+	public int soLuong;
 	private double giaNiemYet;
 
-    //hàm thiết lập
+	//hàm thiết lập không tham số
 	public COMBO() {
-		super();
-		giaNiemYet = 0.0;
+		this.maSP = "";
+		this.tenSP = "";
+		this.giaBan = 0.0;
+		this.soLuong = 0;
+		this.giaNiemYet = 0.0;
 	}
 
-    //hàm thiết lập có tham số
-	public COMBO(String maSP, String tenSP, double giaBan, String soLuong, double giaNiemYet) {
-		super(maSP, tenSP, giaBan, soLuong);
+	// hàm thiết lập có tham số
+	public COMBO(String maSP, String tenSP, double giaBan, int soLuong, double giaNiemYet) {
+		this.maSP = maSP;
+		this.tenSP = tenSP;
+		this.giaBan = giaBan;
+		this.soLuong = soLuong;
 		this.giaNiemYet = giaNiemYet;
 	}
 
-    //hàm sao chép
+	// hàm sao chép
 	public COMBO(COMBO t) {
-		super(t);
-		if (t != null) {
+		if (t == null) {
+			this.maSP = "";
+			this.tenSP = "";
+			this.giaBan = 0.0;
+			this.soLuong = 0;
+			this.giaNiemYet = 0.0;
+		} else {
+			this.maSP = t.maSP;
+			this.tenSP = t.tenSP;
+			this.giaBan = t.giaBan;
+			this.soLuong = t.soLuong;
 			this.giaNiemYet = t.giaNiemYet;
 		}
 	}
 
-    // Nhập xuất 
-	@Override
 	public void nhap() {
 		Scanner sc = new Scanner(System.in);
-
 		System.out.print("Nhap ma combo: ");
-		maSP = sc.nextLine();
+		this.maSP = sc.nextLine();
 
 		System.out.print("Nhap ten combo: ");
-		tenSP = sc.nextLine();
+		this.tenSP = sc.nextLine();
 
 		System.out.print("Nhap gia ban: ");
-		giaBan = sc.nextDouble();
-		sc.nextLine();
+		this.giaBan = Double.parseDouble(sc.nextLine());
 
 		System.out.print("Nhap so luong: ");
-		soLuong = sc.nextLine();
+		this.soLuong = Integer.parseInt(sc.nextLine());
 
 		System.out.print("Nhap gia niem yet: ");
-		giaNiemYet = sc.nextDouble();
+		this.giaNiemYet = Double.parseDouble(sc.nextLine());
+	}
+	// loại combo
+	public String getLoai() {
+		return "C";
 	}
 
 	@Override
+	public String toString() {
+		return String.join("-",
+				getLoai(),
+				maSP == null ? "" : maSP,
+				tenSP == null ? "" : tenSP,
+				String.valueOf(giaBan),
+				String.valueOf(soLuong),
+				String.valueOf(giaNiemYet));
+	}
+
+	// Output
 	public void xuat() {
 		System.out.println("Ma combo: " + maSP);
 		System.out.println("Ten combo: " + tenSP);
@@ -55,11 +85,39 @@ public class COMBO extends MonAn {
 		System.out.println("Gia niem yet: " + giaNiemYet);
 	}
 
-	public double getGiaNiemYet() {
-		return giaNiemYet;
+	// Getters / Setters
+	public String getMaSP() { 
+		return maSP; 
+	}
+	public void setMaSP(String maSP) { 
+		this.maSP = maSP; 
 	}
 
-	public void setGiaNiemYet(double giaNiemYet) {
-		this.giaNiemYet = giaNiemYet;
+	public String getTenSP() { 
+		return tenSP; 
+	}
+	public void setTenSP(String tenSP) { 
+		this.tenSP = tenSP; 
+	}
+
+	public double getGiaBan() { 
+		return giaBan; 
+	}
+	public void setGiaBan(double giaBan) { 
+		this.giaBan = giaBan; 
+	}
+
+	public int getSoLuong() { 
+		return soLuong; 
+	}
+	public void setSoLuong(int soLuong) { 
+		this.soLuong = soLuong; 
+	}
+
+	public double getGiaNiemYet() { 
+		return giaNiemYet; 
+	}
+	public void setGiaNiemYet(double giaNiemYet) { 
+		this.giaNiemYet = giaNiemYet; 
 	}
 }

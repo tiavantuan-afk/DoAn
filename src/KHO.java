@@ -6,6 +6,7 @@ public class KHO {
     private int soLuong;
     private double donGia;
 
+    // Hàm thiết lập
     public KHO() {
         tenHang = "";
         maHang = 0;
@@ -13,6 +14,7 @@ public class KHO {
         donGia = 0.0;
     }
 
+    // Hàm thiết lập có tham số
     public KHO(String tenHang, int maHang, int soLuong, double donGia) {
         this.tenHang = tenHang;
         this.maHang = maHang;
@@ -20,6 +22,7 @@ public class KHO {
         this.donGia = donGia;
     }
 
+    // Hàm sao chép
     public KHO(KHO t) {
         if (t != null) {
             this.tenHang = t.tenHang;
@@ -29,6 +32,7 @@ public class KHO {
         }
     }
 
+    // Nhập xuất
     public void nhap() {
         Scanner sc = new Scanner(System.in);
 
