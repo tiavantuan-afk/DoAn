@@ -18,13 +18,22 @@ public class Menu_Main {
             System.out.println("2. Quan ly Nhan Vien");
             System.out.println("3. Quan ly Khach Hang");
             System.out.println("4. Quan ly Hoa Don");
+<<<<<<< HEAD
             System.out.println("5. Quan ly Kho Hang");
+=======
+            System.out.println("5. Quan ly Kho Hang"); ///Triet
+>>>>>>> 4e8c55ca8294f3b1c332f5efe0736ae149cc4ba4
             System.out.println("6. Quan ly Ton Kho");
 
             System.out.println("8. Sao luu du lieu");
+<<<<<<< HEAD
             System.out.println("9. Quan ly Nguyen Lieu");
             System.out.println("10. Quan ly Combo");
             System.out.println("12. Thong ke tong quan");
+=======
+            System.out.println("9. Quan ly Nguyen Lieu"); //Triet
+            System.out.println("9. Quan ly Combo");  //Triet
+>>>>>>> 4e8c55ca8294f3b1c332f5efe0736ae149cc4ba4
             System.out.println("0. Thoat chuong trinh");
             System.out.println("===============================================");
             System.out.print("Vui long chon chuc nang: ");
@@ -62,6 +71,12 @@ public class Menu_Main {
                     break;
                 case 11:
                     thongKeTongQuan();
+                    break;
+                case 9:
+                    quanLyDuLieu();
+                    break;
+                case 10: 
+                    quanLyCOMBO();
                     break;
                 case 0:
                     System.out.println("Cam on ban da su dung chuong trinh!");
@@ -126,6 +141,18 @@ public class Menu_Main {
         Menu_TonKho menuTK = new Menu_TonKho();
         menuTK.menu();
 
+    }
+
+    private void quanLyDuLieu() {
+        System.out.println("\n=== CHUYEN DEN QUAN LY NGUYEN LIEU ===");
+        Menu_Nguyenlieu menuNguyenlieu = new Menu_Nguyenlieu();
+        menuNguyenlieu.menu();
+    }
+
+    private void quanLyCOMBO() {
+        System.out.println("\n=== CHUYEN DEN QUAN LY COMBO ===");
+        Menu_COMBO menuCombo = new Menu_COMBO();
+        menuCombo.menu();
     }
 
     private void thongKeTongQuan() {
