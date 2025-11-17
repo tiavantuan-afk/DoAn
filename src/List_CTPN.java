@@ -1,9 +1,11 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class List_CTPN {
     Scanner sc = new Scanner(System.in);
@@ -56,60 +58,45 @@ public class List_CTPN {
             System.out.printf("%-15s %-10d\n", ngaydadem[i], soLuong[i]);
         }
     }
-    public void docFile(String tenFile) {
-        try (BufferedReader br = new BufferedReader(new FileReader(tenFile))) {
+public void docFile(String filename){
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))){
             String line;
-            n = 0;
-            while ((line = br.readLine()) != null && n < 100) {
-                String[] parts = line.split(",");
-                if (parts.length >= 4) {
-                    ds[n] = new Chitietphieunhap();
-                    ds[n].setmaNH(parts[0].trim());
-                    ds[n].setmaSP(parts[1].trim());
-                    ds[n].setsoluong(Integer.parseInt(parts[2].trim()));
-                    ds[n].setdongia(Double.parseDouble(parts[3].trim()));
-                    n++;
+            Chitietphieunhap x = null;
+            ds = new Chitietphieunhap[0];
+            while ((line = br.readLine()) != null){
+                if (line.trim().isEmpty()){
+                    continue;
+                }
+                String[] t = line.split("-");
+                if (t.length >= 4){
+                    x = new Chitietphieunhap();
+                    x.setmaNH(t[0]);
+                    x.setmaSP(t[1]); 
+                    x.setngay(t[2]);
+                    x.setsoluong(Integer.parseInt(t[3]));
+                    x.setdongia(Double.parseDouble(t[4]));
+                    ds = Arrays.copyOf(ds, ds.length + 1);
+                    ds[ds.length - 1] = x;
+                    System.out.println("Doc: " + x.getmaNH() + " - " + x.getmaSP() + " " + x.getngay()+" "+x.getsoluong()+" "+x.getdongia());
+
+                } 
+            }
+            System.out.println("Doc file thanh cong, So khach hang da doc: "+ n);
+        }catch (IOException e){
+            System.out.println("Loi doc file: "+e.getMessage());
+        }
+    }
+    public void ghiFile(String filename){
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))){
+            for (int i=0; i<n; i++){
+                if (ds[i] != null){
+                    writer.println(ds[i].toString());
                 }
             }
-            System.out.println("Đọc file thành công, tổng số chi tiet phieu nhap: " + n);
-        } catch (IOException e) {
-            System.out.println("Lỗi khi đọc file: " + e.getMessage());
-        }
-    }
-
-    public void WriteOne(String tenFile, int index) {
-        if (index < 0 || index >= n) {
-            System.out.println("Vị trí không hợp lệ!");
-            return;
-        }
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(tenFile))) {
-            String line =
-                ds[index].getmaNH() + "," +
-                ds[index].getmaSP() + "," +
-                ds[index].getsoluong() + "," +
-                ds[index].getdongia();
-            bw.write(line);
-            bw.newLine();
-            System.out.println("Đã ghi 1 chi tiet vào file!");
-       }catch (IOException e) {
-            System.out.println("Lỗi khi ghi file: " + e.getMessage());
-        }
-    }
-    public void WriteAll(String tenFile) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(tenFile))) {
-            for (int i = 0; i < n; i++) {
-                String line =
-                    ds[i].getmaNH() + "," +
-                    ds[i].getmaSP() + "," +
-                    ds[i].getsoluong() + "," +
-                    ds[i].getdongia();
-                bw.write(line);
-                bw.newLine();
-            }
-            System.out.println("Đã ghi tất cả vào file!");
-        } catch (IOException e) {
-            System.out.println("Lỗi khi ghi file: " + e.getMessage());
-        }
+            System.out.println("Ghi file thanh cong: "+n+ " khach");
+        }catch (IOException e){
+            System.out.println("Loi ghi file");
+        }   
     }
 
     public void themtheoma(){

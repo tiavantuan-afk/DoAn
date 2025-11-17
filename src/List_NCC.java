@@ -1,9 +1,11 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 public class List_NCC {
     Scanner sc = new Scanner(System.in);
     private int n;
@@ -172,62 +174,44 @@ public class List_NCC {
         }
     }
 
-    public void docFile(String tenFile) {
-        try (BufferedReader br = new BufferedReader(new FileReader(tenFile))) {
+    public void docFile(String filename){
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))){
             String line;
-            n = 0;
-            while ((line = br.readLine()) != null && n < 100) {
-                String[] parts = line.split(",");
-                if (parts.length >= 5) {
-                    dsncc[n] = new Nhacungcap();
-                    dsncc[n].setmaNCC(parts[0].trim());
-                    dsncc[n].sethoNCC(parts[1].trim());
-                    dsncc[n].settenNCC(parts[2].trim());
-                    dsncc[n].setdiachi(parts[3].trim());
-                    dsncc[n].setsdt(parts[4].trim());
-                    n++;
+            Nhacungcap x = null;
+            dsncc = new Nhacungcap[0];
+            while ((line = br.readLine()) != null){
+                if (line.trim().isEmpty()){
+                    continue;
+                }
+                String[] t = line.split("-");
+                if (t.length >= 4){
+                    x = new Nhacungcap();
+                    x.setmaNCC(t[0]);
+                    x.sethoNCC(t[1]); 
+                    x.settenNCC(t[2]);
+                    x.setdiachi((t[3]));
+                    x.setsdt(t[4]);
+                    dsncc = Arrays.copyOf(dsncc, dsncc.length + 1);
+                    dsncc[dsncc.length - 1] = x;
+                    System.out.println("Doc: " + x.getmaNCC() + " - " + x.gethoNCC() + " " + x.gettenNCC() + " " + x.getdiachi()+ " " +x.getsdt());
+
+                } 
+            }
+            System.out.println("Doc file thanh cong, So khach hang da doc: "+ n);
+        }catch (IOException e){
+            System.out.println("Loi doc file: "+e.getMessage());
+        }
+    }
+    public void ghiFile(String filename){
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))){
+            for (int i=0; i<n; i++){
+                if (dsncc[i] != null){
+                    writer.println(dsncc[i].toString());
                 }
             }
-            System.out.println("Đọc file thành công, tổng số nhà cung cấp: " + n);
-        } catch (IOException e) {
-            System.out.println("Lỗi khi đọc file: " + e.getMessage());
-        }
-    }
-
-    public void WriteOne(String tenFile, int index) {
-        if (index < 0 || index >= n) {
-            System.out.println("Vị trí không hợp lệ!");
-            return;
-        }
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(tenFile))) {
-            String line =
-                dsncc[index].getmaNCC() + "," +
-                dsncc[index].gethoNCC() + "," +
-                dsncc[index].gettenNCC() + "," +
-                dsncc[index].getdiachi() + "," +
-                dsncc[index].getsdt();
-            bw.write(line);
-            bw.newLine();
-            System.out.println(">> Đã ghi ONE vào file!");
-       }catch (IOException e) {
-            System.out.println("Lỗi khi ghi file: " + e.getMessage());
-        }
-    }
-    public void WriteAll(String tenFile) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(tenFile))) {
-            for (int i = 0; i < n; i++) {
-                String line =
-                    dsncc[i].getmaNCC() + "," +
-                    dsncc[i].gethoNCC() + "," +
-                    dsncc[i].gettenNCC() + "," +
-                    dsncc[i].getdiachi() + "," +
-                    dsncc[i].getsdt();
-                bw.write(line);
-                bw.newLine();
-            }
-            System.out.println(">> Đã ghi ALL vào file!");
-        } catch (IOException e) {
-            System.out.println("Lỗi khi ghi file: " + e.getMessage());
-        }
+            System.out.println("Ghi file thanh cong: "+n+ " khach");
+        }catch (IOException e){
+            System.out.println("Loi ghi file");
+        }   
     }
 }

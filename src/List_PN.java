@@ -1,9 +1,11 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class List_PN {
     Scanner sc = new Scanner(System.in);
@@ -29,60 +31,44 @@ public class List_PN {
         }
     }
     
-    public void docFile(String tenFile) {
-        try (BufferedReader br = new BufferedReader(new FileReader(tenFile))) {
+    public void docFile(String filename){
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))){
             String line;
-            n = 0;
-            while ((line = br.readLine()) != null && n < 100) {
-                String[] parts = line.split(",");
-                if (parts.length >= 5) {
-                    ds[n] = new Phieunhaphang();
-                    ds[n].setmaPNH(parts[0].trim());
-                    ds[n].setmaNV(parts[1].trim());
-                    ds[n].setngay(parts[2].trim());
-                    ds[n].setncc(parts[3].trim());
-                    n++;
+            Phieunhaphang x = null;
+            ds = new Phieunhaphang[0];
+            while ((line = br.readLine()) != null){
+                if (line.trim().isEmpty()){
+                    continue;
+                }
+                String[] t = line.split("-");
+                if (t.length >= 3){
+                    x = new Phieunhaphang();
+                    x.setmaPNH(t[0]);
+                    x.setmaNV(t[1]); 
+                    x.setngay(t[2]);
+                    x.setmancc((t[3]));
+                    ds = Arrays.copyOf(ds, ds.length + 1);
+                    ds[ds.length - 1] = x;
+                    System.out.println("Doc: " + x.getmaPNH() + " - " + x.getmaNV() + " " + x.getngay()+" "+x.getmancc());
+
+                } 
+            }
+            System.out.println("Doc file thanh cong, So khach hang da doc: "+ n);
+        }catch (IOException e){
+            System.out.println("Loi doc file: "+e.getMessage());
+        }
+    }
+    public void ghiFile(String filename){
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))){
+            for (int i=0; i<n; i++){
+                if (ds[i] != null){
+                    writer.println(ds[i].toString());
                 }
             }
-            System.out.println("Đọc file thành công, tổng số phieu nhap hang: " + n);
-        } catch (IOException e) {
-            System.out.println("Lỗi khi đọc file: " + e.getMessage());
-        }
-    }
-
-    public void WriteOne(String tenFile, int index) {
-        if (index < 0 || index >= n) {
-            System.out.println("Vị trí không hợp lệ!");
-            return;
-        }
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(tenFile))) {
-            String line =
-                ds[index].getmaPNH() + "," +
-                ds[index].getmaNV() + "," +
-                ds[index].getngay() + "," +
-                ds[index].getmancc();
-            bw.write(line);
-            bw.newLine();
-            System.out.println("Đã ghi 1 chi tiết vào file!");
-       }catch (IOException e) {
-            System.out.println("Lỗi khi ghi file: " + e.getMessage());
-        }
-    }
-    public void WriteAll(String tenFile) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(tenFile))) {
-            for (int i = 0; i < n; i++) {
-                String line =
-                    ds[i].getmaPNH() + "," +
-                    ds[i].getmaNV() + "," +
-                    ds[i].getngay() + "," +
-                    ds[i].getmancc();
-                bw.write(line);
-                bw.newLine();
-            }
-            System.out.println("Đã ghi tất cả vào file!");
-        } catch (IOException e) {
-            System.out.println("Lỗi khi ghi file: " + e.getMessage());
-        }
+            System.out.println("Ghi file thanh cong: "+n+ " khach");
+        }catch (IOException e){
+            System.out.println("Loi ghi file");
+        }   
     }
 
     public void themtheoma(){

@@ -7,7 +7,7 @@ public class Menu_ncc {
     public Menu_ncc() {
         list = new List_NCC();
         sc = new Scanner(System.in);
-        fileName = "src/data/List_NV.txt";
+        fileName = "src/data/List_NCC.txt";
         list.docFile(fileName);
     }
     public void menu() {
