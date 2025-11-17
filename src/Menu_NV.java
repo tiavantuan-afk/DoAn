@@ -32,29 +32,35 @@ public class Menu_NV {
             switch (luaChon) {
                 case 1:
                     quanLy.nhapds();
+                    quanLy.ghiFile(fileName);
                     break;
 
                 case 2:
                     quanLy.xuat();
+                    quanLy.ghiFile(fileName);
                     break;
 
                 case 3:
                     quanLy.them();
+                    quanLy.ghiFile(fileName);
                     break;
 
                 case 4:
                     quanLy.suaNV();
+                    quanLy.ghiFile(fileName);
                     break;
                 case 5:
                     System.out.print("Nhap ma nhan vien can xoa: ");
                     String maCanXoa = sc.nextLine();
                     quanLy.xoaMaNV(maCanXoa);
+                    quanLy.ghiFile(fileName);
                     break;
                 case 6:
 
                     System.out.print("Nhap ma nhan vien can tim: ");
                     String maCanTim = sc.nextLine();
                     quanLy.timNVMa(maCanTim);
+                    quanLy.ghiFile(fileName);
                     break;
                 case 7:
                     quanLy.timNVHo();
