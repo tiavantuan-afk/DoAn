@@ -189,7 +189,7 @@ class List_KHO {
 
 
 	//Doc file
-	public void docFile() {
+	public void docFile(String tenFile) {
 		try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_KHO.txt"))) {
 			String line;
 			KHO x = null;

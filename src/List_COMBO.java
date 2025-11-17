@@ -196,7 +196,7 @@ class List_COMBO {
 
 
     // Đọc combo từ file
-    public void docFile() {
+    public void docFile(String tenFile) {
         try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_COMBO.txt"))) {
             String line;
             COMBO x = null;

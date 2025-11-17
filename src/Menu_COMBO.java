@@ -12,7 +12,7 @@ public class Menu_COMBO {
 
 	public void menu() {
 		int luaChon = -1;
-		quanLy.docFile();
+		quanLy.docFile(String.valueOf("src/data/List_COMBO.txt"));
 		do {
 			System.out.println("\n--- MENU QUAN LY COMBO ---");
 			System.out.println("1. Nhap danh sach combo: ");
