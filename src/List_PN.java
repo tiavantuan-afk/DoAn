@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
+//import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,6 +11,15 @@ public class List_PN {
     Scanner sc = new Scanner(System.in);
     private int n;
     private Phieunhaphang[] ds = new Phieunhaphang[100];
+
+
+    public int getN() {
+        return n;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+    }
 
     public void nhap() {
         System.out.print("So luong phieu nhap hang: ");

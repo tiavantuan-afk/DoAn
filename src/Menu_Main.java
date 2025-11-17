@@ -126,12 +126,9 @@ public class Menu_Main {
     }
 
     private void thongKeTongQuan() {
-        System.out.println("\n=== THONG KE TONG QUAN ===");
-        System.out.println("1. Thong ke Mon An");
-        System.out.println("2. Thong ke Doanh thu");
-        System.out.println("3. Thong ke Khach hang");
-        System.out.println("4. Bao cao tong hop");
-        System.out.println("Chuc nang dang phat trien...");
+        System.out.println("\n=== CHUYEN DEN THONG KE TONG QUAN ===");
+        ThongKe thongKe = new ThongKe();
+        thongKe.menu();
     }
 
     private void saoLuuDuLieu() {

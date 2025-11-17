@@ -6,7 +6,7 @@ public class Menu_PN {
     public Menu_PN() {
         list = new List_PN();
         sc = new Scanner(System.in);
-        fileName = "src/data/List_NV.txt";
+        fileName = "src/data/List_PN.txt";
         list.docFile(fileName);
     }
     public void menu(){
