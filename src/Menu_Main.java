@@ -20,8 +20,9 @@ public class Menu_Main {
             System.out.println("4. Quan ly Hoa Don");
             System.out.println("5. Quan ly Kho Hang");
             System.out.println("6. Quan ly The Loai");
-            System.out.println("7. Thong ke tong quan");
-            System.out.println("8. Sao luu du lieu");
+            System.out.println("7. Quan ly Combo");
+            System.out.println("8. Thong ke tong quan");
+            System.out.println("9. Sao luu du lieu");
             System.out.println("0. Thoat chuong trinh");
             System.out.println("===============================================");
             System.out.print("Vui long chon chuc nang: ");

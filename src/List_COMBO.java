@@ -90,6 +90,22 @@ class List_COMBO {
         if (!timkiem) System.out.println("Khong tim thay combo co ma: " + MAC);
     }
     
+    //xóa combo theo ten
+    public void xoacombotheoten(String TEN) {
+        boolean timkiem = false;
+        for (int i = 0; i < n; i++) {
+            if (ds[i] != null && ds[i].tenSP != null && ds[i].tenSP.equalsIgnoreCase(TEN)) {
+                for (int j = i; j < n - 1; j++) ds[j] = ds[j + 1];
+                ds[n - 1] = null;
+                n--;
+                System.out.println("Da xoa combo co ten: " + TEN);
+                timkiem = true;
+                break;
+            }
+        }
+        if (!timkiem) System.out.println("Khong tim thay combo co ten: " + TEN);
+    }
+    
     //thêm một combo
     public void them() {
         if (n >= ds.length) {

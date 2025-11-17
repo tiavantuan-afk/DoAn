@@ -34,6 +34,7 @@ class List_Nguyenlieu {
 		if (n >= ds.length) {
 			ds = java.util.Arrays.copyOf(ds, ds.length + 10);
 		}
+
 		Nguyenlieu nguyen = new Nguyenlieu();
 		nguyen.nhap();
 		ds[n] = nguyen;
@@ -44,8 +45,9 @@ class List_Nguyenlieu {
 	// sửa nguyen lieu theo mã
 	public void suanguyen(String MA, Nguyenlieu c) {
 		boolean timkiem = false;
+
 		for (int i = 0; i < n; i++) {
-			if (ds[i] != null && ds[i].getmaNL() != null && ds[i].getmaNL().equalsIgnoreCase(MA)) {
+			if (ds[i] != null && ds[i].maNL != null && ds[i].maNL.equalsIgnoreCase(MA)) {
 				ds[i] = c;
 				System.out.println("Da cap nhat thong tin nguyen lieu: " + MA);
 				timkiem = true;
@@ -64,6 +66,7 @@ class List_Nguyenlieu {
 				ds[i].xuat();
 			}
 		}
+
 		if (!timkiem) System.out.println("Khong co trong danh sach.");
 	}
 
@@ -116,7 +119,9 @@ class List_Nguyenlieu {
 	}
 
 	// thống kê nguyen lieu theo mã
-	public void thongkeguyen(String maCanTke) {
+	public void thongkeguyen() {
+		System.out.print("Nhap ma nguyen lieu can thong ke: ");
+		String maCanTke = sc.nextLine();
 		int d= 0;
 		for (int i = 0; i < n; i++) {
 			if (ds[i] != null && ds[i].getmaNL() != null && ds[i].getmaNL().equalsIgnoreCase(maCanTke)) d++;
@@ -138,14 +143,14 @@ class List_Nguyenlieu {
 					continue;
 				}
 				String[] t = line.split("-");
-				if (t.length >= 4) {
+				if (t.length >= 3) {
 					x = new Nguyenlieu(t[0], t[1], Double.parseDouble(t[2]));
 					
 					// add vao mang
 					ds = Arrays.copyOf(ds, ds.length + 1);
 					ds[ds.length -1] = x;
 					n++;
-					System.out.println("Doc: " + x.getmaNL() + " - " + x.gettenNL());
+					System.out.println("Doc: " + x.maNL + " - " + x.tenNL);
 				}
 			}
 			System.out.println("Da doc file thanh cong.");
@@ -153,7 +158,8 @@ class List_Nguyenlieu {
 		
 		} catch (IOException e) {
 			System.out.println("Loi doc file: " + e.toString());
-		}
+		} 
+
 	}
 
 	//ghi file
@@ -161,9 +167,10 @@ class List_Nguyenlieu {
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/data/List_Nguyenlieu.txt"))) {
 			bw.write("==== DANH SACH NGUYEN LIEU ====\n");
 			bw.write("So luong nguyen lieu: " + n + "\n");
+
 			for (int i = 0; i < n; i++) {
 				if (ds[i] != null) {
-					bw.write(ds[i].getmaNL() + "-" + ds[i].gettenNL() + "-" + ds[i].getdongia() + "\n");
+					bw.write("NGUYENLIEU-" + ds[i].maNL + "-" + ds[i].tenNL + "-" + ds[i].dongia + "\n");
 				}
 			}
 			System.out.println("Da ghi file thanh cong.");
@@ -171,6 +178,7 @@ class List_Nguyenlieu {
 			System.out.println("Loi ghi file: " + e.toString());
 		}
 	}
+
 	// get/set
 	public Nguyenlieu[] getDs() {
 		return ds;

@@ -1,4 +1,10 @@
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
 
 class List_KHO {
 	Scanner sc = new Scanner(System.in);
@@ -28,6 +34,7 @@ class List_KHO {
 		if (n >= ds.length) {
 			ds = java.util.Arrays.copyOf(ds, ds.length + 10);
 		}
+
 		KHO hang = new KHO();
 		hang.nhap();
 		ds[n] = hang;
@@ -36,11 +43,12 @@ class List_KHO {
 	}
 	
 	// sửa hang theo mã
-	public void suahang(int MA, KHO kho) {
+	public void suahang(String MA, KHO c) {
 		boolean timkiem = false;
+
 		for (int i = 0; i < n; i++) {
-			if (ds[i] != null && ds[i].getMaHang() == MA) {
-				ds[i] = kho;
+			if (ds[i] != null && ds[i].maHang != null && ds[i].maHang.equalsIgnoreCase(MA)) {
+				ds[i] = c;
 				System.out.println("Da cap nhat thong tin hang hoa: " + MA);
 				timkiem = true;
 				break;
@@ -48,9 +56,8 @@ class List_KHO {
 		}
 		if (!timkiem) System.out.println("Khong tim thay hang hoa de sua: " + MA);
 	}
-
 	// tìm kiếm theo mã có tham số
-	public void timkiemtheoma(int macantim) {
+	public void timkiemtheoma(String macantim) {
 		boolean timkiem = false;
 		for (int i = 0; i < n; i++) {
 			if (ds[i] != null && ds[i].getMaHang() == macantim) {
@@ -58,6 +65,7 @@ class List_KHO {
 				ds[i].xuat();
 			}
 		}
+
 		if (!timkiem) System.out.println("Khong co trong danh sach.");
 	}
 
@@ -77,10 +85,10 @@ class List_KHO {
 	}
 
 	// xóa hàng theo mã
-	public void xoahang(int MAC) {
+	public void xoahang(String MAC) {
 		boolean timkiem = false;
 		for (int i = 0; i < n; i++) {
-			if (ds[i] != null && ds[i].getMaHang() == MAC) {
+			if (ds[i] != null && ds[i].maHang != null && ds[i].maHang.equalsIgnoreCase(MAC)) {
 				for (int j = i; j < n - 1; j++) ds[j] = ds[j + 1];
 				ds[n - 1] = null;
 				n--;
@@ -93,30 +101,81 @@ class List_KHO {
 	}
 
 	// xóa hàng theo tên
-	public void xoahangtheoten(String TENC) {
+	public void xoahangtheoten(String TEN) {
 		boolean timkiem = false;
 		for (int i = 0; i < n; i++) {
-			if (ds[i] != null && ds[i].getTenHang() != null && ds[i].getTenHang().equalsIgnoreCase(TENC)) {
+			if (ds[i] != null && ds[i].getTenHang() != null && ds[i].getTenHang().equalsIgnoreCase(TEN)) {
 				for (int j = i; j < n - 1; j++) ds[j] = ds[j + 1];
 				ds[n - 1] = null;
 				n--;
-				System.out.println("Da xoa hang hoa co ten: " + TENC);
+				System.out.println("Da xoa hang hoa co ten: " + TEN);
 				timkiem = true;
 				break;
 			}
 		}
-		if (!timkiem) System.out.println("Khong tim thay hang hoa co ten: " + TENC);
+		if (!timkiem) System.out.println("Khong tim thay hang hoa co ten: " + TEN);
 	}
 
 	// thống kê hàng theo mã
-	public void thongkehang(int mahang) {
+	public void thongkehang() {
+		System.out.print("Nhap ma hang can thong ke: ");
+		String mahang = sc.nextLine();
 		int d = 0;
 		for (int i = 0; i < n; i++) {
-			if (ds[i] != null && ds[i].getMaHang() == mahang) d++;
+			if (ds[i] != null && ds[i].getMaHang() != null && ds[i].getMaHang().equalsIgnoreCase(mahang)) d++;
 		}
-		if (d >= 1) System.out.println("Hang hoa ton tai");
-		else System.out.println("Hang hoa khong ton tai");
+		System.out.println("So luong hang hoa co ma " + mahang + " la: " + d);
 	}
+
+
+	//Doc file
+	public void docFile() {
+		try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_KHO.txt"))) {
+			String line;
+			KHO x = null;
+
+			ds = new KHO[0];
+			n = 0;
+
+			while ((line = br.readLine()) != null) {
+				if (line.startsWith("====") || line.startsWith("So luong")) {
+					continue;
+				}
+				String[] t = line.split(";");
+				if (t.length >= 4) {
+					x = new KHO(t[0], t[1], Integer.parseInt(t[2]), Double.parseDouble(t[3]));
+
+					// add vao mang
+					ds = Arrays.copyOf(ds, ds.length + 1);
+					ds[ds.length - 1] = x;
+					n++;
+					System.out.println("Doc: " + x.maHang + " - " + x.tenHang);
+				}
+			}
+			System.out.println("Da doc file thanh cong.");
+			System.out.println("So luong hang hoa: " + n);
+		} catch (IOException e) {
+			System.out.println("Loi doc file: " + e.getMessage());
+		}
+	}
+
+		//Ghi file
+	public void ghiFile(String tenFile) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/data/List_KHO.txt"))) {
+			bw.write("=== DANH SACH HANG HOA ===\n");
+			bw.write("So luong hang hoa: " + n + "\n");
+
+			for (int i = 0; i < n; i++) {
+				if (ds[i] != null) {
+					bw.write(ds[i].tenHang + ";" + ds[i].maHang + ";" + ds[i].soLuong + ";" + ds[i].donGia + "\n");
+				}
+			}
+			System.out.println("Da ghi file thanh cong.");
+		} catch (IOException e) {
+			System.out.println("Loi ghi file: " + e.getMessage());
+		}
+	}
+	
 
 	// get/set
 	public KHO[] getDs() {

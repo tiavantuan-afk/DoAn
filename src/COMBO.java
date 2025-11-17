@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class COMBO {
-	//thuộc tính
 	public String maSP;
 	public String tenSP;
 	public double giaBan;
@@ -29,12 +28,6 @@ public class COMBO {
 	// hàm sao chép
 	public COMBO(COMBO t) {
 		if (t == null) {
-			this.maSP = "";
-			this.tenSP = "";
-			this.giaBan = 0.0;
-			this.soLuong = 0;
-			this.giaNiemYet = 0.0;
-		} else {
 			this.maSP = t.maSP;
 			this.tenSP = t.tenSP;
 			this.giaBan = t.giaBan;
@@ -42,7 +35,6 @@ public class COMBO {
 			this.giaNiemYet = t.giaNiemYet;
 		}
 	}
-
 	public void nhap() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Nhap ma combo: ");
@@ -67,13 +59,8 @@ public class COMBO {
 
 	@Override
 	public String toString() {
-		return String.join("-",
-				getLoai(),
-				maSP == null ? "" : maSP,
-				tenSP == null ? "" : tenSP,
-				String.valueOf(giaBan),
-				String.valueOf(soLuong),
-				String.valueOf(giaNiemYet));
+		return "COMBO [maSP=" + maSP + ", tenSP=" + tenSP + ", giaBan=" + giaBan + ", soLuong=" + soLuong
+				+ ", giaNiemYet=" + giaNiemYet + "]";
 	}
 
 	// Output
@@ -85,7 +72,7 @@ public class COMBO {
 		System.out.println("Gia niem yet: " + giaNiemYet);
 	}
 
-	// Getters / Setters
+	// Get/Set
 	public String getMaSP() { 
 		return maSP; 
 	}
