@@ -194,18 +194,43 @@ public class List_NCC {
         }
     }
 
-    public void ghiFileTXT(String tenFile) {
+    public void WriteOne(String tenFile, int index) {
+        if (index < 0 || index >= n) {
+            System.out.println("Vị trí không hợp lệ!");
+            return;
+        }
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(tenFile))) {
-            for (int i = 0; i < n; i++) {
-                String line = dsncc[i].getmaNCC() + "," + dsncc[i].gethoNCC() + "," + dsncc[i].gettenNCC() + "," + dsncc[i].getdiachi() + "," + dsncc[i].getsdt();
-                bw.write(line);
-                bw.newLine();
-            }
-            System.out.println("Ghi file thành công!");
-        }catch(IOException e){
+            String line =
+                dsncc[index].getmaNCC() + "," +
+                dsncc[index].gethoNCC() + "," +
+                dsncc[index].gettenNCC() + "," +
+                dsncc[index].getdiachi() + "," +
+                dsncc[index].getsdt();
+            bw.write(line);
+            bw.newLine();
+            System.out.println(">> Đã ghi ONE vào file!");
+       }catch (IOException e) {
             System.out.println("Lỗi khi ghi file: " + e.getMessage());
         }
     }
+    public void WriteAll(String tenFile) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(tenFile))) {
+            for (int i = 0; i < n; i++) {
+                String line =
+                    dsncc[i].getmaNCC() + "," +
+                    dsncc[i].gethoNCC() + "," +
+                    dsncc[i].gettenNCC() + "," +
+                    dsncc[i].getdiachi() + "," +
+                    dsncc[i].getsdt();
+                bw.write(line);
+                bw.newLine();
+            }
+            System.out.println(">> Đã ghi ALL vào file!");
+        } catch (IOException e) {
+            System.out.println("Lỗi khi ghi file: " + e.getMessage());
+        }
+    }
+
     public void menu() {
         int chon = -1;
         do {
@@ -262,9 +287,12 @@ public class List_NCC {
                     docFileTXT(fileDoc);
                     break;
                 case 12:
-                    System.out.print("Nhập tên file TXT cần ghi: ");
-                    String fileGhi = sc.nextLine();
-                    ghiFileTXT(fileGhi);
+                    System.out.print("Nhập vị trí muốn ghi ONE: ");
+                    int vt = sc.nextInt(); sc.nextLine();
+                    WriteOne("one.txt", vt);
+                    break;
+                case 13:
+                    WriteAll("all.txt");
                     break;
                 case 0:
                     System.out.println("Thoát");

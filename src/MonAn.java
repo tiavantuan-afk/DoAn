@@ -6,9 +6,9 @@ public abstract class MonAn {
     public String maSP;
     public String tenSP;
     public double giaBan;
-    public String soLuong;
+    public int soLuong;
 
-    // Phương thức
+    public abstract String getLoai();
 
     // Hàm thiết lập
     public MonAn() {
@@ -16,7 +16,7 @@ public abstract class MonAn {
     }
 
     // Có tham số
-    public MonAn(String maSP, String tenSP, double giaBan, String soLuong) {
+    public MonAn(String maSP, String tenSP, double giaBan, int soLuong) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.giaBan = giaBan;
@@ -32,7 +32,7 @@ public abstract class MonAn {
 
     // Nhập xuất
     public void nhap() {
-        java.util.Scanner sc = new java.util.Scanner(System.in);
+        java.util.Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ma SP: ");
         maSP = sc.nextLine();
         System.out.print("Nhap ten SP: ");
@@ -41,14 +41,13 @@ public abstract class MonAn {
         giaBan = sc.nextDouble();
         sc.nextLine();
         System.out.print("Nhập so luong: ");
-        soLuong = sc.nextLine();
-        sc.close();
-
+        soLuong = sc.nextInt();
+        sc.nextLine();
     }
 
     public void xuat() {
         System.out.printf(
-                "%-10s | %-20s | %-10.fs | %-10s ",
+                "%-10s | %-20s | %-10.0f | %-10d ",
                 maSP, tenSP, giaBan, soLuong);
 
     }
@@ -78,11 +77,11 @@ public abstract class MonAn {
         this.giaBan = giaBan;
     }
 
-    public String getSoLuong() {
+    public int getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(String soLuong) {
+    public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
 

@@ -1,125 +1,113 @@
 import java.util.Scanner;
 
-public class List_KHO {
+class List_KHO {
 	Scanner sc = new Scanner(System.in);
 	private int n;
-	private KHO[] dskho = new KHO[100];
+	private KHO[] ds = new KHO[100];
 
 	public void nhap() {
 		System.out.print("Nhap n hang hoa: ");
 		n = sc.nextInt();
+		sc.nextLine();
 		for (int i = 0; i < n; i++) {
-			System.out.print("Nhap hang hoa thu: " + (i + 1) + "\n");
-			dskho[i] = new KHO();
-			dskho[i].nhap();
+			System.out.println("Nhap hang hoa thu: " + (i + 1));
+			ds[i] = new KHO();
+			ds[i].nhap();
 		}
 	}
 
 	public void xuat() {
 		System.out.println("Danh sach hang hoa: ");
 		for (int i = 0; i < n; i++) {
-			dskho[i].xuat();
+			if (ds[i] != null) ds[i].xuat();
 		}
 	}
 
-	public void timkiemtheomaHang(int macanTim) {
-		boolean timKiem = false;
+	// tìm kiếm theo mã
+	public void timkiemtheoma(int mahang) {
+		boolean timkiem = false;
 		for (int i = 0; i < n; i++) {
-			if (dskho[i].getMaHang() == macanTim) {
-				timKiem = true;
-				dskho[i].xuat();
+			if (ds[i] != null && ds[i].getMaHang() == mahang) {
+				timkiem = true;
+				ds[i].xuat();
 			}
 		}
-		if (!timKiem) {
-			System.out.println("Khong co trong danh sach.");
-		}
+		if (!timkiem) System.out.println("Khong co trong danh sach.");
 	}
 
-	public void timkiemtheotenHang(String tenCanTim) {
-		boolean timKiem = false;
+	// tìm kiếm theo tên
+	public void timkiemtheoten() {
+		System.out.print("Nhap ten hang hoa can tim: ");
+		String tencantim = sc.nextLine();
+		boolean timkiem = false;
 		for (int i = 0; i < n; i++) {
-			if (dskho[i].getTenHang().toLowerCase().equalsIgnoreCase(tenCanTim.toLowerCase())) {
-				timKiem = true;
-				dskho[i].xuat();
+			if (ds[i] != null && ds[i].getTenHang() != null && ds[i].getTenHang().equalsIgnoreCase(tencantim)) {
+				timkiem = true;
+				ds[i].xuat();
 			}
 		}
-		if (!timKiem) {
-			System.out.println("Khong co trong danh sach.");
-		}
+		if (!timkiem) System.out.println("Khong co trong danh sach.");
 	}
 
-	public void timkiemtheodonGia(double giaCanTim) {
-		boolean timKiem = false;
-		for (int i = 0; i < n; i++) {
-			if (dskho[i].getDonGia() == giaCanTim) {
-				timKiem = true;
-				dskho[i].xuat();
-			}
-		}
-		if (!timKiem) {
-			System.out.println("Khong co trong danh sach.");
-		}
-	}
-
-	public void timkiemtheosoLuong(int luongCanTim) {
-		boolean timKiem = false;
-		for (int i = 0; i < n; i++) {
-			if (dskho[i].getSoLuong() == luongCanTim) {
-				timKiem = true;
-				dskho[i].xuat();
-			}
-		}
-		if (!timKiem) {
-			System.out.println("Khong co trong danh sach.");
-		}
-	}
-
-	public void xoahang(int MAHANG) {
-		boolean timKiem = false;
-		for (int i = 0; i < n; i++) {
-			if (dskho[i].getMaHang() == MAHANG) {
-				for (int j = i; j < n - 1; j++) {
-					dskho[j] = dskho[j + 1];
-				}
-				dskho[n - 1] = null;
-				n--;
-				System.out.println("Da xoa hang hoa co ma: " + MAHANG);
-				timKiem = true;
-				break;
-			}
-		}
-		if (!timKiem) {
-			System.out.println("Khong tim thay hang hoa co ma: " + MAHANG);
-		}
-	}
-
+	// sửa hang theo mã
 	public void suahang(int MA, KHO kho) {
-		boolean timKiem = false;
+		boolean timkiem = false;
 		for (int i = 0; i < n; i++) {
-			if (dskho[i].getMaHang() == MA) {
-				dskho[i] = kho;
+			if (ds[i] != null && ds[i].getMaHang() == MA) {
+				ds[i] = kho;
 				System.out.println("Da cap nhat thong tin hang hoa: " + MA);
-				timKiem = true;
+				timkiem = true;
 				break;
 			}
 		}
-		if (!timKiem) {
-			System.out.println("Khong tim thay hang hoa de sua: ");
-		}
+		if (!timkiem) System.out.println("Khong tim thay hang hoa de sua: " + MA);
 	}
 
+	// xóa hang theo mã
+	public void xoahang(int MAC) {
+		boolean timkiem = false;
+		for (int i = 0; i < n; i++) {
+			if (ds[i] != null && ds[i].getMaHang() == MAC) {
+				for (int j = i; j < n - 1; j++) ds[j] = ds[j + 1];
+				ds[n - 1] = null;
+				n--;
+				System.out.println("Da xoa hang hoa co ma: " + MAC);
+				timkiem = true;
+				break;
+			}
+		}
+		if (!timkiem) System.out.println("Khong tim thay hang hoa co ma: " + MAC);
+	}
+
+	// thêm một hang
+	public void them() {
+		if (n >= ds.length) {
+			ds = java.util.Arrays.copyOf(ds, ds.length + 10);
+		}
+		KHO hang = new KHO();
+		hang.nhap();
+		ds[n] = hang;
+		n++;
+		System.out.println("Da them hang hoa thanh cong.");
+	}
+
+	// thống kê hang theo mã
 	public void thongkehang(int mahang) {
 		int d = 0;
 		for (int i = 0; i < n; i++) {
-			if (dskho[i].getMaHang() == mahang) {
-				d++;
-			}
+			if (ds[i] != null && ds[i].getMaHang() == mahang) d++;
 		}
-		if (d >= 1) {
-			System.out.println("Hang hoa ton kho");
-		} else {
-			System.out.println("Hang hoa khong con");
-		}
+		if (d >= 1) System.out.println("Hang hoa ton tai");
+		else System.out.println("Hang hoa khong ton tai");
+	}
+
+	// get/set
+	public KHO[] getDs() {
+		return ds;
+	}
+
+	public void setDs(KHO[] ds) {
+		this.ds = ds;
 	}
 
 	public int getN() {
@@ -128,13 +116,5 @@ public class List_KHO {
 
 	public void setN(int n) {
 		this.n = n;
-	}
-
-	public KHO[] getDskho() {
-		return dskho;
-	}
-
-	public void setDskho(KHO[] dskho) {
-		this.dskho = dskho;
 	}
 }

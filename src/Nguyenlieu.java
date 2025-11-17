@@ -24,6 +24,10 @@ public class Nguyenlieu {
         System.out.print("Đơn giá: ");
         dongia = Double.parseDouble(sc.nextLine());
     }
+
+    public void xuat(){
+        System.out.println(this.toString());
+    }
     public String getmaNL(){
         return maNL;
     }

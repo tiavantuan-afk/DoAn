@@ -1,6 +1,11 @@
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
-import java.io.*;
 
 public class List_MonAn {
     private MonAn[] ds;
@@ -17,6 +22,37 @@ public class List_MonAn {
         ds = new MonAn[n];
     }
 
+    // getset
+    public MonAn[] getDs() {
+        return ds;
+    }
+
+    public void setDs(MonAn[] ds) {
+        this.ds = ds;
+    }
+
+    public int getN() {
+        return ds.length;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+    }
+
+    private void tuDongCapNhatFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("src/data/List_MonAn.txt"))) {
+            for (int i = 0; i < ds.length; i++) {
+                if (ds[i] != null) {
+                    writer.println(ds[i].toString());
+                }
+            }
+            System.out.println("Da tu dong luu thong tin vao file ");
+        } catch (IOException e) {
+            System.out.println("Loi ghi file " + e.getMessage());
+        }
+
+    }
+
     public void nhapds() {
         System.out.println("Nhap so luong: ");
         n = sc.nextInt();
@@ -28,8 +64,8 @@ public class List_MonAn {
             do {
                 temT = 1;
                 System.out.println("\nNhap mon an so " + (i + 1) + " :");
-                System.out.println("T. Thuc An");
-                System.out.println("U. Uong Nuoc");
+                System.out.println("T. THUC AN");
+                System.out.println("U. NUOC UONG");
                 temp = sc.nextLine();
                 if (temp.toUpperCase().contains("T")) {
                     ds[i] = new ThucAn();
@@ -41,6 +77,9 @@ public class List_MonAn {
             } while (temT != 1);
             ds[i].nhap();
         }
+
+        // THÊM: Tự động lưu file
+        tuDongCapNhatFile();
     }
 
     public void xuat() {
@@ -49,9 +88,11 @@ public class List_MonAn {
             return;
         }
         System.out.println("So luong mon an: " + ds.length);
-        System.out.printf(
-                "%-8s | %-8s | %-20s | %-20s | %-6s |",
-                "Mon An", "Thuc An", "Nuoc Uong", "So Luong", "Gia Ban");
+        System.out.println(
+                "----------------------------------------------------------------------------------------------");
+        // In tiêu đề động hơn
+        System.out.printf("%-10s | %-20s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s\n",
+                "Ma SP", "Ten SP", "Gia Ban", "So Luong", "Chi tiet 1", "Chi tiet 2", "Chi tiet 3", "Chi tiet 4");
         System.out.println(
                 "----------------------------------------------------------------------------------------------");
         for (int i = 0; i < ds.length; i++)
@@ -90,8 +131,8 @@ public class List_MonAn {
         do {
             temT = 1;
             System.out.println("Nhap thong tin mon an can them: ");
-            System.out.println("T. thuc an");
-            System.out.println("U uong nuoc");
+            System.out.println("T. THUC AN");
+            System.out.println("U NUOC UONG");
             temp = sc.nextLine();
             if (temp.toUpperCase().contains("T")) {
                 MonAnL = new ThucAn();
@@ -103,127 +144,85 @@ public class List_MonAn {
         } while (temT != 1);
         MonAnL.nhap();
         ds[ds.length - 1] = MonAnL;
+
+        // THÊM: Tự động lưu file
+        tuDongCapNhatFile();
     }
 
-    public void sua() {
-        if (ds.length == 0) {
-            System.out.println("Khong co trong danh sach!");
-            return;
-        }
+    // public void sua() {
+    // if(ds.length == 0){
+    // System.out.println("Danh sach empty");
+    // return;
+    // }
 
-        System.out.print("Nhap ma san pham can sua: ");
-        String maSP = sc.nextLine();
+    // System.out.print("Nhap san pham can sua: ");
+    // String maSP = sc.nextLine();
 
-        // Tìm vị trí cần sửa
-        int v = -1;
-        for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].maSP != null && ds[i].maSP.equalsIgnoreCase(maSP)) {
-                v = i;
-                break;
-            }
-        }
+    // int v = -1;
+    // for(int i = 0; i < ds.length; i++){
+    // if(ds[i] !=null && ds[i].maSP !=null && ds[i].maSP.equalsIgnoreCase(maSP)){
+    // v = i;
+    // break;
+    // }
+    // }
 
-        if (v == -1) {
-            System.out.println("Khong tim thay san pham co ma: " + maSP);
-            return;
-        }
+    // if(v == -1){
+    // System.out.println("Khong tim thay san pham co ma: " + maSP);
+    // return;
+    // }
 
-        System.out.println("Thong tin hien tai:");
-        ds[v].xuat();
+    // System.out.println("Thong tin hien tai: ");
+    // ds[v].xuat();
 
-        System.out.println("\nChon cach sua:");
-        System.out.println("1. Sua toan bo thong tin");
-        System.out.println("2. Sua tung phan");
-        System.out.print("Lua chon: ");
+    // System.out.println("Chon cach sua:");
+    // System.out.println("1.Sua toan bo");
+    // System.out.println("2.Sua tung phan");
+    // System.out.print("Lua chon: ");
 
-        int luaChon = sc.nextInt();
-        sc.nextLine(); // Đọc bỏ enter
+    // int choice = sc.nextInt();
+    // sc.nextLine();
 
-        if (luaChon == 1) {
-            // Tạo món ăn mới
-            MonAn monAnMoi = null;
-            System.out.println("Chon loai san pham moi:");
-            System.out.println("1. Thuc An");
-            System.out.println("2. Nuoc Uong");
-            System.out.print("Lua chon: ");
+    // if(choice == 2) {
+    // System.out.println("Nhap lai thong tin: ");
+    // ds[v].nhap();
+    // }else{
+    // System.out.println("Lua chon khong hop le");
+    // return;
+    // }
 
-            int loai = sc.nextInt();
-            sc.nextLine();
-
-            if (loai == 1) {
-                monAnMoi = new ThucAn();
-            } else if (loai == 2) {
-                monAnMoi = new NuocUong();
-            } else {
-                System.out.println("Lua chon khong hop le!");
-                return;
-            }
-
-            System.out.println("Nhap thong tin moi:");
-            monAnMoi.nhap();
-            ds[v] = monAnMoi;
-
-        } else if (luaChon == 2) {
-            System.out.println("Nhap lai thong tin:");
-            ds[v].nhap();
-
-        } else {
-            System.out.println("Lua chon khong hop le!");
-            return;
-        }
-
-        System.out.println("Da sua thanh cong!");
-        System.out.println("Thong tin sau khi sua:");
-        ds[v].xuat();
-    }
+    // System.out.printl
+    // }
 
     // Xoa theo Ma
     public void xoaTheoMa(String maSP) {
-        boolean found = false;
-        for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].maSP != null &&
-                    ds[i].maSP.equalsIgnoreCase(maSP)) {
-                System.out.println("San pham can xoa");
-                ds[i].xuat();
+        if (ds.length == 0) {
+            System.out.println("Danh sach empty");
+            return;
+        }
 
-                // Push ob to front
-                for (int j = i; j < ds.length - 1; j++) {
+        boolean found = false;
+        for (int i = 0; i < ds.length - 1; i++) {
+            if (ds[i] != null && ds[i].getMaSP() != null &&
+                    ds[i].getMaSP().equalsIgnoreCase(maSP)) {
+                System.out.println("San pham can xoa: ");
+                ds[i].xuat();
+                System.out.println();
+
+                // Dich chuyen ob
+                for (int j = i; j < ds.length; j++) {
                     ds[j] = ds[j + 1];
                 }
-
-                // Giảm kích thước Arrays
+                // Giam kich thuoc cua Array
                 ds = Arrays.copyOf(ds, ds.length - 1);
                 System.out.println("Da xoa thanh cong ");
                 found = true;
+
+                tuDongCapNhatFile();
                 break;
             }
         }
         if (!found) {
-            System.out.println("Khong tim thay san pham co ma:" + maSP);
-        }
-    }
-
-    // Xoa theo Ten
-    public void xoaTheoTen(String tenSP) {
-        boolean found = false;
-        for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].tenSP != null &&
-                    ds[i].tenSP.equalsIgnoreCase(tenSP)) {
-                System.out.println("San pham can xoa ");
-                ds[i].xuat();
-
-                for (int j = i; j < ds.length - 1; j++) {
-                    ds[j] = ds[j + 1];
-                }
-
-                ds = Arrays.copyOf(ds, ds.length - 1);
-                System.out.println("Da xoa thanh cong ");
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            System.out.println("Khong tim thay ten san pham " + tenSP);
+            System.out.println("Khong tim thay san pham: " + maSP);
         }
     }
 
@@ -244,20 +243,28 @@ public class List_MonAn {
         }
     }
 
-    public void timKiemTen(String tenSP) {
+    public void timKiemTen() {
+        if (ds.length == 0) {
+            System.out.println("Danh sach empty");
+            return;
+        }
+
+        System.out.print("Nhap ten san pham can tim ");
+        String tenSP = sc.nextLine();
+
         boolean found = false;
         for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].getTenSP() != null &&
-                    ds[i].getTenSP().equalsIgnoreCase(tenSP)) {
-                System.out.println("Da tim thay san pham: ");
+            if (ds[i] != null && ds[i].tenSP != null &&
+                    ds[i].tenSP.equalsIgnoreCase(tenSP)) {
+                if (!found) {
+                    System.out.println("Ket qua tim kiem: ");
+                    found = true;
+                }
                 ds[i].xuat();
-                System.out.println();
-                found = true;
-                break;
             }
         }
         if (!found) {
-            System.out.println("Khong tim thay san pham: ");
+            System.out.println("Khong tim thay san pham co ten: " + tenSP);
         }
     }
 
@@ -332,107 +339,92 @@ public class List_MonAn {
 
     }
 
-    public void docFile() {
-        try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_MonAn.txt"))) {
-            String line;
-            MonAn x = null;
-
-            // Reset Arrays
-            ds = new MonAn[0];
-
-            while ((line = br.readLine()) != null) {
-                String[] t = line.split("-");
-                if (t.length >= 8) {
-                    String type = t[0].toUpperCase();
-
-                    if (type.contains("T")) {
-                        x = new ThucAn();
-                        x.maSP = t[1];
-                        x.tenSP = t[2].replace("_", " ");
-                        x.soLuong = t[3];
-                        x.giaBan = Double.parseDouble(t[4]);
-
-                        ((ThucAn) x).setCoThit(Boolean.parseBoolean(t[5]));
-                        ((ThucAn) x).setCoTinhBot(Boolean.parseBoolean(t[6]));
-                        ((ThucAn) x).setCoBotNgot(Boolean.parseBoolean(t[7]));
-
-                    } else if (type.contains("N")) {
-
-                        if (t.length >= 9) {
-                            x = new NuocUong();
-                            x.maSP = t[1];
-                            x.tenSP = t[2].replace("_", " ");
-                            ;
-                            x.soLuong = t[3];
-                            x.giaBan = Double.parseDouble(t[4]);
-
-                            ((NuocUong) x).setCoDa(Boolean.parseBoolean(t[5]));
-                            ((NuocUong) x).setCoGas(Boolean.parseBoolean(t[6]));
-                            ((NuocUong) x).setLoaiLon(Boolean.parseBoolean(t[7]));
-                            ((NuocUong) x).setLoaiChai(Boolean.parseBoolean(t[8]));
-                        } else {
-                            continue;
-                        }
-                    } else {
-                        continue;
-                    }
-
-                    // Chỉ thêm khi x != null
-                    if (x != null) {
-                        ds = Arrays.copyOf(ds, ds.length + 1);
-                        ds[ds.length - 1] = x;
-                        System.out.println("Doc: " + x.maSP + " - " + x.tenSP);
-                    }
-                }
-            }
-
-            System.out.println("Doc file thanh cong ");
-            System.out.println("So mon da doc: " + ds.length);
-
-        } catch (IOException e) {
-            System.out.println("Loi doc file: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.out.println("Loi format so: " + e.getMessage());
-        }
-    }
-
-    public void ghiFile() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/data/List_MonAn.txt"))) {
-            bw.write("==== DANH SACH MON AN ====\n");
-            bw.write("So luong mon an: " + ds.length + "\n");
-
+    public void ghiFile(String fileName) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
             for (int i = 0; i < ds.length; i++) {
                 if (ds[i] != null) {
-                    if (ds[i] instanceof ThucAn) {
-                        ThucAn ta = (ThucAn) ds[i];
-                        bw.write("T-" + ta.maSP + "-" + ta.tenSP + "-" +
-                                ta.soLuong + "-" + ta.giaBan + "-" +
-                                ta.isCoThit() + "-" + ta.isCoTinhBot() + "-" +
-                                ta.isCoBotNgot() + "\n");
-                    } else if (ds[i] instanceof NuocUong) {
-                        NuocUong nu = (NuocUong) ds[i];
-                        bw.write("N-" + nu.maSP + "-" + nu.tenSP + "-" +
-                                nu.soLuong + "-" + nu.giaBan + "-" +
-                                nu.isCoDa() + "-" + nu.isCoGas() + "-" +
-                                nu.isLoaiLon() + "-" + nu.isLoaiChai() + "\n");
-                    }
+                    writer.println(ds[i].toString());
                 }
             }
-            System.out.println("Ghi file thanh cong ");
+            System.out.println("Ghi file thanh cong!" + ds.length + " mon ");
         } catch (IOException e) {
             System.out.println("Loi ghi file: " + e.getMessage());
         }
     }
 
-    public static void main(String[] args) {
-        List_MonAn ds = new List_MonAn();
-        System.out.println("Bat dau doc file...");
-        ds.docFile();
-        System.out.println("Hien thi ket qua:");
-        ds.xuat();
-    }
+    public void docFile(String fileName) {
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            // Reset mảng trước khi đọc
+            ds = new MonAn[0];
 
+            String line;
+            MonAn x = null;
+            while ((line = br.readLine()) != null) {
+                if (line.trim().isEmpty()) {
+                    continue;
+                }
+
+                String[] t = line.split("-");
+                if (t.length >= 8) {
+                    String type = t[0].toUpperCase();
+
+                    if (type.contains("T")) {
+                        x = new ThucAn(t[1], t[2], Double.parseDouble(t[4]), Integer.parseInt(t[3]),
+                                Boolean.parseBoolean(t[5]), Boolean.parseBoolean(t[6]),
+                                Boolean.parseBoolean(t[7]));
+
+                    } else if (type.contains("N") && t.length >= 9) {
+                        x = new NuocUong(t[1], t[2], Double.parseDouble(t[4]), Integer.parseInt(t[3]),
+                                Boolean.parseBoolean(t[5]), Boolean.parseBoolean(t[6]),
+                                Boolean.parseBoolean(t[7]), Boolean.parseBoolean(t[8]));
+                    } else {
+                        System.out.println("Bo qua dong khong hop le: " + line);
+                        continue;
+                    }
+
+                    if (x != null) {
+                        ds = Arrays.copyOf(ds, ds.length + 1);
+                        ds[ds.length - 1] = x;
+                    }
+                }
+            }
+            System.out.println("Doc file thanh cong! So mon: " + ds.length);
+
+        } catch (IOException e) {
+            System.out.println("Loi doc file: " + e.getMessage());
+        }
+    }
 }
+// public void ghiFileALL() {
+// try (BufferedWriter bw = new BufferedWriter(new
+// FileWriter("src/data/List_MonAn.txt"))) {
+// for (int i = 0; i < ds.length; i++) {
+// if (ds[i] != null) {
+// bw.write(ds[i].toString());
+// bw.newLine();
+// }
+// }
+// System.out.println("Ghi thanh cong");
+// } catch (IOException e) {
+// System.out.println("Loi ghi file ");
+// }
+// }
+
+// public void ghiFileONE() {
+// if (ds.length > 0) {
+// try (BufferedWriter bw = new BufferedWriter(new
+// FileWriter("src/data/List_MonAn.txt"))) {
+// bw.write(ds[ds.length - 1].toString());
+// bw.newLine();
+// System.out.println("Ghi thanh cong ");
+// } catch (IOException e) {
+// System.out.println("Loi ghi file ");
+// }
+// } else {
+// System.out.println("Khong co file nao de ghi ");
+// }
+// }
+// }
 
 // public void xoa() {
 // if (ds.length == 0) {
@@ -457,4 +449,44 @@ public class List_MonAn {
 // }
 // System.out.println("Tim thay san pham: ");
 // ds[v].xuat();
+// }
+// public void docFile() {
+// try (BufferedReader br = new BufferedReader(new
+// FileReader("src/data/List_MonAn.txt"))) {
+// String line;
+// MonAn x;
+// while ((line = br.readLine()) != null) {
+// String[] t = line.split("-");
+// if (t.length >= 8) {
+// String type = t[0].toUpperCase();
+
+// if (type.contains("T")) {
+// x = new ThucAn(t[1], t[2], Double.parseDouble(t[4]), Integer.parseInt(t[3]),
+// Boolean.parseBoolean(t[5]), Boolean.parseBoolean(t[6]),
+// Boolean.parseBoolean(t[7]));
+
+// } else if (type.contains("N")) {
+// x = new NuocUong(t[1], t[2], Double.parseDouble(t[4]),
+// Integer.parseInt(t[3]),
+// Boolean.parseBoolean(t[6]), Boolean.parseBoolean(t[8]),
+// Boolean.parseBoolean(t[5]), Boolean.parseBoolean(t[7]));
+
+// } else {
+// continue;
+// }
+
+// // Add vao mang
+// if (x != null) {
+// ds = Arrays.copyOf(ds, ds.length + 1);
+// ds[ds.length - 1] = x;
+// System.out.println("Doc: " + x.maSP + " - " + x.tenSP);
+// }
+// }
+// }
+// System.out.println("Doc file thanh cong ");
+// System.out.println("So mon an da doc: " + ds.length);
+
+// } catch (IOException e) {
+// System.out.println("Loi khong doc duoc file " + e.getMessage());
+// }
 // }

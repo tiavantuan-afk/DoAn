@@ -16,6 +16,23 @@ public class List_NhanVien {
         ds = new NhanVien[0];
     }
 
+    // getset
+    public NhanVien[] getDs() {
+        return ds;
+    }
+
+    public void setDs(NhanVien[] ds) {
+        this.ds = ds;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+    }
+
     public List_NhanVien(int n) {
         this.n = n;
         ds = new NhanVien[n];
@@ -101,38 +118,26 @@ public class List_NhanVien {
         }
     }
 
-    public void timNVHo(String hoNV) {
+    public void timNVHo() {
+        if (ds.length == 0) {
+            System.out.println("Danh sach empty ");
+            return;
+        }
+        System.out.print("Nhap ho nhan vien can tim: ");
+        String hoNV = sc.nextLine();
+
         boolean found = false;
         for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].getHoNV() != null &&
-                    ds[i].getHoNV().equalsIgnoreCase(hoNV)) {
-                System.out.println("Da tim thay ho nhan vien ");
+            if (ds[i] != null && ds[i].hoNV != null && ds[i].hoNV.equalsIgnoreCase(hoNV)) {
+                if (!found) {
+                    System.out.println("Ket qua tim kiem ");
+                    found = true;
+                }
                 ds[i].xuat();
-                System.out.println();
-                found = true;
-
-            }
-
-        }
-        if (!found) {
-            System.out.println("Khong tim thay ho nhan vien");
-        }
-    }
-
-    public void timNVTen(String tenNV) {
-        boolean found = false;
-        for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].getTenNV() != null &&
-                    ds[i].getTenNV().equalsIgnoreCase(tenNV)) {
-                System.out.println("Da tim thay ten nhan vien ");
-                ds[i].xuat();
-                System.out.println();
-                found = true;
-
             }
         }
         if (!found) {
-            System.out.println("Khong tim thay ten nhan vien ");
+            System.out.println("Khong tim thay ho nhan vien: " + hoNV);
         }
     }
 
@@ -156,28 +161,6 @@ public class List_NhanVien {
         }
         if (!found) {
             System.out.println("Khong tim thay ma can xoa");
-        }
-    }
-
-    public void xoaHoNV(String hoNV) {
-        boolean found = false;
-        for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].getHoNV() != null &&
-                    ds[i].getHoNV().equalsIgnoreCase(hoNV)) {
-                System.out.println("Da tim thay ten can xoa ");
-                ds[i].xuat();
-
-                for (int j = i; j < ds.length - 1; j++) {
-                    ds[j] = ds[j + 1];
-                }
-
-                ds = Arrays.copyOf(ds, ds.length - 1);
-                System.out.println("Da xoa ho thanh cong ");
-                found = true;
-            }
-        }
-        if (!found) {
-            System.out.println("Khong tim thay ho nhan vien");
         }
     }
 
@@ -374,7 +357,7 @@ public class List_NhanVien {
     }
 
     public void ghiFile() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("scr/data/List_NV.txt"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/data/List_NV.txt"))) {
             bw.write("==== DANH SACH NHAN VIEN ====\n");
             bw.write("So luong nhan vien: " + ds.length + "\n");
 

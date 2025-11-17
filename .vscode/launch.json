@@ -7,6 +7,7 @@
         {
             "type": "java",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "name": "Menu_MonAn",
             "request": "launch",
             "mainClass": "Menu_MonAn",
@@ -19,6 +20,15 @@
             "mainClass": "Menu_KHO",
             "projectName": "DoAn_75d2812f"
 =======
+=======
+            "name": "List_KHACHHANG",
+            "request": "launch",
+            "mainClass": "List_KHACHHANG",
+            "projectName": "DoAn_d1382049"
+        },
+        {
+            "type": "java",
+>>>>>>> e588054f18cb0e572745611afaa177a3c6b570d8
             "name": "List_NCC",
             "request": "launch",
             "mainClass": "List_NCC",
