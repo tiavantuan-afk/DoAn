@@ -27,7 +27,6 @@ public class ThongKe {
         dsNguyenLieu.docFile("src/data/List_Nguyenlieu.txt");
         dsCOMBO.docFile("src/data/List_COMBO.txt");
     }
-    ////
 
     public void menu() {
         int chon;
