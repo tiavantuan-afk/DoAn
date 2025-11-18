@@ -28,9 +28,9 @@ public class Menu_PN {
             sc.nextLine();
 
             switch (chon) {
-                case 1: 
+                case 1:
                     list.nhap();
-                    break;                   
+                    break;    
                 case 2: 
                     list.xuat(); 
                     break;

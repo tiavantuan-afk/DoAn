@@ -10,6 +10,10 @@ public class ThongKe {
     private List_Nguyenlieu dsNguyenLieu;
     private List_COMBO dsCOMBO;
 
+    private List_CTPN dsCTPN;
+    private List_PN dsPN;
+    private List_NCC dsNCC;
+
     public ThongKe() {
         dsMonAn = new List_MonAn();
         dsNhanVien = new List_NhanVien();
@@ -17,7 +21,9 @@ public class ThongKe {
         dsKHO = new List_KHO();
         dsNguyenLieu = new List_Nguyenlieu();
         dsCOMBO = new List_COMBO();
-
+        dsCTPN = new List_CTPN();
+        dsPN = new List_PN();
+        dsNCC = new List_NCC();
         
         // Đọc dữ liệu từ file
         dsMonAn.docFile("src/data/List_MonAn.txt");
@@ -26,6 +32,9 @@ public class ThongKe {
         dsKHO.docFile("src/data/List_KHO.txt");
         dsNguyenLieu.docFile("src/data/List_Nguyenlieu.txt");
         dsCOMBO.docFile("src/data/List_COMBO.txt");
+        dsCTPN.docFile("src/data/List_CTPN.txt");
+        dsPN.docFile("src/data/List_PN.txt");
+        dsNCC.docFile("src/data/List_NCC.txt");
     }
 
     public void menu() {
@@ -128,7 +137,7 @@ public class ThongKe {
         System.out.printf(/*format:*/ "%-11s | %-10s | %-10s | %-10s |%n", "Quy 1", "Quy 2", "Quy 3", "Quy 4");
 
         // Giả lập dữ liệu theo quý
-        String[] boPhan = {"Mon An", "Nhan Vien", "Ton Kho", "COMBO", "Nguyen lieu", "Kho"};
+        String[] boPhan = {"Mon An", "Nhan Vien", "Ton Kho"};
         for (int i = 0; i < boPhan.length; i++) {
             double[] quy = new double[4];
             
@@ -148,36 +157,13 @@ public class ThongKe {
                         tongGiaTri += ds[j].getLuongCoBan() * 3; // 3 tháng/quý
                     }
                 }
-            } else if(i==2) { // Tồn kho
+            } else { // Tồn kho
                 TonKho[] ds = dsTonKho.getDs();
                 for (int j = 0; j < ds.length; j++) {
                     if (ds[j] != null) {
                         tongGiaTri += ds[j].getSoLuongTon() * ds[j].getGiaNhap();
                     }
                 }
-            } else if (i==3) { //COMBO
-                COMBO[] ds = dsCOMBO.getDs();
-                for (int j = 0; j < ds.length; j++){
-                    if (ds[j] != null){
-                        tongGiaTri += ds[j].getGiaBan();
-                    }
-                }
-            } else if (i == 4) { //NGUYÊN LIỆU 
-                Nguyenlieu[] ds = dsNguyenLieu.getDs();
-                for (int j = 0; j < ds.length; j++) {
-                    if (ds[j] != null) {
-                        tongGiaTri += ds[j].getdongia();
-                    }
-                }
-            } else { //KHO 
-                KHO[] ds = dsKHO.getDs();
-                for (int j = 0; j < ds.length; j++) {
-                    if (ds[j] != null) {
-                        // Tính giá trị = số lượng * đơn giá
-                        tongGiaTri += ds[j].soLuong * ds[j].donGia;
-                    }
-                }
-            }
             }
 
             // Phân bổ theo quý (có thể tùy chỉnh)
