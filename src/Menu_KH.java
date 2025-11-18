@@ -27,7 +27,7 @@ public class Menu_KH {
             System.out.println("5. Xoa khach hang (theo ma)");
             System.out.println("6. Tim khach hang (theo ma)");
             System.out.println("7. Tim khach hang (theo ten)");
-            System.out.println("8. Thong ke khach hang");
+            System.out.println("8. Thong ke ho cua khach hang");
             System.out.println("9. Quay lai menu chinh");
             System.out.println("0. Thoat");
             System.out.print("Vui long chon: ");
