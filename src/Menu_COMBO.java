@@ -24,6 +24,7 @@ public class Menu_COMBO {
 			System.out.println("7. Tim mot combo (Theo ma)");
 			System.out.println("8. Tim mot combo (Theo ten)");
 			System.out.println("9. Thong ke combo");
+			System.out.println("10. Quay lai meunu chinh");
 			System.out.println("0. Thoat");
 			System.out.print("Vui long chon: ");
 
@@ -72,6 +73,11 @@ public class Menu_COMBO {
 				case 9:
 					quanLy.thongKeCombo();
 					break;
+				case 10:
+					System.out.println("Quay lai menu chinh...");
+					Menu_Main mainMenu =  new Menu_Main();
+					mainMenu.menuChinh();
+					return;
 				case 0:
 					System.out.println("Thoat chuong trinh.");
 					break;

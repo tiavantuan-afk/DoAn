@@ -128,7 +128,7 @@ public class ThongKe {
         System.out.printf(/*format:*/ "%-11s | %-10s | %-10s | %-10s |%n", "Quy 1", "Quy 2", "Quy 3", "Quy 4");
 
         // Giả lập dữ liệu theo quý
-        String[] boPhan = {"Mon An", "Nhan Vien", "Ton Kho"};
+        String[] boPhan = {"Mon An", "Nhan Vien", "Ton Kho", "COMBO", "Nguyen lieu", "Kho"};
         for (int i = 0; i < boPhan.length; i++) {
             double[] quy = new double[4];
             
@@ -148,13 +148,36 @@ public class ThongKe {
                         tongGiaTri += ds[j].getLuongCoBan() * 3; // 3 tháng/quý
                     }
                 }
-            } else { // Tồn kho
+            } else if(i==2) { // Tồn kho
                 TonKho[] ds = dsTonKho.getDs();
                 for (int j = 0; j < ds.length; j++) {
                     if (ds[j] != null) {
                         tongGiaTri += ds[j].getSoLuongTon() * ds[j].getGiaNhap();
                     }
                 }
+            } else if (i==3) { //COMBO
+                COMBO[] ds = dsCOMBO.getDs();
+                for (int j = 0; j < ds.length; j++){
+                    if (ds[j] != null){
+                        tongGiaTri += ds[j].getGiaBan();
+                    }
+                }
+            } else if (i == 4) { //NGUYÊN LIỆU 
+                Nguyenlieu[] ds = dsNguyenLieu.getDs();
+                for (int j = 0; j < ds.length; j++) {
+                    if (ds[j] != null) {
+                        tongGiaTri += ds[j].getdongia();
+                    }
+                }
+            } else { //KHO 
+                KHO[] ds = dsKHO.getDs();
+                for (int j = 0; j < ds.length; j++) {
+                    if (ds[j] != null) {
+                        // Tính giá trị = số lượng * đơn giá
+                        tongGiaTri += ds[j].soLuong * ds[j].donGia;
+                    }
+                }
+            }
             }
 
             // Phân bổ theo quý (có thể tùy chỉnh)

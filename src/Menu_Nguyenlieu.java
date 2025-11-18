@@ -23,6 +23,7 @@ public class Menu_Nguyenlieu {
 			System.out.println("7. Tim mot nguyen lieu (Theo ma)");
 			System.out.println("8. Tim mot nguyen lieu (Theo ten)");
 			System.out.println("9. Thong ke nguyen lieu");
+			System.out.println("10. Quay lai meunu chinh");
 			System.out.println("0. Thoat");
 			System.out.print("Vui long chon: ");
 			luaChon = sc.nextInt();
@@ -62,6 +63,11 @@ public class Menu_Nguyenlieu {
 				case 9:
 					quanLy.thongkeNguyenLieu();
 					break;
+				case 10:
+					System.out.println("Quay lai menu chinh...");
+					Menu_Main mainMenu =  new Menu_Main();
+					mainMenu.menuChinh();
+					return;
 				case 0:
 					System.out.println("Thoat chuong trinh.");
 					break;

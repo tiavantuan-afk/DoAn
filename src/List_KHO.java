@@ -165,7 +165,8 @@ class List_KHO {
 		boolean timkiem = false;
 		for (int i = 0; i < n; i++) {
 			if (ds[i] != null && ds[i].maHang != null && ds[i].maHang.equalsIgnoreCase(MAC)) {
-				for (int j = i; j < n - 1; j++) ds[j] = ds[j + 1];
+				for (int j = i; j < n - 1; j++) 
+				ds[j] = ds[j + 1];
 				ds[n - 1] = null;
 				n--;
 				System.out.println("Da xoa hang hoa co ma: " + MAC);
@@ -181,7 +182,8 @@ class List_KHO {
 		boolean timkiem = false;
 		for (int i = 0; i < n; i++) {
 			if (ds[i] != null && ds[i].getTenHang() != null && ds[i].getTenHang().equalsIgnoreCase(TEN)) {
-				for (int j = i; j < n - 1; j++) ds[j] = ds[j + 1];
+				for (int j = i; j < n - 1; j++) 
+				ds[j] = ds[j + 1];
 				ds[n - 1] = null;
 				n--;
 				System.out.println("Da xoa hang hoa co ten: " + TEN);
