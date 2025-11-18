@@ -89,13 +89,11 @@ public class List_MonAn implements dataB {
             return;
         }
         System.out.println("So luong mon an: " + ds.length);
+        System.out.println("\n================= DANH SACH MON AN =================");
+        System.out.printf("%-10s | %-20s | %-10s | %-10s | %-12s | %-12s | %-12s | %-8s\n",
+                "Ma SP", "Ten SP", "Gia Ban", "So Luong", "Co thit/da", "Bot ngot/gas", "Tinh bot", "Chai/Lon");
         System.out.println(
-                "----------------------------------------------------------------------------------------------");
-
-        System.out.printf("%-10s | %-20s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s\n",
-                "Ma SP", "Ten SP", "Gia Ban", "So Luong", "Chi tiet 1", "Chi tiet 2", "Chi tiet 3", "Chi tiet 4");
-        System.out.println(
-                "----------------------------------------------------------------------------------------------");
+                "--------------------------------------------------------------------------------------------------------------------------------");
         for (int i = 0; i < ds.length; i++)
             ds[i].xuat();
     }
