@@ -18,7 +18,6 @@ public class Menu_Main {
             System.out.println("2. Quan ly Nhan Vien");
             System.out.println("3. Quan ly Khach Hang");
             System.out.println("4. Quan ly Hoa Don");
-<<<<<<< HEAD
             System.out.println("5. Quan ly Kho Hang");
             System.out.println("6. Quan ly The Loai");
             System.out.println("7. Quan ly Combo");
@@ -27,15 +26,15 @@ public class Menu_Main {
             System.out.println("6. Quan ly Ton Kho");
             System.out.println("7. Thong ke tong quan");
             System.out.println("8. Sao luu du lieu");
-
-=======
             System.out.println("5. Quan ly Kho Hang"); ///Triet
             System.out.println("6. Quan ly Ton Kho");
             System.out.println("7. Thong ke tong quan");
             System.out.println("8. Sao luu du lieu");
-            System.out.println("9. Quan ly Nguyen Lieu"); //Triet
-            System.out.println("10. Quan ly Combo");  //Triet
->>>>>>> 6b34cf05be654042f8ad4b07a04cfdcaee212426
+            System.out.println("9. Quan ly chi tiet phieu nhap");
+            System.out.println("10. Quan ly phieu nhap");
+            System.out.println("11. Quan ly nha cung cap");
+            System.out.println("12. Quan ly Nguyen Lieu"); //Triet
+            System.out.println("13. Quan ly Combo");  //Triet
             System.out.println("0. Thoat chuong trinh");
             System.out.println("===============================================");
             System.out.print("Vui long chon chuc nang: ");
@@ -69,7 +68,6 @@ public class Menu_Main {
                     saoLuuDuLieu();
                     break;
                 case 9:
-<<<<<<< HEAD
                     quanLChitietphieunhap();
                     break;
                 case 10:
@@ -77,12 +75,12 @@ public class Menu_Main {
                     break;
                 case 11:
                     quanLyNhacungcap();
-=======
+                    break;
+                case 12:
                     quanLyNguyenLieu();
                     break;
-                case 10: 
+                case 13: 
                     quanLyCOMBO();
->>>>>>> 6b34cf05be654042f8ad4b07a04cfdcaee212426
                     break;
                 case 0:
                     System.out.println("Cam on ban da su dung chuong trinh!");
