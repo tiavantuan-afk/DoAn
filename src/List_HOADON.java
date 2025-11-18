@@ -282,7 +282,7 @@ class List_HOADON {
                         // x.setTongTien();
                         dshd = Arrays.copyOf(dshd, dshd.length+1);
                         dshd[dshd.length-1] = x;
-                        System.out.println("Doc: "+x.getMahd()+"-"+x.getManv()+"-"+x.getMakh()+"-");         
+                        System.out.println("Doc: "+x.getMahd()+"-"+x.getManv()+"-"+x.getMakh());         
                 }
             }
             System.out.println("Doc file thanh cong, So khach hang da doc: "+ dshd.length);

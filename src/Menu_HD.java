@@ -55,7 +55,7 @@ public class Menu_HD {
                     quanly.thongkenhanvien();
                     break;
                 case 0:
-                    System.out.println("Hiphop never die");
+                    System.out.println("Xong");
                 default:
                     System.out.println("Lua chon khong hop le");
                     break;
