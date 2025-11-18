@@ -30,13 +30,13 @@ public class Nguyenlieu {
 
     public void nhap(){
         Scanner sc = new Scanner(System.in);
-        System.out.print("Mã nguyên liệu: ");
+        System.out.print("Ma nguyen lieu: ");
         maNL = sc.nextLine();
 
-        System.out.print("Tên nguyên liệu: ");
+        System.out.print("Ten nguyen lieu: ");
         tenNL = sc.nextLine();
 
-        System.out.print("Đơn giá: ");
+        System.out.print("Don gia: ");
         dongia = Double.parseDouble(sc.nextLine());
     }
 
@@ -51,9 +51,9 @@ public class Nguyenlieu {
     }
 
     public void xuat(){
-        System.out.println("Mã nguyên liệu: " + maNL);
-        System.out.println("Tên nguyên liệu: " + tenNL);
-        System.out.println("Đơn giá: " + dongia);
+        System.out.println("Ma nguyen lieu: " + maNL);
+        System.out.println("Ten nguyen lieu: " + tenNL);
+        System.out.println("Don gia: " + dongia);
     }
 
     //get/set
