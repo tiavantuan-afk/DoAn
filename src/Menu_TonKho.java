@@ -67,7 +67,8 @@ public class Menu_TonKho {
                     break;
                 case 9:
                     System.out.println("Quay lai menu chinh...");
-                    return;
+                    Menu_Main mainMenu = new Menu_Main();
+                    mainMenu.menuChinh();
                 case 0:
                     System.out.println("Cam on ban da su dung!");
                     System.exit(0);

@@ -13,47 +13,81 @@ public class TestMonAn {
 
     }
 
-    public void nhap() {
-        System.out.println("Nhap so luong: ");
-        n = sc.nextInt();
+    public void nhapds() {
+        System.out.println("Nhap so luong mon: ");
+        n = sc.nextInt;
         sc.nextLine();
+        ds = new MonAn[n];
         for (int i = 0; i < ds.length; i++) {
             String temp;
             int temT;
             do {
-                System.out.println("Nhap mon so" + (i + 1));
+                System.out.println("Nhap so mon:" + (i + 1));
                 System.out.println("T");
                 System.out.println("U");
+                temp = sc.nextLine();
                 if (temp.toUpperCase().contains("T")) {
                     ds[i] = new ThucAn();
                 } else if (temp.toUpperCase().contains("U")) {
                     ds[i] = new NuocUong();
                 } else
-                    temp = 0;
+                    temT = 0;
 
-            } while (temT != -1);
+            } while (temT != 1);
             ds[i].nhap();
         }
-        tuDongCapNhatFile();
+
     }
 
-    public void them() {
-        ds = Arrays.copyOf(ds, ds.length + 1);
-        MonAn MonAnL = null;
-        String temp;
-        int temT;
-        do {
-            System.out.println("Nhap thong tin mon an can them: ");
-            System.out.println("T");
-            System.out.println("U");
-            if (temp.toUpperCase().contains("T")) {
-                ds[i] = new ThucAn();
-            } else if (temp.toUpperCase().contains("U")) {
-                ds[i] = new NuocUong();
-            } else
-                temp = 0;
-        } while (temT != -1);
-        ds[i].nhap();
+    public void nhap() {
+        System.out.println("So luong mon: ");
+        n = sc.nextInt();
+        sc.nextLine();
+        ds = new MonAn[n];
+        for (int i = 0; i < ds.length; i++) {
+            System.out.println("Nhap thong tin nhan vien: " + (i + 1));
+            ds[i].nhap();
+        }
+
     }
 
+    public void xuatds() {
+        if (ds.length == 0) {
+            System.out.println("Empty");
+        }
+        System.out.print("So luong mon: " + ds.length);
+        for (int i = 0; i < ds.length; i++) {
+            ds[i].xuatds();
+        }
+
+    }
+
+    public void timkiem(String maSP) {
+        boolean found = false;
+        for (int i = 0; i < ds.length; i++) {
+            if (ds[i] != null && ds[i].getMaSP() != null && ds[i].getMaSP().equalsIgnoreCase(maSP)) {
+                System.out.println("Da tim thay ma san pham: ");
+                ds[i].xuat();
+                System.out.println();
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("Khong tim thay ma sp");
+        }
+    }
+
+    public void timKiem() {
+        if (ds.length == 0) {
+            System.out.println("Empty");
+            return;
+        }
+        System.out.println("Nhap");
+        maSP = sc.nextLine();
+
+        boolean found = false;
+        for (int i = 0; i < ds.length; i++) {
+
+        }
+    }
 }

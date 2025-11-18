@@ -30,6 +30,7 @@ public class Menu_MonAn {
             System.out.println("6.Tim mot mon an(Theo Ma)");
             System.out.println("7.Tim mot mon an(Theo ten khong tham so)");
             System.out.println("8.Thong ke danh sach mon an");
+            System.out.println("9.Quay lai menu chinh...");
             System.out.println("0.Thoat");
             System.out.print("Vui long chon: ");
             luaChon = sc.nextInt();
@@ -67,6 +68,11 @@ public class Menu_MonAn {
                 case 8:
                     quanLy.thongKe();
                     break;
+                case 9:
+                    System.out.println("Quay lai menu chinh...");
+                    Menu_Main mainMenu = new Menu_Main();
+                    mainMenu.menuChinh();
+                    return;
                 case 0:
                     System.out.println("Xong");
                     break;
@@ -74,7 +80,7 @@ public class Menu_MonAn {
                     System.out.println("Lua chon khong hop le, vui long chon lai.");
                     break;
             }
-        } while (luaChon != 0);
+        } while (luaChon != 0 && luaChon != 9);
         sc.close();
     }
 

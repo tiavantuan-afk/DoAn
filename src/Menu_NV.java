@@ -25,6 +25,7 @@ public class Menu_NV {
             System.out.println("6.Tim mot nhan vien(Theo Ma):");
             System.out.println("7.Tim mot nhan vien(Theo Ho khong tham so):");
             System.out.println("8.Thong ke luong nhan vien:");
+            System.out.println("9.Quay lai menu chinh...");
             System.out.println("0.Thoat");
             System.out.print("Vui long chon: ");
             luaChon = sc.nextInt();
@@ -70,8 +71,8 @@ public class Menu_NV {
                     break;
                 case 9:
                     System.out.println("Quay lai menu chinh...");
-                    return;
-
+                    Menu_Main mainMenu = new Menu_Main();
+                    mainMenu.menuChinh();
                 case 0:
                     System.out.println("Cam on, hen gap lai ");
                     break;
