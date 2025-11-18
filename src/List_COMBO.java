@@ -61,7 +61,7 @@ class List_COMBO {
 
 
     //sửa combo theo mã
-    public void suacombo(String MA, COMBO c) {
+    public void suacombo() {
        if (ds.length == 0) {
             System.out.println("Danh sach combo rong.");
             return;
@@ -70,6 +70,7 @@ class List_COMBO {
         System.out.print("Nhap ma combo can sua: ");
         String maSua = sc.nextLine();
 
+        // Tìm combo theo mã
         int v = -1;
         for (int i = 0; i < n; i++) {
             if (ds[i] != null && ds[i].maSP.equalsIgnoreCase(maSua)) {
@@ -83,12 +84,80 @@ class List_COMBO {
             return;
         }
 
-        System.out.println("Khong tim thay combo co ma: " + maSua);
-        return;
-    }
+        System.out.println("Thong tin hien tai cua combo: ");
+        System.out.println("-----------------------------------");
+        ds[v].xuat();
 
-    System.out.println("==Thong tin hien tai==");
-    
+        System.out.println("\n----Sua thong tin combo---");
+        System.out.println("1. Sua ma combo ");
+        System.out.println("2. Sua ten combo ");
+        System.out.println("3. Sua gia ban combo");
+        System.out.println("4. Sua so luong combo");
+        System.out.println("5. Sua gia niem yet combo");
+        System.out.println("6. Sua tat ca thong tin");
+        System.out.println("0. Huy");
+        System.out.print("Chon thong tin can sua ");
+
+        int choice = sc.nextInt();
+        sc.nextLine();
+        
+        switch (choice) {
+            case 1:
+                System.out.print("Nhap ma combo moi: ");
+                String maMoi = sc.nextLine();
+                ds[v].setMaSP(maSua);
+                System.out.println("Da sua ma combo.");
+                break;
+            case 2:
+                System.out.print("Nhap ten combo moi: ");
+                String tenMoi = sc.nextLine();
+                ds[v].setTenSP(tenMoi);
+                System.out.println("Da sua ten combo.");
+                break;
+            case 3:
+                System.out.print("Nhap gia ban moi: ");
+                double giaBanMoi = sc.nextDouble();
+                ds[v].setGiaBan(giaBanMoi);
+                System.out.println("Da sua gia ban combo.");
+                break;
+            case 4:
+                System.out.print("Nhap so luong moi: ");
+                int soLuongMoi = sc.nextInt();
+                ds[v].setSoLuong(soLuongMoi);
+                System.out.println("Da sua so luong combo.");
+                break;
+            case 5:
+                System.out.print("Nhap gia niem yet moi: ");
+                double giaNiemYetMoi = sc.nextDouble();
+                ds[v].setGiaNiemYet(giaNiemYetMoi);
+                System.out.println("Da sua gia niem yet combo.");
+                break;
+            case 6:
+                System.out.print("Nhap ma combo moi: ");
+                ds[v].setMaSP(sc.nextLine());
+                System.out.print("Nhap ten combo moi: ");
+                ds[v].setTenSP(sc.nextLine());
+                System.out.print("Nhap gia ban moi: ");
+                ds[v].setGiaBan(sc.nextDouble());
+                System.out.print("Nhap so luong moi: ");
+                ds[v].setSoLuong(sc.nextInt());
+                System.out.print("Nhap gia niem yet moi: ");
+                ds[v].setGiaNiemYet(sc.nextDouble());
+                System.out.println("Da sua tat ca thong tin combo.");
+                break;
+
+            case 0:
+                System.out.println("Huy sua thong tin.");
+                return;
+
+            default:
+                System.out.println("Lua chon khong hop le.");
+                return;
+        }
+        System.out.println("\n --- Thong tin combo sau khi sua ---");
+        System.out.println("---------------------------------------------------------------");
+        ds[v].xuat();
+    }
 
     //xóa combo theo mã
     public void xoacombo(String MAC) {

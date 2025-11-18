@@ -43,18 +43,93 @@ class List_KHO {
 	}
 	
 	// sửa hang theo mã
-	public void suahang(String MA, KHO c) {
-		boolean timkiem = false;
+	public void suahang() {
+		if (ds.length == 0) {
+			System.out.println("Danh sach hang hoa rong!");
+			return;
+		}
 
+		System.out.print("Nhap ma hang can sua: ");
+		String maSua = sc.nextLine();
+
+		// Tìm hàng theo mã
+		int v = -1;
 		for (int i = 0; i < n; i++) {
-			if (ds[i] != null && ds[i].maHang != null && ds[i].maHang.equalsIgnoreCase(MA)) {
-				ds[i] = c;
-				System.out.println("Da cap nhat thong tin hang hoa: " + MA);
-				timkiem = true;
+			if (ds[i] != null && ds[i].maHang.equalsIgnoreCase(maSua)) {
+				v = i;
 				break;
 			}
 		}
-		if (!timkiem) System.out.println("Khong tim thay hang hoa de sua: " + MA);
+
+		if (v == -1) {
+			System.out.println("Khong tim thay hang hoa co ma: " + maSua);
+			return;
+		}
+
+		System.out.println("Thong tin hang hoa hien tai:");
+		System.out.println("---------------------------");
+		ds[v].xuat();
+
+		System.out.println("\n----Sua thong tin hang hoa----");
+		System.out.println("1. Nhap ma hang moi: ");
+		System.out.println("2. Nhap ten hang moi: ");
+		System.out.println("3. Nhap so luong moi: ");
+		System.out.println("4. Nhap don gia moi: ");
+		System.out.println("5. Sua tat ca thong tin");
+		System.out.println("0. Thoat");
+		System.out.print("Chon thong tin can sua: ");
+
+		int choice = sc.nextInt();
+		sc.nextLine(); // Đọc bỏ ký tự newline
+
+		switch(choice){
+			case 1:
+				System.out.print("Nhap ma hang moi: ");
+				String maHangMoi = sc.nextLine();
+				ds[v].setMaHang(maHangMoi);
+				System.out.println("Da cap nhat ma hang.");
+				break;
+			case 2:
+				System.out.print("Nhap ten hang moi: ");
+				String tenHangMoi = sc.nextLine();
+				ds[v].setTenHang(tenHangMoi);
+				System.out.println("Da cap nhat ten hang.");
+				break;
+			case 3:
+				System.out.print("Nhap so luong moi: ");
+				int soLuongMoi = Integer.parseInt(sc.nextLine());
+				ds[v].setSoLuong(soLuongMoi);
+				System.out.println("Da cap nhat so luong.");
+				break;
+			case 4:
+				System.out.print("Nhap don gia moi: ");
+				double donGiaMoi = Double.parseDouble(sc.nextLine());
+				ds[v].setDonGia(donGiaMoi);
+				System.out.println("Da cap nhat don gia.");
+				break;
+			case 5:
+				System.out.print("Nhap ma hang moi: ");
+				ds[v].setMaHang(sc.nextLine());
+				System.out.print("Nhap ten hang moi: ");
+				ds[v].setTenHang(sc.nextLine());
+				System.out.print("Nhap so luong moi: ");
+				ds[v].setSoLuong(Integer.parseInt(sc.nextLine()));
+				System.out.print("Nhap don gia moi: ");
+				ds[v].setDonGia(Double.parseDouble(sc.nextLine()));
+				System.out.println("Da cap nhat tat ca thong tin.");
+				break;
+
+			case 0:
+				System.out.println("Huy sua thong tin.");
+				return;
+
+			default:
+				System.out.println("Lua chon khong hop le.");
+				return;
+		}
+		System.out.println("Thong tin hang hoa sau khi sua:");
+		System.out.println("------------------------------");
+		ds[v].xuat();
 	}
 
 	// tìm kiếm theo mã có tham số

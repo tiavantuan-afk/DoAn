@@ -39,12 +39,7 @@ public class Menu_COMBO {
 					quanLy.them();
 					break;
 				case 4:
-					System.out.print("Nhap ma combo can sua: ");
-					String maSua = sc.nextLine();
-					System.out.println("Nhap thong tin moi:");
-					COMBO comboSua = new COMBO();
-					comboSua.nhap();
-					quanLy.suacombo(maSua, comboSua);
+					quanLy.suacombo();
 					break;
 				case 5:
 					System.out.print("Nhap ma combo can xoa: ");
