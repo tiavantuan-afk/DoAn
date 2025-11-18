@@ -18,23 +18,15 @@ public class Menu_Main {
             System.out.println("2. Quan ly Nhan Vien");
             System.out.println("3. Quan ly Khach Hang");
             System.out.println("4. Quan ly Hoa Don");
-            System.out.println("5. Quan ly Kho Hang");
-            System.out.println("6. Quan ly The Loai");
-            System.out.println("7. Quan ly Combo");
-            System.out.println("8. Thong ke tong quan");
-            System.out.println("9. Sao luu du lieu");
-            System.out.println("6. Quan ly Ton Kho");
-            System.out.println("7. Thong ke tong quan");
-            System.out.println("8. Sao luu du lieu");
-            System.out.println("5. Quan ly Kho Hang"); ///Triet
-            System.out.println("6. Quan ly Ton Kho");
-            System.out.println("7. Thong ke tong quan");
-            System.out.println("8. Sao luu du lieu");
+            System.out.println("5. Quan ly Chi Tiet Hoa Don");
+            System.out.println("6. Quan ly Kho Hang");
+            System.out.println("7. Quan ly Ton Kho");
+            System.out.println("8. Quan ly Combo");
             System.out.println("9. Quan ly chi tiet phieu nhap");
             System.out.println("10. Quan ly phieu nhap");
             System.out.println("11. Quan ly nha cung cap");
-            System.out.println("12. Quan ly Nguyen Lieu"); //Triet
-            System.out.println("13. Quan ly Combo");  //Triet
+            System.out.println("12. Quan ly Nguyen Lieu");
+            System.out.println("13. Thong ke tong quan");
             System.out.println("0. Thoat chuong trinh");
             System.out.println("===============================================");
             System.out.print("Vui long chon chuc nang: ");
@@ -55,17 +47,17 @@ public class Menu_Main {
                 case 4:
                     quanLyHoaDon();
                     break;
-                case 5:
+                // case 5:
+                // quanLyChiTietHoaDon();
+                // break;
+                case 6:
                     quanLyKhoHang();
                     break;
-                case 6:
+                case 7:
                     quanLyTonKho();
                     break;
-                case 7:
-                    thongKeTongQuan();
-                    break;
                 case 8:
-                    saoLuuDuLieu();
+                    quanLyCOMBO();
                     break;
                 case 9:
                     quanLChitietphieunhap();
@@ -79,8 +71,8 @@ public class Menu_Main {
                 case 12:
                     quanLyNguyenLieu();
                     break;
-                case 13: 
-                    quanLyCOMBO();
+                case 13:
+                    thongKeToanBo();
                     break;
                 case 0:
                     System.out.println("Cam on ban da su dung chuong trinh!");
@@ -145,40 +137,30 @@ public class Menu_Main {
         menuCombo.menu();
     }
 
-    private void thongKeTongQuan() {
+    private void thongKeToanBo() {
         System.out.println("\n=== THONG KE TONG QUAN ===");
-        System.out.println("1. Thong ke Mon An");
-        System.out.println("2. Thong ke Doanh thu");
-        System.out.println("3. Thong ke Khach hang");
-        System.out.println("4. Bao cao tong hop");
-        System.out.println("Chuc nang dang phat trien...");
+        ThongKe thongke = new ThongKe();
+        thongke.menu();
     }
-    
-    private void saoLuuDuLieu() {
-        System.out.println("\n=== SAO LUU DU LIEU ===");
-        System.out.println("1. Sao luu tat ca");
-        System.out.println("2. Khoi phuc du lieu");
-        System.out.println("3. Xuat ra Excel");
-        System.out.println("Chuc nang dang phat trien...");
-    }
-    
+
     private void quanLChitietphieunhap() {
         System.out.println("\n=== QUAN LY CHI TIET PHIEU NHAP HANG ===");
         Menu_CTPN menuCTPN = new Menu_CTPN();
         menuCTPN.menu();
     }
-    
+
     private void quanLyPhieunhaphang() {
         System.out.println("\n=== QUAN LY PHIEU NHAP HANG ===");
         Menu_PN menuPN = new Menu_PN();
         menuPN.menu();
     }
-    
+
     private void quanLyNhacungcap() {
         System.out.println("\n=== QUAN LY NHA CUNG CAP ===");
         Menu_ncc menuncc = new Menu_ncc();
         menuncc.menu();
     }
+
     public static void main(String[] args) {
         Menu_Main mainMenu = new Menu_Main();
         mainMenu.menuChinh();
