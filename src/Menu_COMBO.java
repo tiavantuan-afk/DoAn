@@ -12,7 +12,7 @@ public class Menu_COMBO {
 
 	public void menu() {
 		int luaChon = -1;
-		quanLy.docFile(String.valueOf("src/data/List_COMBO.txt"));
+		quanLy.docFile("src/data/List_COMBO.txt");
 		do {
 			System.out.println("\n--- MENU QUAN LY COMBO ---");
 			System.out.println("1. Nhap danh sach combo: ");
@@ -26,6 +26,7 @@ public class Menu_COMBO {
 			System.out.println("9. Thong ke combo");
 			System.out.println("0. Thoat");
 			System.out.print("Vui long chon: ");
+
 			luaChon = sc.nextInt();
 			sc.nextLine();
 			switch (luaChon) {
@@ -69,7 +70,6 @@ public class Menu_COMBO {
 					quanLy.timkiemtheoten();
 					break;
 				case 9:
-					System.out.print("Nhap ma combo can thong ke: ");
 					quanLy.thongKeCombo();
 					break;
 				case 0:

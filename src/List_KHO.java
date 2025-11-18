@@ -66,17 +66,17 @@ class List_KHO {
 			return;
 		}
 
-		System.out.println("Thong tin hang hoa hien tai:");
+		System.out.println("Thong tin hien tai cua hang hoa:");
 		System.out.println("---------------------------");
 		ds[v].xuat();
 
 		System.out.println("\n----Sua thong tin hang hoa----");
-		System.out.println("1. Nhap ma hang moi: ");
-		System.out.println("2. Nhap ten hang moi: ");
-		System.out.println("3. Nhap so luong moi: ");
-		System.out.println("4. Nhap don gia moi: ");
+		System.out.println("1. Sua ma hang moi: ");
+		System.out.println("2. Sua ten hang moi: ");
+		System.out.println("3. Sua so luong moi: ");
+		System.out.println("4. Sua don gia moi: ");
 		System.out.println("5. Sua tat ca thong tin");
-		System.out.println("0. Thoat");
+		System.out.println("0. Huy");
 		System.out.print("Chon thong tin can sua: ");
 
 		int choice = sc.nextInt();

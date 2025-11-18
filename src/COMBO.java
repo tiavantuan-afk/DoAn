@@ -1,59 +1,111 @@
 import java.util.Scanner;
 
-public class COMBO extends MonAn {
-    private double giaNiemYet;
+public class COMBO {
+    public String maSP;
+    public String tenSP;
+    public double giaBan;
+    public int soLuong;
+    public double giaNiemYet;
 
     // Hàm thiết lập không tham số
     public COMBO() {
-        super();
+        this.maSP = "";
+        this.tenSP = "";
+        this.giaBan = 0.0;
+        this.soLuong = 0;
         this.giaNiemYet = 0.0;
     }
 
     // Hàm thiết lập có tham số
     public COMBO(String maSP, String tenSP, double giaBan, int soLuong, double giaNiemYet) {
-        super(maSP, tenSP, giaBan, soLuong);
+        this.maSP = maSP;
+        this.tenSP = tenSP;
+        this.giaBan = giaBan;
+        this.soLuong = soLuong;
         this.giaNiemYet = giaNiemYet;
     }
 
-    // Hàm sao chép
-    public COMBO(COMBO t) {
-        super(t); // gọi constructor sao chép của MonAn
-        this.giaNiemYet = t.giaNiemYet;
+    // Hàm thiết lập sao chép
+    public COMBO(COMBO c) {
+        if (c != null) {
+            this.maSP = c.maSP;
+            this.tenSP = c.tenSP;
+            this.giaBan = c.giaBan;
+            this.soLuong = c.soLuong;
+            this.giaNiemYet = c.giaNiemYet;
+        }
     }
 
-    // Nhập thông tin
-    @Override
+    // Nhập 
     public void nhap() {
-        super.nhap(); // nhập thuộc tính từ lớp cha
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhap ma combo: ");
+        this.maSP = sc.nextLine();
+
+        System.out.print("Nhap ten combo: ");
+        this.tenSP = sc.nextLine();
+
+        System.out.print("Nhap gia ban: ");
+        this.giaBan = Double.parseDouble(sc.nextLine());
+
+        System.out.print("Nhap so luong: ");
+        this.soLuong = Integer.parseInt(sc.nextLine());
         System.out.print("Nhap gia niem yet: ");
-        giaNiemYet = Double.parseDouble(sc.nextLine());
+        this.giaNiemYet = Double.parseDouble(sc.nextLine()); 
+    }
+    
+    // loại 
+    public String getLoai() { 
+        return "C"; 
     }
 
-    // Xuất thông tin
-    @Override
+    // Xuất
     public void xuat() {
-        super.xuat();  // xuất thuộc tính chung
-        System.out.printf("| %-12.0f\n", giaNiemYet);
-    }
-
-    // Loại combo
-    @Override
-    public String getLoai() {
-        return "C";
+        System.out.println("Ma combo: " + maSP);
+        System.out.println("Ten combo: " + tenSP);
+        System.out.println("Gia ban: " + giaBan);
+        System.out.println("So luong: " + soLuong);
+        System.out.println("Gia niem yet: " + giaNiemYet);
     }
 
     @Override
     public String toString() {
-        return "COMBO [maSP=" + maSP + ", tenSP=" + tenSP + ", giaBan=" + giaBan 
-                + ", soLuong=" + soLuong + ", giaNiemYet=" + giaNiemYet + "]";
+        return "COMBO [maSP=" + maSP + ", tenSP=" + tenSP + ", giaBan=" + giaBan + ", soLuong=" + soLuong + ", giaNiemYet=" + giaNiemYet + "]"; 
     }
 
-    // Get/set
-    public double getGiaNiemYet() {
-        return giaNiemYet;
+    // Get/Set
+    public String getMaSP() { 
+        return maSP; 
+    }
+    public void setMaSP(String maSP) { 
+        this.maSP = maSP; 
     }
 
-    public void setGiaNiemYet(double giaNiemYet) {
-        this.giaNiemYet = giaNiemYet;
+    public String getTenSP() { 
+        return tenSP; 
+    }
+    public void setTenSP(String tenSP) { 
+        this.tenSP = tenSP; 
+    }
+
+    public double getGiaBan() { 
+        return giaBan; 
+    }
+    public void setGiaBan(double giaBan) { 
+        this.giaBan = giaBan; 
+    }
+
+    public int getSoLuong() { 
+        return soLuong; 
+    }
+    public void setSoLuong(int soLuong) { 
+        this.soLuong = soLuong; 
+    }
+
+    public double getGiaNiemYet() { 
+        return giaNiemYet; 
+    }
+    public void setGiaNiemYet(double giaNiemYet) { 
+        this.giaNiemYet = giaNiemYet; 
     }
 }
