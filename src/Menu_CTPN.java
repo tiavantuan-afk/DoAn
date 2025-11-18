@@ -29,24 +29,31 @@ public class Menu_CTPN {
             switch (chon) {
                 case 1: 
                     list.nhap();
+                    list.ghiFile(fileName);
                     break;
                 case 2:
                     list.xuat();
+                    list.ghiFile(fileName);
                     break;
                 case 3: 
                     list.themtheoma();
+                    list.ghiFile(fileName);
                     break;
                 case 4: 
                     list.timTheoMa();
+                    list.ghiFile(fileName);
                     break;
                 case 5: 
                     list.suatheoma();
+                    list.ghiFile(fileName);
                     break;
                 case 6:
                     list.xoatheoma();
+                    list.ghiFile(fileName);
                     break;
                 case 7:
                     list.thongketheongay();
+                    list.ghiFile(fileName);
                     break;
                 case 0:
                     System.out.println("Thoát");
