@@ -27,7 +27,7 @@ public class COMBO {
 
 	// hàm sao chép
 	public COMBO(COMBO t) {
-		if (t == null) {
+		if (t != null) {
 			this.maSP = t.maSP;
 			this.tenSP = t.tenSP;
 			this.giaBan = t.giaBan;

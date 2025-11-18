@@ -11,7 +11,7 @@ public class Menu_KHO {
 
 	public void menu() {
 		int luaChon = -1;
-		quanLy.docFile(String.valueOf("src/data/List_COMBO.txt"));
+		quanLy.docFile(String.valueOf("src/data/List_KHO.txt"));
 		do {
 			System.out.println("\n--- MENU QUAN LY KHO HANG ---");
 			System.out.println("1. Nhap danh sach hang hoa: ");
@@ -38,12 +38,7 @@ public class Menu_KHO {
 					quanLy.them();
 					break;
 				case 4:
-					System.out.print("Nhap ma hang can sua: ");
-					String maSua = sc.nextLine();
-					System.out.println("Nhap thong tin moi:");
-					KHO khoSua = new KHO();
-					khoSua.nhap();
-					quanLy.suahang(maSua, khoSua);
+					quanLy.suahang();
 					break;
 				case 5:
 					System.out.print("Nhap ma hang can xoa: ");
@@ -61,6 +56,8 @@ public class Menu_KHO {
 					quanLy.timkiemtheoma(maCanTim);
 					break;
 				case 8:
+					System.out.print("Nhap ten hang can tim: ");
+					String tenCanTim = sc.nextLine();
 					quanLy.timkiemtheoten();
 					break;
 				case 9:
