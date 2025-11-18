@@ -40,7 +40,6 @@ public class HOADON {
         Ngay = sc.nextLine();
         System.out.print("Nhap tong tien: ");
         Tongtien = sc.nextDouble();
-        sc.close();
     }
     public void xuat(){
         System.out.println("Hoa don: ");

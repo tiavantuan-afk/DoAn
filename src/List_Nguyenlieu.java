@@ -1,4 +1,7 @@
 import java.util.Scanner;
+
+import javax.swing.plaf.synth.SynthButtonUI;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -43,18 +46,83 @@ class List_Nguyenlieu {
 	}
 
 	// sửa nguyen lieu theo mã
-	public void suanguyen(String MA, Nguyenlieu c) {
-		boolean timkiem = false;
+	public void suanguyen() {
+		if (ds.length == 0) {
+			System.out.println("Danh sach rong, khong the sua.");
+			return;
+		}
 
+		System.out.println("Nhap ma nguyen lieu can sua: " );
+		String maCanSua = sc.nextLine();
+
+		//tim kiem nguyen lieu theo ma
+		int v = -1;
 		for (int i = 0; i < n; i++) {
-			if (ds[i] != null && ds[i].maNL != null && ds[i].maNL.equalsIgnoreCase(MA)) {
-				ds[i] = c;
-				System.out.println("Da cap nhat thong tin nguyen lieu: " + MA);
-				timkiem = true;
+			if (ds[i] != null && ds[i].maNL.equalsIgnoreCase(maCanSua)) {
+				v = i;
 				break;
 			}
 		}
-		if (!timkiem) System.out.println("Khong tim thay nguyen lieu de sua: " + MA);
+
+		if ( v == -1) {
+			System.out.println("Khong tim thay nguyen lieu co ma: " + maCanSua);
+			return;
+		} 
+
+		System.out.println("Thong tin hien tai cua nguyen lieu: ");
+		System.out.println("------------------------------");
+		ds[v].xuat();
+
+		System.out.println("\n-----Sua thong tin nguyen lieu-----");
+		System.out.println("1. Sua ma nguyen lieu  ");
+		System.out.println("2. Sua ten nguyen lieu  ");
+		System.out.println("3. Sua don gia  ");
+		System.out.println("4. Sua tat ca thong tin  ");
+		System.out.println("0. Huy");
+		System.out.print("Chon thong tin can sua: ");
+
+		int choice = sc.nextInt();
+		sc.nextLine();
+
+		switch (choice){
+			case 1:
+				System.out.print("Nhap ma nguyen lieu moi: ");
+				String maMoi = sc.nextLine();
+				ds[v].setmaNL(maMoi);
+				break;
+			case 2:
+				System.out.print("Nhap ten nguyen lieu moi: ");
+				String tenMoi = sc.nextLine();
+				ds[v].settenNL(tenMoi);
+				break;
+			case 3:
+				System.out.print("Nhap don gia moi: ");
+				double giaMoi = sc.nextDouble();
+				sc.nextLine();
+				ds[v].setdongia(giaMoi);
+				break;
+			case 4:
+				System.out.println("Nhap ma nguyen lieu moi: ");
+				ds[v].setmaNL(sc.nextLine());
+				System.out.println("Nhap ten nguyen lieu moi: ");
+				ds[v].settenNL(sc.nextLine());
+				System.out.println("Nhap don gia moi: ");
+				ds[v].setdongia(sc.nextDouble());
+				System.out.println("Da sua tat ca thong tin");
+				break;
+
+			case 0:
+				System.out.println("Huy sua thong tin.");
+				return;
+
+			default:
+				System.out.println("Lua chon khong hop le.");
+				return;
+
+		}
+		System.out.println("\n ---Thong tin nguyen lieu sau khi sua---");
+		System.out.println("---------------------------------------");
+		ds[v].xuat();
 	}
 
 	// tìm kiếm theo mã có tham số
@@ -178,7 +246,7 @@ class List_Nguyenlieu {
 
 
 	//Doc ghi file
-	public void docFile() {
+	public void docFile(String tenFile){ {
 		try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_Nguyenlieu.txt"))) {
 			String line;
 			Nguyenlieu x = null;
@@ -208,6 +276,7 @@ class List_Nguyenlieu {
 			System.out.println("Loi doc file: " + e.toString());
 		} 
 
+	}
 	}
 
 	//ghi file
@@ -244,3 +313,11 @@ class List_Nguyenlieu {
 		this.n = n;
 	}
 }
+
+
+
+
+
+
+
+

@@ -1,4 +1,5 @@
+public interface dataB {
+    void nhapds();
 
-public class dataB {
-
+    void xuat();
 }

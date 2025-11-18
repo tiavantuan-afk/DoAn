@@ -5,6 +5,7 @@ public class KHACHHANG {
     private String ten;
     private String Makh;
     private String SDT;
+    Scanner sc = new Scanner(System.in);
 
     public KHACHHANG() {
         ho = "";
@@ -30,7 +31,7 @@ public class KHACHHANG {
     }
 
     public void nhap() {
-        Scanner sc = new Scanner(System.in);
+
         System.out.print("Nhap ho: ");
         ho = sc.nextLine();
         System.out.print("Nhap ten: ");
@@ -39,15 +40,14 @@ public class KHACHHANG {
         Makh = sc.nextLine();
         System.out.print("Nhap so dien thoai: ");
         SDT = sc.nextLine();
-
     }
 
     public void xuat() {
         System.out.println("Thong tin khach hang: ");
-        System.out.println("Ho: " + ho);
-        System.out.println("Ten: " + ten);
-        System.out.println("Ma khach hang: " + Makh);
-        System.out.println("So dien thoai: " + SDT);
+        System.out.print("Ho: " + ho + "\n");
+        System.out.print("Ten: " + ten + "\n");
+        System.out.print("Ma khach hang: " + Makh + "\n");
+        System.out.print("So dien thoai: " + SDT + "\n");
     }
 
     public String getHo() {

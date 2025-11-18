@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
-public class List_MonAn {
+public class List_MonAn implements dataB {
     private MonAn[] ds;
     private int n;
     private Scanner sc = new Scanner(System.in);
@@ -53,6 +53,7 @@ public class List_MonAn {
 
     }
 
+    @Override
     public void nhapds() {
         System.out.println("Nhap so luong: ");
         n = sc.nextInt();
@@ -78,10 +79,10 @@ public class List_MonAn {
             ds[i].nhap();
         }
 
-        // THÊM: Tự động lưu file
         tuDongCapNhatFile();
     }
 
+    @Override
     public void xuat() {
         if (ds.length == 0) {
             System.out.println("Danh sach rong");
@@ -90,7 +91,7 @@ public class List_MonAn {
         System.out.println("So luong mon an: " + ds.length);
         System.out.println(
                 "----------------------------------------------------------------------------------------------");
-        // In tiêu đề động hơn
+
         System.out.printf("%-10s | %-20s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s\n",
                 "Ma SP", "Ten SP", "Gia Ban", "So Luong", "Chi tiet 1", "Chi tiet 2", "Chi tiet 3", "Chi tiet 4");
         System.out.println(
@@ -308,7 +309,7 @@ public class List_MonAn {
                     System.out.println("Da cap nhat tat ca thong tin!");
                     break;
 
-                case 0: // Hoàn thành
+                case 0:
                     System.out.println("Hoan thanh sua san pham!");
                     break;
 

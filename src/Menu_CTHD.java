@@ -17,75 +17,45 @@ public class Menu_CTHD {
         int chon = -1;
         do{
             System.out.println("\nMENU QUAN LY CHI TIET HOA DON");
-            System.out.println("3. Nhap danh sach chi tiet hoa don: ");
-            System.out.println("4. Xuat danh sach chi tiet hoa don: ");
-            System.out.println("5. Tim kiem theo ma hoa don: ");
-            System.out.println("6. Tim kiem theo ma san pham: ");
-            System.out.println("7. Tim kiem theo ma khach hang: ");
-            System.out.println("8. Tim kiem theo so luong: ");
-            System.out.println("9. Tim kiem theo don gia: ");
-            System.out.println("10. Tim kiem theo thanh tien: ");
-            System.out.println("11. Sua chi tiet theo ma hoa don: ");
-            System.out.println("12. Them san pham theo ma: ");
-            System.out.println("13. Xoa chi tiet theo ma hoa don: ");
-            System.out.println("14. Thong ke san pham: ");
+            System.out.println("1. Nhap danh sach chi tiet hoa don: ");
+            System.out.println("2. Xuat danh sach chi tiet hoa don: ");
+            System.out.println("3. Tim kiem theo ma hoa don: ");
+            System.out.println("4. Sua chi tiet theo ma hoa don: ");
+            System.out.println("5. Them san pham theo ma: ");
+            System.out.println("6. Xoa chi tiet theo ma hoa don: ");
+            System.out.println("7. Thong ke san pham: ");
             System.out.println("0. Thoat.");
             System.out.print("Vui long chon: ");
             chon = sc.nextInt();
             sc.nextLine();
             switch (chon) {
-                case 3:
+                case 1:
                     quanly.nhap();
                     break;
-                case 4: 
+                case 2: 
                     quanly.xuat();
                     break;
-                case 5:
+                case 3:
                     System.out.print("Nhap ma hoa don can tim: ");
                     String hdcantim = sc.nextLine();
                     quanly.timkiemtheomahoadon(hdcantim);
                     break;
-                case 6:
-                    System.out.print("Nhap ma san pham can tim: ");
-                    String spcantim = sc.nextLine();
-                    quanly.timkiemtheomasanpham(spcantim);
-                    break;
-                case 7:
-                    System.out.print("Nhap ma khach hang can tim: ");
-                    String khcantim = sc.nextLine();
-                    quanly.timkiemtheomakhachhang(khcantim);
-                    break;
-                case 8:
-                    System.out.print("Nhap so luong can tim: ");
-                    int slcantim = sc.nextInt();
-                    quanly.timkiemtheosoluong(slcantim);
-                    break;
-                case 9:
-                    System.out.print("Nhap so don gia can tim:  ");
-                    double dgcantim = sc.nextDouble();
-                    quanly.timkiemtheodongia(dgcantim);
-                    break;
-                case 10:
-                    System.out.print("Nhap so thanh tien can tim: ");
-                    double ttiencantim = sc.nextDouble();
-                    quanly.timkiemtheothanhtien(ttiencantim);
-                    break;
-                case 11:
+                case 4:
                     quanly.suachitietmahd();
                     break;
-                case 12:
+                case 5:
                     quanly.themchitiet();
                     break;
-                case 13:
+                case 6:
                     System.out.print("Nhap ma hoa don can xoa: ");
                     String hdcanxoa = sc.nextLine();
                     quanly.xoachitietmahd(hdcanxoa);
                     break;
-                case 14:
+                case 7:
                     quanly.thongkesanpham();
                     break;    
                 case 0:
-                    System.out.println("Hiphop never die");
+                    System.out.println("Xong");
                 default:
                     System.out.println("Lua chon khong hop le");
                     break;

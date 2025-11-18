@@ -50,36 +50,44 @@ public class Chitietphieunhap {
     }
 
     // Các getter và setter
-    public String getmaNH() { 
-        return maNH; 
-    }
-    public String getmaSP() { 
-        return maSP; 
-    }
-    public String getngay() { 
-        return ngay; 
-    }
-    public int getsoluong() { 
-        return soluong; 
-    }
-    public double getdongia() { 
-        return dongia; 
+    public String getmaNH() {
+        return maNH;
     }
 
-    public void setmaNH(String maNH) { 
-        this.maNH = maNH; 
+    public String getmaSP() {
+        return maSP;
     }
-    public void setmaSP(String maSP) { 
-        this.maSP = maSP; 
+
+    public String getngay() {
+        return ngay;
     }
-    public void setngay(String ngay) { 
-        this.ngay = ngay; 
+
+    public int getsoluong() {
+        return soluong;
     }
-    public void setsoluong(int soluong) { 
-        this.soluong = soluong; 
+
+    public double getdongia() {
+        return dongia;
     }
-    public void setdongia(double dongia) { 
-        this.dongia = dongia; 
+
+    public void setmaNH(String maNH) {
+        this.maNH = maNH;
+    }
+
+    public void setmaSP(String maSP) {
+        this.maSP = maSP;
+    }
+
+    public void setngay(String ngay) {
+        this.ngay = ngay;
+    }
+
+    public void setsoluong(int soluong) {
+        this.soluong = soluong;
+    }
+
+    public void setdongia(double dongia) {
+        this.dongia = dongia;
     }
 
     // Tính thành tiền
@@ -91,8 +99,8 @@ public class Chitietphieunhap {
     @Override
     public String toString() {
         return maNH + " | Sản phẩm: " + maSP + " | Số lượng: " + soluong +
-               " | Ngày nhập: " + ngay + " | Đơn giá: " + dongia +
-               " | Thành tiền: " + thanhTien();
+                " | Ngày nhập: " + ngay + " | Đơn giá: " + dongia +
+                " | Thành tiền: " + thanhTien();
     }
 
     // Xuất ra file dễ đọc và đọc lại được
