@@ -307,7 +307,7 @@ public class List_KHACHHANG {
 
         for (int i = 0; i < dskh.length; i++) {
             if (dskh[i] != null && dskh[i].getHo().equalsIgnoreCase(hoCanThongKe)) {
-                dskh[i].xuat();
+                dskh[i].xuat(); 
                 count++;
             }
         }
@@ -341,7 +341,11 @@ public class List_KHACHHANG {
 
                 String[] t = line.split("-");
                 if (t.length >= 4) {
-                    KHACHHANG x = new KHACHHANG(t[0], t[1], t[2], t[3]);
+                    KHACHHANG x = new KHACHHANG();
+                    x.setMakh(t[0]);    
+                    x.setHo(t[1]);      
+                    x.setTen(t[2]);     
+                    x.setSDT(t[3]);
                     dskh = Arrays.copyOf(dskh, dskh.length + 1);
                     dskh[dskh.length - 1] = x;
                 }
