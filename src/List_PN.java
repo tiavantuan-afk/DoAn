@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class List_PN {
+public class List_PN{
     Scanner sc = new Scanner(System.in);
     private int n;
     private Phieunhaphang[] ds = new Phieunhaphang[100];
@@ -70,61 +70,57 @@ public class List_PN {
             System.out.println("Loi ghi file");
         }   
     }
-
-    public void themtheoma(){
-        System.out.println("Mã cần thêm: ");
-        String macanthem = sc.nextLine();
-        boolean themma = false;
-        for(int i = 0;i < n; i++){
-            if(ds[i].getmaPNH().equalsIgnoreCase(macanthem)){
-                themma = true;
-                return;
-                }
-            }
-            if(themma){
-                System.out.print("Mã " + macanthem + "đã tồn tại trong danh sách");
-            }
-            if(n >= 100){
-                System.out.print("Danh sách đã đầy");
-                return;
-            }
-            System.out.println("Nhập thông tin phiêu nhap hang mới có mã " + macanthem);
-            ds[n] = new Phieunhaphang();
-            ds[n].nhap();
-            ds[n].setmaPNH(macanthem);
-            n++;
-    }
-
-    public void timTheoMa() {
-        System.out.print("Nhap ma can tim: ");
-        String ma = sc.nextLine();
-        for (int i = 0; i < n; i++) {
-            if (ds[i].getmaPNH().equalsIgnoreCase(ma)) {
-                System.out.println("Tim thay: " + ds[i]);
-                return;
+     public boolean OneIDPN(String mapn){
+        if(mapn == null)
+        return false;
+        for(int i = 0;i<ds.length;i++){
+            if(ds[i] != null && ds[i].getmaPNH() != null && ds[i].getmaPNH().equalsIgnoreCase(mapn)){
+                return true;
             }
         }
-        System.out.println("Khong tim thay!");
+        return false;
+    }
+    public void themtheoma(){
+        System.out.println("Them nha cung cap");
+        Phieunhaphang pnmoi = new Phieunhaphang();
+        pnmoi.nhap();
+        if(!OneIDPN(pnmoi.getmaPNH())){
+            System.out.print("Ma nha cung cap" + pnmoi.getmaPNH()+ "da ton tai");
+        }
+        ds = Arrays.copyOf(ds,ds.length + 1);
+        ds[ds.length - 1] =pnmoi;
+    }
+
+    public void timTheoMa(String macantim) {
+         boolean tim = false;
+          for(int i = 0;i < ds.length; i++){
+            if (ds[i] != null && ds[i].getmaPNH() != null && ds[i].getmaPNH().equalsIgnoreCase(macantim)){
+            ds[i].toString();
+            tim = true;
+            break;  
+            }
+        }
+        if (!tim)
+            System.out.println("Khong tim thay!!! ");
     }
     
-    public void xoatheoma(){
-        System.out.print("Mã cần xoá: ");
-        String macanxoa = sc.nextLine();
-        boolean daxoa = false;
-        for(int i = 0;i < n; i++){
-            if(ds[i].getmaPNH().equalsIgnoreCase(macanxoa)){
-                for(int j = i;j < n-1;j++){
+    
+    public void xoatheoma(String macanxoa){
+       boolean xoa = false;
+           for(int i =0;i<ds.length;i++){
+            if(ds[i] != null && ds[i].getmaPNH() != null &&  ds[i].getmaPNH().equalsIgnoreCase(macanxoa)){
+                ds[i].toString();
+                for (int j = i;j < ds.length -1;j++){
                     ds[j] = ds[j+1];
                 }
-                ds[n-1] = null;
-                n--;
-                daxoa = true;
-                System.out.println("Đã xoá phieu nhap hang có mã " + macanxoa);
+                ds = Arrays.copyOf(ds,ds.length-1);
+                System.out.print("Xoa thanh cong");
+                xoa = true;
                 return;
             }
-        }
-        if(!daxoa){
-            System.out.println("Không tìm thấy phieu nhap hang có mã" + macanxoa);
+           }
+        if (!xoa) {
+            System.out.println("Không tìm thấy chi tiết phiếu nhập có mã " + macanxoa);
         }
     }
 

@@ -110,13 +110,23 @@ public class List_CTPN {
             System.out.println("Loi ghi file: " + e.getMessage());
         }
     }
+    public boolean OneIDNCC(String mactpn){
+        if(mactpn == null)
+        return false;
+        for(int i = 0;i<ds.length;i++){
+            if(ds[i] != null && ds[i].getmaNH() != null && ds[i].getmaNH().equalsIgnoreCase(mactpn)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     // Tìm theo mã
     public void timtheoma(String macantim) {
           boolean tim = false;
           for(int i = 0;i < ds.length; i++){
             if (ds[i] != null && ds[i].getmaNH() != null && ds[i].getmaNH().equalsIgnoreCase(macantim)){
-            ds[i].toString();
+            ds[i].xuat();
             tim = true;
             break;  
             }
@@ -127,21 +137,14 @@ public class List_CTPN {
 
     // Thêm theo mã
     public void themTheoMa(){
-        boolean them = false;
-            for(int i = 0;i<ds.length;i++){
-                if(ds[i] == null){
-                    Chitietphieunhap p = new Chitietphieunhap();
-                    System.out.print("Nhap ma phieu nhap: ");
-                    p.setmaNH(sc.nextLine());
-                    ds[i] = p;
-                    them = true;
-                    break;
-                }
-            }
-        if(them)
-        System.out.println("Them thanh cong");
-        else
-        System.out.println("Danh sach da day, khong the them");
+        System.out.println("Them nha cung cap");
+        Chitietphieunhap ctpnmoi = new Chitietphieunhap();
+        ctpnmoi.nhap(true);
+        if(!OneIDNCC(ctpnmoi.getmaNH())){
+            System.out.print("Ma nha cung cap" + ctpnmoi.getmaNH()+ "da ton tai");
+        }
+        ds = Arrays.copyOf(ds,ds.length + 1);
+        ds[ds.length - 1] =ctpnmoi;
     }
 
     // Xoá theo mã
@@ -149,7 +152,7 @@ public class List_CTPN {
            boolean xoa = false;
            for(int i =0;i<ds.length;i++){
             if(ds[i] != null && ds[i].getmaNH() != null &&  ds[i].getmaNH().equalsIgnoreCase(macanxoa)){
-                ds[i].toString();
+                ds[i].xuat();
                 for (int j = i;j < ds.length -1;j++){
                     ds[j] = ds[j+1];
                 }

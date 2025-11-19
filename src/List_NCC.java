@@ -27,42 +27,39 @@ public class List_NCC {
             dsncc[i].xuat();
         }
     }
-    public void timkiemtheoma(){
-        System.out.println("Mã nhà cung cấp cần tìm: ");
-        String macantim = sc.nextLine();
-        boolean timkiem = false;
-        for(int i = 0;i < n; i++){
-            if(dsncc[i].getmaNCC().equalsIgnoreCase(macantim)){
-                timkiem = true;
-                dsncc[i].xuat();
+    public boolean OneIDNCC(String mancc){
+        if(mancc == null)
+        return false;
+        for(int i = 0;i<dsncc.length;i++){
+            if(dsncc[i] != null && dsncc[i].getmaNCC() != null && dsncc[i].getmaNCC().equalsIgnoreCase(mancc)){
+                return true;
             }
         }
-        if(!timkiem){
-            System.out.print("Không có trong danh sách");
-        }
+        return false;
     }
+    public void timkiemtheoma(String macantim){
+        boolean tim = false;
+          for(int i = 0;i < dsncc.length; i++){
+            if (dsncc[i] != null && dsncc[i].getmaNCC() != null && dsncc[i].getmaNCC().equalsIgnoreCase(macantim)){
+            dsncc[i].toString();
+            tim = true;
+            break;  
+            }
+         }
+        if (!tim)
+            System.out.println("Khong tim thay!!! ");
+    }
+    
 
     public void themtheoma(){
-        System.out.println("Mã nhà cung cấp cần thêm: ");
-        String macanthem = sc.nextLine();
-        boolean themma = false;
-        for(int i = 0;i < n; i++){
-            if(dsncc[i].getmaNCC().equalsIgnoreCase(macanthem)){
-                themma = true;
-                break;
-                }
-            }
-            if(themma){
-                System.out.print("Mã nhà cung cấp " + macanthem + "đã tồn tại trong danh sách");
-            }
-            if(n >= 100){
-                System.out.print("Danh sách nhà cung cấp đã đầy");
-            }
-            System.out.println("Nhập thông tin nhà cung cấp mới có mã " + macanthem);
-            dsncc[n] = new Nhacungcap();
-            dsncc[n].nhap();
-            dsncc[n].setmaNCC(macanthem);
-            n++;
+        System.out.println("Them nha cung cap");
+        Nhacungcap nccmoi = new Nhacungcap();
+        nccmoi.nhap();
+        if(!OneIDNCC(nccmoi.getmaNCC())){
+            System.out.print("Ma nha cung cap" + nccmoi.getmaNCC()+ "da ton tai");
+        }
+        dsncc = Arrays.copyOf(dsncc,dsncc.length + 1);
+        dsncc[dsncc.length - 1] =nccmoi;
     }
     public void themtheodiachi(){
         System.out.println("Địa chỉ nhà cung cấp cần thêm: ");

@@ -35,10 +35,10 @@ public class Menu_CTPN {
                     list.xuat();
                     break;
                 case 3: 
-                    list.themtheoma();
+                    list.themTheoMa();
                     break;
                 case 4: 
-                    list.timTheoMa();
+                    list.timtheoma();
                     break;
                 case 5: 
                     list.suatheoma();
