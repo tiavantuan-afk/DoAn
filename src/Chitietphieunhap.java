@@ -48,7 +48,9 @@ public class Chitietphieunhap {
         System.out.print("Đơn giá: ");
         dongia = Double.parseDouble(sc.nextLine());
     }
-
+    public void xuat(){
+        System.out.printf("%-8s %-15s %-10s %-20s %-10s\n", maNH, maSP, ngay,soluong,dongia );
+    }
     // Các getter và setter
     public String getmaNH() {
         return maNH;
