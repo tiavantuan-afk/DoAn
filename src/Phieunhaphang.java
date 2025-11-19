@@ -2,15 +2,53 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Phieunhaphang {
     Scanner sc = new Scanner(System.in);
-    private String maPNH;
-    private String maNV;
-    private String ngay;
-    private String maNcc;
-    private ArrayList<Chitietphieunhap> Danhsachchitiet;
-    
-    public Phieunhaphang(){
-        Danhsachchitiet = new ArrayList<>();
+    public String maPNH;
+    public String maNV;
+    public String ngay;
+    public String maNcc;
+    public double tongtien;
+
+    Phieunhaphang(){
+        maPNH = "";
+        maNV = "";
+        ngay = "";
+        maNcc = "";
+        tongtien = 0;
     }
+    
+    Phieunhaphang(String maPNH, String maNV, String ngay, String maNcc, double tongtien){
+        this.maPNH = maPNH;
+        this.maNV = maNV;
+        this.ngay = ngay;
+        this.maNcc = maNcc;
+        this.tongtien = tongtien;
+    }
+
+    Phieunhaphang(Phieunhaphang t){
+        maPNH = t.maPNH;
+        maNV = t.maNV;
+        ngay = t.ngay;
+        maNcc = t.maNcc;
+        tongtien = t.tongtien;
+    }
+
+    @Override
+    public String toString(){
+        return String.join("-", maPNH, maNV, ngay, maNcc, String.valueOf(tongtien)); 
+    }
+
+    public void xuat() {
+        System.out.println("\n╔══════════════════════════════════════════════╗");
+        System.out.println("║               THONG TIN PHIEU NHAP           ║");
+        System.out.println("╠══════════════════════════════════════════════╣");
+        System.out.printf("║ %-17s: %-25s ║%n", "Ma phieu nhap hang", maPNH);
+        System.out.printf("║ %-17s: %-25s ║%n", "Ngay nhap", ngay);
+        System.out.printf("║ %-17s: %-25s ║%n", "Ma nhan vien", maNV);
+        System.out.printf("║ %-17s: %-25.0f ║%n", "Ma nha cung cap", maNcc);
+        System.out.printf("║ %-17s: %-25s ║%n", "Tong tien", tongtien);
+        System.out.println("╚══════════════════════════════════════════════╝");
+    }
+
     public String getmaPNH(){
         return maPNH;
     }
@@ -35,12 +73,7 @@ public class Phieunhaphang {
     public void setmaNcc(String maNcc){
         this.maNcc = maNcc;
     }
-    public ArrayList<Chitietphieunhap> getDanhsachchitiet(){
-        return Danhsachchitiet;
-    }
-    public void setDanhsachchitiet(ArrayList<Chitietphieunhap> Danhsachchitiet){
-        this.Danhsachchitiet = Danhsachchitiet;
-    }
+    
     public void nhap(){
         System.out.println("Mã phiếu nhập hàng: ");
         maPNH = sc.nextLine();
@@ -59,23 +92,5 @@ public class Phieunhaphang {
             Danhsachchitiet.add(ct);
         }
     }
-    public double tien(){
-        double s = 0;
-        for(Chitietphieunhap ct : Danhsachchitiet) {
-            s+=ct.thanhTien();
-        }
-        return s;
-    }
-    @Override
-    public String toString(){
-        String s = " Phiếu nhập hàng";
-        s+= "Mã PN: " + maPNH +"| Ngày nhập hàng: " + ngay + "\n";
-        s+= "Nhà cung cấp: " + maNcc +"\n Danh sách chi tiết \n";
-
-        for(Chitietphieunhap ct : Danhsachchitiet){
-            s+= ct.toString() + "\n";
-        }
-        s+="\nTổng tiền: " + tien() + "VND\n";
-        return s;
-    }
+    
 }

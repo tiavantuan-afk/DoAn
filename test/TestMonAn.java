@@ -65,16 +65,16 @@ public class TestMonAn {
 
     public void timkiem(String maSP) {
         boolean found = false;
-        for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].getMaSP() != null && ds[i].getMaSP().equalsIgnoreCase(maSP)) {
-                System.out.println("Da tim thay ma san pham: ");
+        for(int i = 0; i < ds.length; i++){
+            if(ds[i] !=null && ds[i].getMaSP() !=null && ds[i].getMaSP().equalsIgnoreCase(maSP)){
+                System.out.println("Da tim thay");
                 ds[i].xuat();
                 System.out.println();
                 found = true;
             }
         }
-        if (!found) {
-            System.out.println("Khong tim thay ma sp");
+        if(!found){
+            System.out.println("Khong tim thay: ");
         }
     }
 
@@ -86,7 +86,7 @@ public class TestMonAn {
         boolean found = false;
         System.out.println("Nhap ma can tim: ");
         for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].maSP.equalsIgnore(maSP)) {
+            if (ds[i] != null && ds[i].maSP.equalsIgnore(maSP) !=null) {
                 System.out.println("Da tim thay san pham");
                 ds[i].xuat();
                 System.out.println();
@@ -100,51 +100,102 @@ public class TestMonAn {
 
     public void xoa(String maSP) {
         boolean found = false;
-        for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].getMaSP() != null && ds[i].getMaSP().equalsIgnoreCase(maSP)) {
-                System.out.println("Da tim thay san pham can xoa:");
+        for(int i = 0; i < ds.length; i++){
+            if(ds[i] !=null && ds[i].getMaSP() !=null && ds[i].getMaSP().equalsIgnoreCase(maSP)){
+                System.out.println("Da tim thay thu can xoa");
                 ds[i].xuat();
 
-                for (int j = i; j < ds.length - 1; j++) {
-                    ds[j] = ds[j + 1];
+                for(int j = i; j < ds.length-1; j++){
+                    ds[j]=ds[j+1];
                 }
-                ds = Arrays.copyOf(ds, ds.length - 1);
-                System.out.println("Da xoa san pham: ");
+
+                ds = Arrays.copyOf(ds, ds.length-1);
                 found = true;
-                break;
             }
-        }
-        if (!found) {
-            System.out.println("None");
         }
     }
 
     public void them() {
-        System.out.println("Them nhan vien");
         TestMonAn testmoi = new TestMonAn();
         testmoi.nhap();
 
-        if (!ONEID(testmoi.getMaNV())) {
+        if (!ONEID(testmoi.getMaSP())) {
             System.out.println("Trung");
+            return;
         }
 
         ds = Arrays.copyOf(ds, ds.length + 1);
         ds[ds.length - 1] = testmoi;
+        System.out.println("Da them vao mang");
+
     }
 
-    public TestMon getArrays() {
-        return ds;
+    public void themds(){
+        MonAn monan1 = null;
+        String temp;
+        int temT;
+        do{
+            temT = 0;
+            System.out.println("T");
+            System.out.println("N");
+            temp = sc.nextLine();
+            if(temp.toUpperCase().contains("T")){
+                monan = new ThucAn();
+            }else 
+            if(temp.toUpperCase().contains("N")){
+                monan = new NuocUong();
+            }else{
+                temT = 0;
+            }
+        }while(temT != 1);
+        ds[i].xuat();
     }
+    
 
-    public boolean ONEID(String maNV) {
-        if (maNV == null) {
-            return false;
+    public boolean ONEID(String maSP) {
+        if (maSP == null) {
+            return true;
         }
         for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].getMaNV() != null && ds[i].getMaNV.equalsIgnoreCase(maNV)) {
+            if (ds[i] != null && ds[i].getMaSP() != null && ds[i].getMaSP().equalsIgnoreCase(maSP)) {
                 return false;
             }
         }
         return true;
     }
+
+   public sua(){
+    if(ds.length == 0){
+        return;
+    }
+    int v = -1;
+    for(int i = 0; i < ds.length; i++){
+        if(ds[i] !=null && ds[i].maSP() != null && ds[i].maSP().equalsIgnoreCase(maSP)){
+            v = i;
+            break;
+        }
+    }
+    if(v == -1){
+        System.out.println("Khong tim thay: ");
+        return;
+    }
+    System.out.println("Thong tin hien tai:");
+    ds[i].xuat();
+
+    int choice = sc.nextInt();
+    sc.nextLine();
+
+    switch(chocie){
+        case 1:
+            String maMoi = sc.nextLine();
+            ds[v].setMaSP(maMoi);
+            break;
+
+        case 0:
+            return;
+        default:
+            return;
+    }
+
+   }
 }

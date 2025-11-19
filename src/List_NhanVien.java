@@ -129,34 +129,32 @@ public class List_NhanVien {
                 found = true;
                 break;
             }
-        }
+        } 
         if (!found) {
             System.out.println("Khong tim thay ma nhan vien ");
         }
     }
 
-    public void timNVHo() {
+        public void timNVHo() {
         if (ds.length == 0) {
-            System.out.println("Danh sach empty ");
+            System.out.println("Empty");
             return;
         }
-        System.out.print("Nhap ho nhan vien can tim: ");
-        String hoNV = sc.nextLine();
-
         boolean found = false;
+        System.out.println("Nhap ma can tim: ");
         for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].hoNV != null && ds[i].hoNV.equalsIgnoreCase(hoNV)) {
-                if (!found) {
-                    System.out.println("Ket qua tim kiem ");
-                    found = true;
-                }
+            if (ds[i] != null && ds[i].hoNV !=null  ){
+                System.out.println("Da tim thay san pham");
                 ds[i].xuat();
+                System.out.println();
+                found = true;
             }
         }
         if (!found) {
-            System.out.println("Khong tim thay ho nhan vien: " + hoNV);
+            System.out.println("None");
         }
     }
+    
 
     public void xoaMaNV(String maNV) {
         boolean found = false;

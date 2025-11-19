@@ -20,7 +20,7 @@ public class List_CTPN {
         for (int i = 0; i < n; i++) {
             System.out.println("Chi tiet phieu nhap " + (i + 1) + ":");
             ds[i] = new Chitietphieunhap();
-            ds[i].nhap(true);
+            ds[i].nhap();
         }
     }
 

@@ -9,13 +9,8 @@ public abstract class MonAn {
     public int soLuong;
 
     java.util.Scanner sc = new Scanner(System.in);
-
     public abstract String getLoai();
 
-    // Hàm thiết lập
-    public MonAn() {
-        super();
-    }
 
     // Có tham số
     public MonAn(String maSP, String tenSP, double giaBan, int soLuong) {

@@ -316,7 +316,7 @@ public class List_TonKho {
 
     public void thongKe() {
         if (ds.length == 0) {
-            System.out.println("Danh sach ton kho rong!");
+            System.out.println("Danh sach ton kho rong");
             return;
         }
 

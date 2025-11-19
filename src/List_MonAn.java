@@ -123,7 +123,7 @@ public class List_MonAn implements dataB {
     }
 
     public void them() {
-        ds = Arrays.copyOf(ds, ds.length + 1);
+        
         MonAn MonAnL = null;
         String temp;
         int temT;
@@ -141,6 +141,7 @@ public class List_MonAn implements dataB {
                 temT = 0;
             }
         } while (temT != 1);
+        
 
         boolean maTrung;
         do {
@@ -154,9 +155,10 @@ public class List_MonAn implements dataB {
                 maTrung = false;
             }
         } while (maTrung);
+        ds = Arrays.copyOf(ds, ds.length + 1);
         ds[ds.length - 1] = MonAnL;
 
-        // THÊM: Tự động lưu file
+        //Tự động lưu file
         tuDongCapNhatFile();
         System.out.println("Da them mon an thanh cong ");
     }
@@ -187,7 +189,7 @@ public class List_MonAn implements dataB {
 
         int choice;
         do {
-            System.out.println("\n=== CHON THUOC TINH CAN SUA ===");
+            System.out.println("\n=== CHON TINH CHAT CAN SUA ===");
             System.out.println("1. Sua ma san pham");
             System.out.println("2. Sua ten san pham");
             System.out.println("3. Sua gia ban");

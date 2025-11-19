@@ -34,11 +34,9 @@ public class Chitietphieunhap {
 
     // Nhập thông tin chi tiết phiếu nhập
     // nhapMa = true nếu muốn nhập mã, false nếu giữ mã hiện có
-    public void nhap(boolean nhapMa) {
-        if (nhapMa) {
-            System.out.print("Mã chi tiết nhập hàng: ");
-            maNH = sc.nextLine();
-        }
+    public void nhap() {
+        System.out.print("Mã chi tiết nhập hàng: ");
+        maNH = sc.nextLine();
         System.out.print("Mã chi tiết sản phẩm: ");
         maSP = sc.nextLine();
         System.out.print("Ngày nhập chi tiết sản phẩm: ");

@@ -5,6 +5,7 @@ public class HOADON {
     private String Makh;
     private String Ngay;
     private double Tongtien;  
+    Scanner sc = new Scanner(System.in);
     public HOADON(){
         Mahd = "";
         Manv = "";
@@ -28,18 +29,14 @@ public class HOADON {
         this.Tongtien = h.Tongtien;
         }
     }
-    public void nhap(){
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Nhap ma hoa don: ");
-        Mahd = sc.nextLine();
+    public void nhap(String Mahd, double Tongtien){
         System.out.print("Nhap ma nhan vien: ");
         Manv = sc.nextLine();
         System.out.print("Nhap ma khach hang: ");
         Makh = sc.nextLine();
         System.out.print("Nhap ngay xuat hoa don: ");
         Ngay = sc.nextLine();
-        System.out.print("Nhap tong tien: ");
-        Tongtien = sc.nextDouble();
+        this.Tongtien = Tongtien;
     }
     public void xuat(){
         System.out.println("Hoa don: ");
