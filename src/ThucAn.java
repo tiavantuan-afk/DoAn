@@ -59,9 +59,14 @@ public class ThucAn extends MonAn {
     @Override
     public void xuat() {
         super.xuat();
-        System.out.printf("%-10s ", (coThit ? "True " : "False"));
-        System.out.printf("%-10s ", (coTinhBot ? "True" : "False"));
-        System.out.printf("%-10s\n", (coBotNgot ? "True" : "False"));
+        String coThitVal = this.coThit ? "Thịt" : "";
+        String coBotNgotVal = this.coBotNgot ? "Bột Ngọt" : "";
+        String coTinhBotVal = this.coTinhBot ? "Tinh Bột" : "";
+        System.out.printf("%-12s | %-12s | %-12s | %-8s\n",
+                coThitVal,
+                coBotNgotVal,
+                coTinhBotVal,
+                "");
     }
 
     // GetSet

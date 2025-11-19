@@ -92,7 +92,7 @@ public abstract class MonAn {
         this.soLuong = soLuong;
     }
 
-    public void ghiFile() throws IOException {
+    public void ghiFileL() throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("List_MonAn.txt", true))) {
             bw.write(maSP + "," + tenSP + "," + getdonGia() + "," + soLuong);
             bw.newLine();

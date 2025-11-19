@@ -16,7 +16,7 @@ public class HOADON {
         Manv = "";
         Makh = "";
         Ngay = "";
-        Tongtien = 0;
+        Tongtien = 0.0;
     }
 
     public HOADON(String Mahd, String Manv, String Makh, String Ngay, double Tongtien) {
@@ -45,7 +45,7 @@ public class HOADON {
         Makh = sc.nextLine();
         System.out.print("Nhap ngay xuat hoa don: ");
         Ngay = sc.nextLine();
-        this.Tongtien = Tongtien;
+        this.Tongtien = 0.0;
     }
 
     public void xuat() {

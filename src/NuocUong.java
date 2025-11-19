@@ -72,9 +72,14 @@ public class NuocUong extends MonAn {
     @Override
     public void xuat() {
         super.xuat();
-        System.out.printf("%-10s ", (coDa ? "True" : "False"));
-        System.out.printf("%-10s ", (coGas ? "True" : "False"));
-        System.out.printf("%-10s\n ", (loaiChai ? "Chai" : "Lon"));
+        String coDaVal = this.coDa ? "Đá" : "";
+        String coGasVal = this.coGas ? "Gas" : "";
+        String loai = (this.loaiChai ? "Chai" : "Lon");
+        System.out.printf("%-12s | %-12s | %-12s | %-8s\n",
+                coDaVal,
+                coGasVal,
+                "",
+                loai);
     }
 
     // GetSet
