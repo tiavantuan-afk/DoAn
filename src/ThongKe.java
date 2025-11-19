@@ -21,14 +21,9 @@ public class ThongKe {
         dsKHO = new List_KHO();
         dsNguyenLieu = new List_Nguyenlieu();
         dsCOMBO = new List_COMBO();
-<<<<<<< HEAD
         dsCTPN = new List_CTPN();
         dsPN = new List_PN();
         dsNCC = new List_NCC();
-        
-=======
-
->>>>>>> d741d7f688d9c6add2528b84a118b258fbcabea4
         // Đọc dữ liệu từ file
         dsMonAn.docFile("src/data/List_MonAn.txt");
         dsNhanVien.docFile("src/data/List_NV.txt");
@@ -141,11 +136,8 @@ public class ThongKe {
         System.out.printf("%-11s | %-10s | %-10s | %-10s |%n", "Quy 1", "Quy 2", "Quy 3", "Quy 4");
 
         // Giả lập dữ liệu theo quý
-<<<<<<< HEAD
         String[] boPhan = {"Mon An", "Nhan Vien", "Ton Kho"};
-=======
         String[] boPhan = { "Mon An", "Nhan Vien", "Ton Kho", "COMBO", "Nguyen lieu", "Kho" };
->>>>>>> d741d7f688d9c6add2528b84a118b258fbcabea4
         for (int i = 0; i < boPhan.length; i++) {
             double[] quy = new double[4];
 
@@ -165,19 +157,14 @@ public class ThongKe {
                         tongGiaTri += ds[j].getLuongCoBan() * 3; // 3m
                     }
                 }
-<<<<<<< HEAD
             } else { // Tồn kho
-=======
             } else if (i == 2) { // Tồn kho
->>>>>>> d741d7f688d9c6add2528b84a118b258fbcabea4
                 TonKho[] ds = dsTonKho.getDs();
                 for (int j = 0; j < ds.length; j++) {
                     if (ds[j] != null) {
                         tongGiaTri += ds[j].getSoLuongTon() * ds[j].getGiaNhap();
                     }
                 }
-<<<<<<< HEAD
-=======
             } else if (i == 3) { // COMBO
                 COMBO[] ds = dsCOMBO.getDs();
                 for (int j = 0; j < ds.length; j++) {
@@ -200,7 +187,6 @@ public class ThongKe {
                         tongGiaTri += ds[j].soLuong * ds[j].donGia;
                     }
                 }
->>>>>>> d741d7f688d9c6add2528b84a118b258fbcabea4
             }
 
             // Phân bổ theo quý
