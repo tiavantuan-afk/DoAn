@@ -206,7 +206,7 @@ public class List_HOADON {
             hdMoi.nhap();
 
             if (!IDHD(hdMoi.getMahd())) {
-                System.out.println(" Ma khach hang '" + hdMoi.getMahd() + "' da ton tai!");
+                System.out.println(" Ma hoa don '" + hdMoi.getMahd() + "' da ton tai!");
                 System.out.println("Vui long nhap lai ma khac:");
                 maTrung = true;
             } else {

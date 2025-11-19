@@ -64,10 +64,6 @@ public class List_KHACHHANG {
         }
 
         System.out.println("So luong khach hang: " + dskh.length);
-        System.out.println("-------------------------------------------------------");
-        System.out.printf("%-10s | %-15s | %-10s | %-15s\n", "Ma KH", "Ho", "Ten", "SDT");
-        System.out.println("-------------------------------------------------------");
-
         for (int i = 0; i < dskh.length; i++) {
             if (dskh[i] != null) {
                 dskh[i].xuat();

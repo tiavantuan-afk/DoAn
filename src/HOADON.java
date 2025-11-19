@@ -10,7 +10,7 @@ public class HOADON {
         Manv = "";
         Makh = "";
         Ngay = "";
-        Tongtien = 0.0;
+        Tongtien = 0;
     }
     public HOADON(String Mahd, String Manv, String Makh, String Ngay, double Tongtien){
         this.Mahd = Mahd;
