@@ -14,7 +14,7 @@ public abstract class MonAn {
 
     // Hàm thiết lập
     public MonAn() {
-        super();
+        //super();
     }
 
     // Có tham số
