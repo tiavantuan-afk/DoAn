@@ -17,12 +17,10 @@ public class Menu_ncc {
             System.out.println("2.Xuat danh sach nha cung cap");
             System.out.println("3.Tim kiem nha cung cap theo ma");
             System.out.println("4.Them nha cung cap theo ma");
-            System.out.println("5.Them nha cung cap theo đia chi");
-            System.out.println("6.Xoa nha cung cap theo ma");
-            System.out.println("7.Xoa nha cung cap theo so đien thoai");
-            System.out.println("8.Sua nha cung cap theo ma");
-            System.out.println("9.Thong ke nha cung cap theo ho");
-            System.out.println("10.Quay lai Menu chinh");
+            System.out.println("5.Xoa nha cung cap theo ma");
+            System.out.println("6.Sua nha cung cap theo ma");
+            System.out.println("7.Thong ke nha cung cap theo ho");
+            System.out.println("8.Quay lai Menu chinh");
             System.out.println("0.Thoat");
             System.out.print("Chon chuc nang: ");
             chon = sc.nextInt();
@@ -35,27 +33,21 @@ public class Menu_ncc {
                     list.xuat();
                     break;
                 case 3:
-                    list.timkiemtheoma();
+                    list.timtheoma(fileName);
                     break;
                 case 4:
                     list.themtheoma();
                     break;
                 case 5:
-                    list.themtheodiachi();
+                    list.xoatheoma(fileName);
                     break;
                 case 6:
-                    list.xoatheoma();
+                    list.suatheoma(fileName);
                     break;
                 case 7:
-                    list.xoatheosdt();
-                    break;
-                case 8:
-                    list.suatheoma();
-                    break;
-                case 9:
                     list.thongketheohoncc();
                     break;
-                case 10:
+                case 8:
                     System.out.print("Quay ve menu chinh");
                     Menu_Main menuMain = new Menu_Main();
                     menuMain.menuChinh();

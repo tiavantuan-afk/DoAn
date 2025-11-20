@@ -38,13 +38,13 @@ public class Menu_CTPN {
                     list.themTheoMa();
                     break;
                 case 4: 
-                    list.timtheoma();
+                    list.timtheoma(fileName);
                     break;
                 case 5: 
-                    list.suatheoma();
+                    list.suatheoma(fileName);
                     break;
                 case 6:
-                    list.xoatheoma();
+                    list.xoatheoma(fileName);
                     break;
                 case 7:
                     list.thongketheongay();

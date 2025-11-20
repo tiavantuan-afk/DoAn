@@ -73,7 +73,7 @@ public class List_PN{
      public boolean OneIDPN(String mapn){
         if(mapn == null)
         return false;
-        for(int i = 0;i<ds.length;i++){
+        for(int i = 0;i < n;i++){
             if(ds[i] != null && ds[i].getmaPNH() != null && ds[i].getmaPNH().equalsIgnoreCase(mapn)){
                 return true;
             }
@@ -91,7 +91,7 @@ public class List_PN{
         ds[ds.length - 1] =pnmoi;
     }
 
-    public void timTheoMa(String macantim) {
+    public void timtheoma(String macantim) {
          boolean tim = false;
           for(int i = 0;i < ds.length; i++){
             if (ds[i] != null && ds[i].getmaPNH() != null && ds[i].getmaPNH().equalsIgnoreCase(macantim)){
