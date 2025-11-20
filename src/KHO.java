@@ -5,6 +5,7 @@ public class KHO {
     public String tenHang;
     public int soLuong;
     public double donGia;
+    Scanner sc = new Scanner(System.in);
 
     // Hàm thiết lập
     public KHO() {
@@ -30,10 +31,11 @@ public class KHO {
             this.soLuong = t.soLuong;
             this.donGia = t.donGia;
         }
-    }   
+    }
+
     // Nhập xuất
     public void nhap() {
-        Scanner sc = new Scanner(System.in);
+
         System.out.print("Nhap ma hang: ");
         maHang = sc.nextLine();
 
@@ -47,7 +49,7 @@ public class KHO {
         donGia = Double.parseDouble(sc.nextLine());
     }
 
-    //loai hang
+    // loai hang
     public String getLoai() {
         return "K";
     }
@@ -68,6 +70,7 @@ public class KHO {
     public String getMaHang() {
         return maHang;
     }
+
     public void setMaHang(String maHang) {
         this.maHang = maHang;
     }
@@ -75,6 +78,7 @@ public class KHO {
     public String getTenHang() {
         return tenHang;
     }
+
     public void setTenHang(String tenHang) {
         this.tenHang = tenHang;
     }
@@ -82,6 +86,7 @@ public class KHO {
     public int getSoLuong() {
         return soLuong;
     }
+
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
@@ -89,6 +94,7 @@ public class KHO {
     public double getDonGia() {
         return donGia;
     }
+
     public void setDonGia(double donGia) {
         this.donGia = donGia;
     }

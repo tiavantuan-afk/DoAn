@@ -1,18 +1,8 @@
-import java.util.Scanner;
-
-public class Menu_COMBO {
-	private List_COMBO quanLy;
-	private Scanner sc;
-
-	//Hàm thiết lập
-	public Menu_COMBO() {
-		quanLy = new List_COMBO();
-		sc = new Scanner(System.in);
-	}
-
+public class Menu_COMBO extends Menu_Main {
+	@Override
 	public void menu() {
 		int luaChon = -1;
-		quanLy.docFile("src/data/List_COMBO.txt");
+
 		do {
 			System.out.println("\n--- MENU QUAN LY COMBO ---");
 			System.out.println("1. Nhap danh sach combo: ");
@@ -32,52 +22,33 @@ public class Menu_COMBO {
 			sc.nextLine();
 			switch (luaChon) {
 				case 1:
-					quanLy.nhap();
+					DSC.nhap();
 					break;
 				case 2:
-					quanLy.xuat();
+					DSC.xuat();
 					break;
 				case 3:
-					quanLy.them();
+					DSC.them();
 					break;
 				case 4:
-					quanLy.suacombo();
+					DSC.suacombo();
 					break;
 				case 5:
 					System.out.print("Nhap ma combo can xoa: ");
 					String maCanXoa = sc.nextLine();
-					quanLy.xoacombo(maCanXoa);
+					DSC.xoacombo(maCanXoa);
 					break;
 				case 6:
-					System.out.print("Nhap ten combo can xoa: ");
-					String tenCanXoa = sc.nextLine();
-					boolean found = false;
-					for (int i = 0; i < quanLy.getN(); i++) {
-						if (quanLy.getDs()[i] != null && quanLy.getDs()[i].tenSP != null && 
-							quanLy.getDs()[i].tenSP.equalsIgnoreCase(tenCanXoa)) {
-							quanLy.xoacombo(quanLy.getDs()[i].maSP);
-							found = true;
-							break;
-						}
-					}
-					if (!found) System.out.println("Khong tim thay combo co ten: " + tenCanXoa);
-					break;
-				case 7:
 					System.out.print("Nhap ma combo can tim: ");
 					String maCanTim = sc.nextLine();
-					quanLy.timKiemTheoMa(maCanTim);
+					DSC.timKiemTheoMa(maCanTim);
+					break;
+				case 7:
+					DSC.timkiemtheoten();
 					break;
 				case 8:
-					quanLy.timkiemtheoten();
+					DSC.thongKeCombo();
 					break;
-				case 9:
-					quanLy.thongKeCombo();
-					break;
-				case 10:
-					System.out.println("Quay lai menu chinh...");
-					Menu_Main mainMenu =  new Menu_Main();
-					mainMenu.menuChinh();
-					return;
 				case 0:
 					System.out.println("Thoat chuong trinh.");
 					break;
@@ -85,12 +56,6 @@ public class Menu_COMBO {
 					System.out.println("Lua chon khong hop le, vui long chon lai.");
 					break;
 			}
-		} while (luaChon != 0);
-		sc.close();
-	}
-
-	public static void main(String[] args) {
-		Menu_COMBO menu = new Menu_COMBO();
-		menu.menu();
+		} while (luaChon != 0 && luaChon != 9);
 	}
 }

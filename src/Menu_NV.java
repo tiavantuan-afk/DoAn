@@ -1,17 +1,6 @@
-import java.util.Scanner;
 
-public class Menu_NV {
-    private List_NhanVien quanLy;
-    private String fileName;
-    private Scanner sc;
-
-    public Menu_NV() {
-        quanLy = new List_NhanVien();
-        sc = new Scanner(System.in);
-        fileName = "src/data/List_NV.txt";
-        quanLy.docFile(fileName);
-    }
-
+public class Menu_NV extends Menu_Main {
+    @Override
     public void menu() {
         int luaChon = -1;
 
@@ -32,47 +21,44 @@ public class Menu_NV {
             sc.nextLine();
             switch (luaChon) {
                 case 1:
-                    quanLy.nhapds();
-                    quanLy.ghiFile(fileName);
+                    DSNV.nhapds();
+                    DSNV.ghiFile();
                     break;
 
                 case 2:
-                    quanLy.xuat();
-                    quanLy.ghiFile(fileName);
+                    DSNV.xuat();
+                    DSNV.ghiFile();
                     break;
 
                 case 3:
-                    quanLy.them();
-                    quanLy.ghiFile(fileName);
+                    DSNV.them();
+                    DSNV.ghiFile();
                     break;
 
                 case 4:
-                    quanLy.suaNV();
-                    quanLy.ghiFile(fileName);
+                    DSNV.suaNV();
+                    DSNV.ghiFile();
                     break;
                 case 5:
                     System.out.print("Nhap ma nhan vien can xoa: ");
                     String maCanXoa = sc.nextLine();
-                    quanLy.xoaMaNV(maCanXoa);
-                    quanLy.ghiFile(fileName);
+                    DSNV.xoaMaNV(maCanXoa);
+                    DSNV.ghiFile();
                     break;
                 case 6:
 
                     System.out.print("Nhap ma nhan vien can tim: ");
                     String maCanTim = sc.nextLine();
-                    quanLy.timNVMa(maCanTim);
-                    quanLy.ghiFile(fileName);
+                    DSNV.timNVMa(maCanTim);
+                    DSNV.ghiFile();
                     break;
                 case 7:
-                    quanLy.timNVHo();
+                    DSNV.timNVHo();
                     break;
                 case 8:
-                    quanLy.ThongKeLuongCoBan();
+                    DSNV.ThongKeLuongCoBan();
                     break;
-                case 9:
-                    System.out.println("Quay lai menu chinh...");
-                    Menu_Main mainMenu = new Menu_Main();
-                    mainMenu.menuChinh();
+
                 case 0:
                     System.out.println("Cam on, hen gap lai ");
                     break;
@@ -83,9 +69,4 @@ public class Menu_NV {
         } while (luaChon != 0 && luaChon != 9);
     }
 
-    public static void main(String[] args) {
-        Menu_NV menu = new Menu_NV();
-        menu.menu();
-
-    }
 }

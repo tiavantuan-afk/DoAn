@@ -1,22 +1,6 @@
-import java.util.Scanner;
 
-public class Menu_MonAn {
-    private List_MonAn quanLy;
-    private String fileName;
-    private Scanner sc;
-
-    public static void main(String[] args) {
-        Menu_MonAn menu = new Menu_MonAn();
-        menu.menu();
-    }
-
-    public Menu_MonAn() {
-        quanLy = new List_MonAn();
-        sc = new Scanner(System.in);
-        fileName = "src/data/List_MonAn.txt";
-        quanLy.docFile(fileName);
-    }
-
+public class Menu_MonAn extends Menu_Main {
+    @Override
     public void menu() {
         int luaChon = -1;
 
@@ -37,11 +21,11 @@ public class Menu_MonAn {
             sc.nextLine();
             switch (luaChon) {
                 case 1:
-                    quanLy.nhapds();
-                    quanLy.ghiFile(fileName);
+                    DSMA.nhapds();
+                    DSMA.ghiFile();
                     break;
                 case 2:
-                    quanLy.xuat();
+                    DSMA.xuat();
                     break;
                 case 3:
                     int loai;
@@ -57,38 +41,33 @@ public class Menu_MonAn {
                         }
 
                     } while (loai != 1 && loai != 2);
-                    quanLy.themloaisp(loai);
-                    quanLy.ghiFile(fileName);
+                    DSMA.themloaisp(loai);
+                    DSMA.ghiFile();
                     break;
                 case 4:
-                    quanLy.docFile(fileName);
-                    quanLy.sua();
-                    quanLy.ghiFile(fileName);
+                    DSMA.docFile();
+                    DSMA.sua();
+                    DSMA.ghiFile();
                     break;
                 case 5:
                     System.out.print("Nhap ma san pham can xoa: ");
                     String maCanXoa = sc.nextLine().trim();
-                    quanLy.xoaTheoMa(maCanXoa);
-                    quanLy.ghiFile(fileName);
+                    DSMA.xoaTheoMa(maCanXoa);
+                    DSMA.ghiFile();
                     break;
                 case 6:
                     System.out.print("Nhap ma can tim: ");
                     String maCanTim = sc.nextLine().trim();
-                    quanLy.timKiemMa(maCanTim);
+                    DSMA.timKiemMa(maCanTim);
                     break;
                 case 7:
                     System.out.print("Nhap ten can tim: ");
                     String tenCanTim = sc.nextLine().trim();
-                    MonAn[] kq = quanLy.timKiemTheoTen(tenCanTim);
+                    MonAn[] kq = DSMA.timKiemTheoTen(tenCanTim);
                     break;
                 case 8:
-                    quanLy.thongKe();
+                    DSMA.thongKe();
                     break;
-                case 9:
-                    System.out.println("Quay lai menu chinh...");
-                    Menu_Main mainMenu = new Menu_Main();
-                    mainMenu.menuChinh();
-                    return;
                 case 0:
                     System.out.println("Xong");
                     break;
@@ -96,8 +75,8 @@ public class Menu_MonAn {
                     System.out.println("Lua chon khong hop le, vui long chon lai.");
                     break;
             }
-        } while (luaChon != 0 && luaChon != 9);
-        sc.close();
+        } while (luaChon != 0);
+
     }
 
 }

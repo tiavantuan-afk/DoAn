@@ -1,26 +1,16 @@
-import java.util.Scanner;
-public class Menu_CTPN {
-    private List_CTPN list;
-    private String fileName;
-    private Scanner sc;
-    public Menu_CTPN() {
-        list = new List_CTPN();
-        sc = new Scanner(System.in);
-        fileName = "src/data/List_CTPN.txt";
-        list.docFile(fileName);
-    }
-    public void menu(){
+
+public class Menu_CTPN extends Menu_Main {
+    @Override
+    public void menu() {
         int chon = -1;
         do {
-            System.out.println("\nMENU CTPN");
-            System.out.println("1. Nhap danh sach");
-            System.out.println("2. Xuat danh sach");
-            System.out.println("3. Them theo ma");
-            System.out.println("4. Tim theo ma");
-            System.out.println("5. Sua theo ma");
-            System.out.println("6. Xoa theo ma");
-            System.out.println("7. Thong ke theo ngay ");
-            System.out.println("8. Quay ve Menu chinh");
+            System.out.println("\n--- MENU CHI TIET PHIEU NHAP (CTPN) ---");
+            System.out.println("1. Xuat danh sach");
+            System.out.println("2. Them mot chi tiet ");
+            System.out.println("3. Tim kiem (Theo Ma PNH, tra ve danh sach)");
+            System.out.println("4. Sua theo Ma PNH");
+            System.out.println("5. Xoa theo Ma PNH");
+            System.out.println("6. Thong ke theo ngay");
             System.out.println("0. Thoát");
             System.out.print("Chọn: ");
 
@@ -28,45 +18,101 @@ public class Menu_CTPN {
             sc.nextLine();
 
             switch (chon) {
-                case 1: 
-                    list.nhap();
+                case 1:
+                    DSCTPN.xuat();
                     break;
                 case 2:
-                    list.xuat();
+                    String maPNH;
+                    do {
+                        System.out.print("Nhap ma hoa don: ");
+                        maPNH = sc.nextLine();
+                        if (!DSMA.TonTai(maPNH)) {
+                            System.out.println("Ma hoa don khong ton tai! Vui long nhap lai.");
+                        }
+                    } while (!DSMA.TonTai(maPNH));
+                    String maSP;
+                    do {
+                        System.out.print("Nhap ma mon an: ");
+                        maSP = sc.nextLine();
+                        if (!DSMA.TonTai(maSP)) {
+                            System.out.println("Ma mon an khong ton tai! Vui long nhap lai.");
+                        }
+                    } while (!DSMA.TonTai(maSP));
+                    DSCTPN.them(maPNH, maSP, DSMA.getdonGia(maSP), 0.0);
+                    DSPN.capnhattongtien(maPNH, DSCTPN.Tinhtongtien(maPNH));
+                    DSMA.CapNhatSoLuong(maSP, DSCTPN.Soluongmon(maPNH, maSP));
+                    DSPN.ghiFile();
+                    DSMA.ghiFile();
                     break;
-                case 3: 
-                    list.themTheoMa();
+                case 3:
+                    timkiemVaHienThiKetQua();
                     break;
-                case 4: 
-                    list.timtheoma();
+                case 4:
+                    DSCTPN.sua();
+                    DSCTPN.ghiFile();
                     break;
-                case 5: 
-                    list.suatheoma();
+                case 5:
+                    System.out.print("Nhap Ma PNH can xoa: ");
+                    String maXoa = sc.nextLine().trim();
+                    DSCTPN.xoatheoma(maXoa, "");
+                    DSCTPN.ghiFile();
                     break;
                 case 6:
-                    list.xoatheoma();
+                    DSCTPN.thongketheongay();
                     break;
-                case 7:
-                    list.thongketheongay();
-                    break;
-                case 8:
-                    System.out.print("Quay lai menu chinh");
-                    Menu_Main mainMenu = new Menu_Main();
-                    mainMenu.menuChinh();
-                    return;
+
                 case 0:
-                    System.out.println("Thoat");
+                    System.out.println("Thoat chuong trinh.");
                     break;
                 default:
-                    System.out.println("Khong hop le");
-                    break;
+                    System.out.println("Lua chon khong hop le, vui long chon lai (0-8).");
             }
 
         } while (chon != 0);
     }
-    public static void main(String[] args) {
-        Menu_CTPN menu = new Menu_CTPN();
-        menu.menu();
-    }
-}
 
+    // Xuất của case 4
+    private void timkiemVaHienThiKetQua() {
+        Chitietphieunhap[] ketQua = DSCTPN.timKiemTheoMaSP();
+        if (ketQua.length > 0) {
+            System.out.println("\n=== KET QUA TIM KIEM ===");
+            for (Chitietphieunhap ct : ketQua) {
+                ct.xuat();
+            }
+        }
+    }
+
+    private void them() {
+        System.out.println("\n--- THÊM MỘT CHI TIẾT PHIẾU NHẬP ---");
+
+        // Nhap maPNH
+        System.out.print("Nhap Ma Phieu Nhap Hang (PNH): ");
+        String maPNH = sc.nextLine().trim();
+
+        // Nhap maSP
+        System.out.print("Nhap Ma San Pham (SP) can nhap: ");
+        String maSP = sc.nextLine().trim();
+
+        // Nhập maNV
+        System.out.print("Nhap Ma Nhan Vien (NV): ");
+        String maNV = sc.nextLine().trim();
+
+        // Nhập DG
+        System.out.print("Nhap Don Gia nhap vao: ");
+        double donGia;
+        if (sc.hasNextDouble()) {
+            donGia = sc.nextDouble();
+            sc.nextLine();
+        } else {
+            System.out.println(" Loi: Don gia khong hop le.");
+            sc.nextLine();
+            return;
+        }
+        Chitietphieunhap ctMoi = new Chitietphieunhap();
+        double thanhTienPlaceholder = 0.0;
+
+        ctMoi.nhap(maPNH, maNV, donGia, thanhTienPlaceholder);
+        DSCTPN.them(ctMoi);
+    }
+
+}

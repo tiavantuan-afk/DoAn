@@ -9,15 +9,19 @@ import java.util.Scanner;
 public class List_HOADON {
     Scanner sc = new Scanner(System.in);
     private HOADON[] dshd;
-    public List_HOADON(){
+
+    public List_HOADON() {
         dshd = new HOADON[0];
     }
-    public List_HOADON(int n){
+
+    public List_HOADON(int n) {
         dshd = new HOADON[n];
     }
-    public List_HOADON(List_HOADON x){
+
+    public List_HOADON(List_HOADON x) {
         dshd = Arrays.copyOf(x.getDshd(), x.getN());
     }
+
     public HOADON[] getDshd() {
         return dshd;
     }
@@ -29,9 +33,10 @@ public class List_HOADON {
     public int getN() {
         return dshd.length;
     }
+
     private void tuDongCapNhatFile() {
         try (PrintWriter writer = new PrintWriter(new FileWriter("src/data/List_HOADON.txt"))) {
-            for (int i = 0; i < dshd.length; i++) { 
+            for (int i = 0; i < dshd.length; i++) {
                 if (dshd[i] != null) {
                     writer.println(dshd[i].toString());
                 }
@@ -40,7 +45,8 @@ public class List_HOADON {
         } catch (IOException e) {
             System.out.println("Loi ghi file: " + e.getMessage());
         }
-    }    
+    }
+
     public void nhap() {
         System.out.print("Nhap n hoa don: ");
         int n = sc.nextInt();
@@ -51,31 +57,30 @@ public class List_HOADON {
             System.out.println("Nhap hoa don thu: " + (i + 1));
             dshd[i] = new HOADON();
             String Mahd;
-            do{
+            do {
                 System.out.println("Nhap ma phieu nhap: ");
                 Mahd = sc.nextLine();
-                if(!ONEID(Mahd)){
+                if (!ONEID(Mahd)) {
                     System.out.println("Ma phieu nhap da ton tai! Vui long nhap lai.");
                 }
-            }while(!ONEID(Mahd));
-            dshd[i].nhap(Mahd, 0);
+            } while (!ONEID(Mahd));
+            dshd[i].nhap(Mahd, 0.0);
         }
         tuDongCapNhatFile();
         System.out.println("Da nhap xong " + dshd.length + " hoa don");
     }
 
-    public boolean ONEID(String Mahd){
-        if(Mahd == null){
+    public boolean ONEID(String Mahd) {
+        if (Mahd == null) {
             return true;
         }
-        for(int i = 0; i < dshd.length; i++){
-            if(dshd[i] !=null && dshd[i].getMahd() !=null && dshd[i].getMahd().equalsIgnoreCase(Mahd)){
+        for (int i = 0; i < dshd.length; i++) {
+            if (dshd[i] != null && dshd[i].getMahd() != null && dshd[i].getMahd().equalsIgnoreCase(Mahd)) {
                 return false;
             }
         }
         return true;
     }
-
 
     public void xuat() {
         if (dshd.length == 0) {
@@ -89,7 +94,7 @@ public class List_HOADON {
                 dshd[i].xuat();
             }
         }
-    }   
+    }
 
     public boolean TonTai(String mahd) {
         if (mahd == null)
@@ -102,6 +107,7 @@ public class List_HOADON {
         }
         return false;
     }
+
     public void timkiemtheomahd(String hdcantim) {
         boolean timkiem = false;
         for (int i = 0; i < dshd.length; i++) {
@@ -116,14 +122,14 @@ public class List_HOADON {
         }
     }
 
-    public void capnhattongtien(String Mahd, double Tongtien){
-        for(int i = 0; i < dshd.length; i++){
-            if(dshd[i].getMahd().equalsIgnoreCase(Mahd)){
+    public void capnhattongtien(String Mahd, double Tongtien) {
+        for (int i = 0; i < dshd.length; i++) {
+            if (dshd[i].getMahd().equalsIgnoreCase(Mahd)) {
                 dshd[i].setTongTien(Tongtien);
             }
         }
     }
-    
+
     public void suahoadon() {
         if (dshd.length == 0) {
             System.out.println("Danh sach hoa don rong!");
@@ -188,15 +194,15 @@ public class List_HOADON {
                     String ngayMoi = sc.nextLine();
                     dshd[v].setNgay(ngayMoi);
                     System.out.println("Da cap nhat ngay");
-                    break; 
+                    break;
                 case 5:
                     System.out.println("Nhap tong tien moi: ");
                     Double tongMoi = sc.nextDouble();
                     sc.nextLine();
                     dshd[v].setTongTien(tongMoi);
                     System.out.println("Da cap nhat ngay");
-                    break; 
-                case 0: 
+                    break;
+                case 0:
                     System.out.println("Hoan thanh sua san pham!");
                     break;
 
@@ -214,7 +220,7 @@ public class List_HOADON {
         System.out.println("Da luu thay doi vao file");
     }
 
- public void themhoadon(String Mahd) {
+    public void themhoadon(String Mahd) {
         dshd = Arrays.copyOf(dshd, dshd.length + 1);
         HOADON temp = new HOADON();
         temp.nhap(Mahd, 0);
@@ -222,7 +228,7 @@ public class List_HOADON {
         tuDongCapNhatFile();
     }
 
-    public void them(HOADON a){
+    public void them(HOADON a) {
         dshd = Arrays.copyOf(dshd, dshd.length + 1);
         dshd[dshd.length - 1] = new HOADON(a);
     }
@@ -254,6 +260,7 @@ public class List_HOADON {
             System.out.println("Khong tim thay san pham: " + MAHD);
         }
     }
+
     public void thongKeDoanhThu() {
         if (dshd.length == 0) {
             System.out.println("Danh sach hoa don rong, khong the thong ke!");
@@ -283,7 +290,7 @@ public class List_HOADON {
 
         System.out.println("\n========== BAO CAO DOANH THU ==========");
         System.out.printf("Tong so hoa don: %d\n", dshd.length);
-        
+
         System.out.printf("Tong doanh thu toan bo: %,.0f \n", tongDoanhThu);
         System.out.printf("Trung binh moi hoa don: %,.0f \n", (tongDoanhThu / dshd.length));
         System.out.println("---------------------------------------");
@@ -291,39 +298,40 @@ public class List_HOADON {
         System.out.printf("Hoa don thap nhat: %s (%,.0f )\n", maMin, minTien);
         System.out.println("=======================================");
     }
-    public void docfile(String filename) {
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+
+    public void docFile() {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_HOADON.txt"))) {
             String line;
             HOADON x = null;
             dshd = new HOADON[0];
             while ((line = br.readLine()) != null) {
-                if (line.trim().isEmpty()){
+                if (line.trim().isEmpty()) {
                     continue;
                 }
                 String[] t = line.split("-");
-                if (t.length >= 5) {               
-                        x = new HOADON(t[0], t[1], t[2], t[3], Double.parseDouble(t[4]));
-                        dshd = Arrays.copyOf(dshd, dshd.length+1);
-                        dshd[dshd.length-1] = x;
-                        System.out.println("Doc: "+x.getMahd()+"-"+x.getManv()+"-"+x.getMakh()+"-"+x.getNgay()+"-"+x.getTongtien());         
+                if (t.length >= 5) {
+                    x = new HOADON(t[0], t[1], t[2], t[3], Double.parseDouble(t[4]));
+                    dshd = Arrays.copyOf(dshd, dshd.length + 1);
+                    dshd[dshd.length - 1] = x;
+
                 }
             }
-            System.out.println("Doc file thanh cong, So khach hang da doc: "+ dshd.length);
+            System.out.println("Doc file thanh cong, So khach hang da doc: " + dshd.length);
         } catch (IOException e) {
             System.out.println("Loi doc file: " + e.getMessage());
         }
     }
 
-    public void ghiFile(String filename){
-        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))){
-            for (int i=0; i<dshd.length; i++){
-                if (dshd[i] != null){
+    public void ghiFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("src/data/List_HOADON.txt"))) {
+            for (int i = 0; i < dshd.length; i++) {
+                if (dshd[i] != null) {
                     writer.println(dshd[i].toString());
                 }
             }
-            System.out.println("Ghi file thanh cong: "+dshd.length+ " hoa don");
-        }catch (IOException e){
+            System.out.println("Ghi file thanh cong: " + dshd.length + " hoa don");
+        } catch (IOException e) {
             System.out.println("Loi ghi file");
-        }   
+        }
     }
 }

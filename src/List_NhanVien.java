@@ -129,13 +129,13 @@ public class List_NhanVien {
                 found = true;
                 break;
             }
-        } 
+        }
         if (!found) {
             System.out.println("Khong tim thay ma nhan vien ");
         }
     }
 
-        public void timNVHo() {
+    public void timNVHo() {
         if (ds.length == 0) {
             System.out.println("Empty");
             return;
@@ -143,7 +143,7 @@ public class List_NhanVien {
         boolean found = false;
         System.out.println("Nhap ma can tim: ");
         for (int i = 0; i < ds.length; i++) {
-            if (ds[i] != null && ds[i].hoNV !=null  ){
+            if (ds[i] != null && ds[i].hoNV != null) {
                 System.out.println("Da tim thay san pham");
                 ds[i].xuat();
                 System.out.println();
@@ -154,7 +154,6 @@ public class List_NhanVien {
             System.out.println("None");
         }
     }
-    
 
     public void xoaMaNV(String maNV) {
         boolean found = false;
@@ -336,8 +335,8 @@ public class List_NhanVien {
         System.out.printf("Luong cao: %.1f%%\n", (double) luongCao / ds.length * 100);
     }
 
-    public void ghiFile(String fileName) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
+    public void ghiFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("data/List_NV.txt"))) {
             for (int i = 0; i < ds.length; i++) {
                 if (ds[i] != null) {
                     writer.println(ds[i].toString());
@@ -349,8 +348,8 @@ public class List_NhanVien {
         }
     }
 
-    public void docFile(String fileName) {
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+    public void docFile() {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_NV.txt"))) {
             ds = new NhanVien[0]; // Reset mảng
 
             String line;

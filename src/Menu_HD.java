@@ -1,21 +1,9 @@
-import java.util.Scanner;
-public class Menu_HD {
-    private List_HOADON quanly;
-    private String filename;
-    private Scanner sc;
-    public static void main (String[] args){
-        Menu_HD menu = new Menu_HD();
-        menu.menu();
-    }
-    public Menu_HD(){
-        quanly = new List_HOADON();
-        sc = new Scanner(System.in);
-        filename = "src/data/List_HOADON.txt";
-        quanly.docfile(filename);
-    }
-    public void menu(){
+
+public class Menu_HD extends Menu_Main {
+    @Override
+    public void menu() {
         int chon = -1;
-        do{
+        do {
             System.out.println("\nMENU QUAN LY HOA DON");
             System.out.println("1. Nhap danh sach hoa don: ");
             System.out.println("2. Xuat danh sach hoa don: ");
@@ -31,29 +19,29 @@ public class Menu_HD {
             sc.nextLine();
             switch (chon) {
                 case 1:
-                    quanly.nhap();
+                    DSHD.nhap();
                     break;
                 case 2:
-                    quanly.xuat();
+                    DSHD.xuat();
                     break;
                 case 3:
                     System.out.print("Nhap ma hoa don can tim: ");
                     String hoadoncantim = sc.nextLine();
-                    quanly.timkiemtheomahd(hoadoncantim);
+                    DSHD.timkiemtheomahd(hoadoncantim);
                     break;
                 case 4:
-                    quanly.suahoadon();
+                    DSHD.suahoadon();
                     break;
                 case 5:
-                    quanly.themhoadon();
+                    themHoaDonMoi();
                     break;
                 case 6:
                     System.out.print("Nhap ma hoa don can xoa: ");
                     String hdcanxoa = sc.nextLine();
-                    quanly.xoahoadon(hdcanxoa);
+                    DSHD.xoahoadon(hdcanxoa);
                     break;
                 case 7:
-                    quanly.thongKeDoanhThu();
+                    DSHD.thongKeDoanhThu();
                     break;
                 case 8:
                     System.out.println("Quay li menu chinh...");
@@ -66,7 +54,30 @@ public class Menu_HD {
                     break;
             }
         } while (chon != 0);
-        
-        
+
+    }
+
+    private String taoMaMoi() {
+        int newId = DSHD.getN() + 1;
+        String maMoi;
+        do {
+            maMoi = "HD" + String.format("%03d", newId);
+            if (DSHD.ONEID(maMoi)) {
+                return maMoi;
+            }
+            newId++;
+        } while (true);
+    }
+
+    private void themHoaDonMoi() {
+        System.out.println("\n--- TAO HOA DON MOI ---");
+        String maHDMoi = taoMaMoi();
+        System.out.println("Ma Hoa Don moi: " + maHDMoi);
+
+        DSHD.themhoadon(maHDMoi);
+        double tongTien = 100000.0;
+
+        DSHD.capnhattongtien(maHDMoi, tongTien);
+        System.out.println(" Tao Hoa Don thanh cong! Tong tien: " + tongTien);
     }
 }

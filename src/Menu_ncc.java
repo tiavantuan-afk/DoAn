@@ -1,15 +1,5 @@
-import java.util.Scanner;
-
-public class Menu_ncc {
-    private List_NCC list;
-    private String fileName;
-    private Scanner sc;
-    public Menu_ncc() {
-        list = new List_NCC();
-        sc = new Scanner(System.in);
-        fileName = "src/data/List_NCC.txt";
-        list.docFile(fileName);
-    }
+public class Menu_ncc extends Menu_Main {
+    @Override
     public void menu() {
         int chon = -1;
         do {
@@ -27,38 +17,37 @@ public class Menu_ncc {
             System.out.print("Chon chuc nang: ");
             chon = sc.nextInt();
             sc.nextLine();
-            switch(chon){
+            switch (chon) {
                 case 1:
-                    list.nhap();
+                    DSNCC.nhap();
                     break;
                 case 2:
-                    list.xuat();
+                    DSNCC.xuat();
                     break;
                 case 3:
-                    list.timkiemtheoma();
+                    System.out.print("Nhập tên nhà cung cấp cần tìm: ");
+                    String ten = sc.nextLine();
+                    DSNCC.timKiemTheoTen(ten);
                     break;
                 case 4:
-                    list.themtheoma();
+                    DSNCC.themtheoma();
                     break;
                 case 5:
-                    list.themtheodiachi();
+                    DSNCC.themtheodiachi();
                     break;
                 case 6:
-                    list.xoatheoma();
+                    DSNCC.xoatheoma();
                     break;
                 case 7:
-                    list.xoatheosdt();
+                    DSNCC.xoatheosdt();
                     break;
                 case 8:
-                    list.suatheoma();
+                    DSNCC.sua();
                     break;
                 case 9:
-                    list.thongketheohoncc();
+                    DSNCC.thongketheohoncc();
                     break;
-                case 10:
-                    System.out.print("Quay ve menu chinh");
-                    Menu_Main menuMain = new Menu_Main();
-                    menuMain.menuChinh();
+
                 case 0:
                     System.out.println("Thoát");
                     return;
@@ -66,11 +55,8 @@ public class Menu_ncc {
                     System.out.println("Lua chon khong hop le, vui long chon lai");
                     break;
             }
-        }while (chon != 0);
+        } while (chon != 0);
         sc.close();
     }
-    public static void main(String[] args) {
-        Menu_ncc menu = new Menu_ncc();
-        menu.menu();
-    }
+
 }

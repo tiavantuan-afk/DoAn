@@ -110,6 +110,26 @@ public class List_MonAn implements dataB {
         return true;
     }
 
+    public void CapNhatSoLuong(String maSP, int soLuong) {
+        for (int i = 0; i < ds.length; i++) {
+            if (ds[i].maSP.equalsIgnoreCase(maSP)) {
+                ds[i].setSoLuong(ds[i].getSoLuong() + soLuong);
+                ghiFile();
+                return;
+            }
+        }
+    }
+
+    public void GiamSoLuong(String maSP, int soluong) {
+        for (int i = 0; i < ds.length; i++) {
+            if (ds[i].maSP.equalsIgnoreCase(maSP)) {
+                ds[i].setSoLuong(ds[i].getSoLuong() - soluong);
+                ghiFile();
+                return;
+            }
+        }
+    }
+
     public boolean TonTai(String maSP) {
         if (maSP == null)
             return false;
@@ -125,6 +145,8 @@ public class List_MonAn implements dataB {
     public void themsp(MonAn sp) {
         ds = Arrays.copyOf(ds, ds.length + 1);
         ds[ds.length - 1] = sp;
+        tuDongCapNhatFile();
+        System.out.println("Da them mon an thanh cong ");
     }
 
     public void themloaisp(int loai) {
@@ -360,6 +382,15 @@ public class List_MonAn implements dataB {
         }
     }
 
+    public Double getdonGia(String id) {
+        for (int i = 0; i < ds.length; i++) {
+            if (ds[i].getMaSP().equalsIgnoreCase(id)) {
+                return ds[i].getdonGia();
+            }
+        }
+        return 0.0;
+    }
+
     public MonAn[] timKiemTheoTen(String tenSP) {
         int d = 0;
         boolean timthay = false;
@@ -453,8 +484,8 @@ public class List_MonAn implements dataB {
 
     }
 
-    public void docFile(String fileName) {
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+    public void docFile() {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_MonAn.txt"))) {
             // Reset mảng trước khi đọc
             ds = new MonAn[0];
 
@@ -496,8 +527,8 @@ public class List_MonAn implements dataB {
         }
     }
 
-    public void ghiFile(String fileName) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+    public void ghiFile() {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/data/List_MonAn.txt"))) {
             for (int i = 0; i < n; i++) {
                 MonAn sp = ds[i];
                 if (sp instanceof ThucAn) {
@@ -514,7 +545,7 @@ public class List_MonAn implements dataB {
 
                 bw.newLine();
             }
-            System.out.println(">> Ghi file thành công ra: " + fileName);
+
         } catch (IOException e) {
             System.out.println("Lỗi ghi file: " + e.getMessage());
         }

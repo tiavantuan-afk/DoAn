@@ -25,15 +25,14 @@ public class ThongKe {
         dsPN = new List_PN();
         dsNCC = new List_NCC();
         // Đọc dữ liệu từ file
-        dsMonAn.docFile("src/data/List_MonAn.txt");
-        dsNhanVien.docFile("src/data/List_NV.txt");
-        dsTonKho.docFile("src/data/List_TonKho.txt");
-        dsKHO.docFile("src/data/List_KHO.txt");
-        dsNguyenLieu.docFile("src/data/List_Nguyenlieu.txt");
-        dsCOMBO.docFile("src/data/List_COMBO.txt");
-        dsCTPN.docFile("src/data/List_CTPN.txt");
-        dsPN.docFile("src/data/List_PN.txt");
-        dsNCC.docFile("src/data/List_NCC.txt");
+        dsMonAn.docFile();
+        dsNhanVien.docFile();
+        dsKHO.docFile();
+        dsNguyenLieu.docFile();
+        dsCOMBO.docFile();
+        dsCTPN.docFile();
+        dsPN.docFile();
+        dsNCC.docFile();
     }
 
     public void menu() {

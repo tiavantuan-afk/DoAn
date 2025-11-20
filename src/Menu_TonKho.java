@@ -1,87 +1,75 @@
-import java.util.Scanner;
+// import java.util.Scanner;
 
-public class Menu_TonKho {
-    private List_TonKho quanLy;
-    private Scanner sc;
-    private String fileName = "src/data/List_TonKho.txt";
+// public class Menu_TonKho extends Menu_Main {
 
-    public Menu_TonKho() {
-        quanLy = new List_TonKho();
-        sc = new Scanner(System.in);
-    }
+// public void menu() {
+// int luaChon = -1;
 
-    public void menu() {
-        int luaChon = -1;
+// do {
+// System.out.println("\n===== MENU QUAN LY TON KHO =====");
+// System.out.println("1. Nhap danh sach ton kho");
+// System.out.println("2. Xuat danh sach ton kho");
+// System.out.println("3. Them san pham ton kho");
+// System.out.println("4. Sua thong tin ton kho");
+// System.out.println("5. Xoa san pham (theo ma)");
+// System.out.println("6. Tim kiem (theo ma)");
+// System.out.println("7. Tim kiem (theo ten)");
+// System.out.println("8. Thong ke ton kho");
+// System.out.println("9. Quay lai menu chinh");
+// System.out.println("0. Thoat");
+// System.out.print("Vui long chon: ");
 
-        do {
-            System.out.println("\n===== MENU QUAN LY TON KHO =====");
-            System.out.println("1. Nhap danh sach ton kho");
-            System.out.println("2. Xuat danh sach ton kho");
-            System.out.println("3. Them san pham ton kho");
-            System.out.println("4. Sua thong tin ton kho");
-            System.out.println("5. Xoa san pham (theo ma)");
-            System.out.println("6. Tim kiem (theo ma)");
-            System.out.println("7. Tim kiem (theo ten)");
-            System.out.println("8. Thong ke ton kho");
-            System.out.println("9. Quay lai menu chinh");
-            System.out.println("0. Thoat");
-            System.out.print("Vui long chon: ");
+// luaChon = sc.nextInt();
+// sc.nextLine();
 
-            luaChon = sc.nextInt();
-            sc.nextLine();
+// switch (luaChon) {
+// case 1:
+// DSTK.nhapds();
+// break;
+// case 2:
+// DSTK.docFile(fileName);
+// DSTK.xuat();
+// break;
+// case 3:
+// DSTK.them();
+// break;
+// case 4:
+// DSTK.docFile(fileName);
+// DSTK.sua();
+// break;
+// case 5:
+// DSTK.docFile(fileName);
+// System.out.print("Nhap ma kho can xoa: ");
+// String maCanXoa = sc.nextLine();
+// DSTK.xoaTheoMa(maCanXoa);
+// break;
+// case 6:
+// DSTK.docFile(fileName);
+// System.out.print("Nhap ma kho can tim: ");
+// String maCanTim = sc.nextLine();
+// DSTK.timKiemMa(maCanTim);
+// break;
+// case 7:
+// DSTK.docFile(fileName);
+// DSTK.timKiemTen();
+// break;
+// case 8:
+// DSTK.docFile(fileName);
+// DSTK.thongKe();
+// break;
+// case 9:
+// System.out.println("Quay lai menu chinh...");
+// Menu_Main mainMenu = new Menu_Main();
+// mainMenu.menuChinh();
+// case 0:
+// System.out.println("Cam on ban da su dung!");
+// System.exit(0);
+// break;
+// default:
+// System.out.println("Lua chon khong hop le!");
+// break;
+// }
+// } while (luaChon != 0 && luaChon != 9);
+// }
 
-            switch (luaChon) {
-                case 1:
-                    quanLy.nhapds();
-                    break;
-                case 2:
-                    quanLy.docFile(fileName);
-                    quanLy.xuat();
-                    break;
-                case 3:
-                    quanLy.them();
-                    break;
-                case 4:
-                    quanLy.docFile(fileName);
-                    quanLy.sua();
-                    break;
-                case 5:
-                    quanLy.docFile(fileName);
-                    System.out.print("Nhap ma kho can xoa: ");
-                    String maCanXoa = sc.nextLine();
-                    quanLy.xoaTheoMa(maCanXoa);
-                    break;
-                case 6:
-                    quanLy.docFile(fileName);
-                    System.out.print("Nhap ma kho can tim: ");
-                    String maCanTim = sc.nextLine();
-                    quanLy.timKiemMa(maCanTim);
-                    break;
-                case 7:
-                    quanLy.docFile(fileName);
-                    quanLy.timKiemTen();
-                    break;
-                case 8:
-                    quanLy.docFile(fileName);
-                    quanLy.thongKe();
-                    break;
-                case 9:
-                    System.out.println("Quay lai menu chinh...");
-                    Menu_Main mainMenu = new Menu_Main();
-                    mainMenu.menuChinh();
-                case 0:
-                    System.out.println("Cam on ban da su dung!");
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Lua chon khong hop le!");
-                    break;
-            }
-        } while (luaChon != 0 && luaChon != 9);
-    }
-
-    public static void main(String[] args) {
-        Menu_TonKho menu = new Menu_TonKho();
-        menu.menu();
-    }
-}
+// }

@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 public class CHITIETHOADON {
-    private String Mahd;
-    private String Masp;
-    private int SL;
-    private double DG;
-    private double Thanhtien;
+    public String Mahd;
+    public String Masp;
+    public int SL;
+    public double DG;
+    public double Thanhtien;
     Scanner sc = new Scanner(System.in);
 
     public CHITIETHOADON() {

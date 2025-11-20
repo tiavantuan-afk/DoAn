@@ -25,7 +25,8 @@ class List_KHO {
 	public void xuat() {
 		System.out.println("Danh sach hang hoa: ");
 		for (int i = 0; i < n; i++) {
-			if (ds[i] != null) ds[i].xuat();
+			if (ds[i] != null)
+				ds[i].xuat();
 		}
 	}
 
@@ -41,7 +42,7 @@ class List_KHO {
 		n++;
 		System.out.println("Da them hang hoa thanh cong.");
 	}
-	
+
 	// sửa hang theo mã
 	public void suahang() {
 		if (ds.length == 0) {
@@ -82,7 +83,7 @@ class List_KHO {
 		int choice = sc.nextInt();
 		sc.nextLine(); // Đọc bỏ ký tự newline
 
-		switch(choice){
+		switch (choice) {
 			case 1:
 				System.out.print("Nhap ma hang moi: ");
 				String maHangMoi = sc.nextLine();
@@ -142,7 +143,8 @@ class List_KHO {
 			}
 		}
 
-		if (!timkiem) System.out.println("Khong co trong danh sach.");
+		if (!timkiem)
+			System.out.println("Khong co trong danh sach.");
 	}
 
 	// tìm kiếm theo tên không tham số
@@ -157,7 +159,8 @@ class List_KHO {
 				ds[i].xuat();
 			}
 		}
-		if (!timkiem) System.out.println("Khong co trong danh sach.");
+		if (!timkiem)
+			System.out.println("Khong co trong danh sach.");
 	}
 
 	// xóa hàng theo mã
@@ -165,8 +168,8 @@ class List_KHO {
 		boolean timkiem = false;
 		for (int i = 0; i < n; i++) {
 			if (ds[i] != null && ds[i].maHang != null && ds[i].maHang.equalsIgnoreCase(MAC)) {
-				for (int j = i; j < n - 1; j++) 
-				ds[j] = ds[j + 1];
+				for (int j = i; j < n - 1; j++)
+					ds[j] = ds[j + 1];
 				ds[n - 1] = null;
 				n--;
 				System.out.println("Da xoa hang hoa co ma: " + MAC);
@@ -174,7 +177,8 @@ class List_KHO {
 				break;
 			}
 		}
-		if (!timkiem) System.out.println("Khong tim thay hang hoa co ma: " + MAC);
+		if (!timkiem)
+			System.out.println("Khong tim thay hang hoa co ma: " + MAC);
 	}
 
 	// xóa hàng theo tên
@@ -182,8 +186,8 @@ class List_KHO {
 		boolean timkiem = false;
 		for (int i = 0; i < n; i++) {
 			if (ds[i] != null && ds[i].getTenHang() != null && ds[i].getTenHang().equalsIgnoreCase(TEN)) {
-				for (int j = i; j < n - 1; j++) 
-				ds[j] = ds[j + 1];
+				for (int j = i; j < n - 1; j++)
+					ds[j] = ds[j + 1];
 				ds[n - 1] = null;
 				n--;
 				System.out.println("Da xoa hang hoa co ten: " + TEN);
@@ -191,82 +195,81 @@ class List_KHO {
 				break;
 			}
 		}
-		if (!timkiem) System.out.println("Khong tim thay hang hoa co ten: " + TEN);
+		if (!timkiem)
+			System.out.println("Khong tim thay hang hoa co ten: " + TEN);
 	}
 
 	// thống kê hàng theo mã
 	public void thongkeKho() {
-    if (n == 0) {
-        System.out.println("Danh sach hang hoa rong!");
-        return;
-    }
+		if (n == 0) {
+			System.out.println("Danh sach hang hoa rong!");
+			return;
+		}
 
-    System.out.println("=== THONG KE KHO HANG HOA ===");
-    System.out.println("Tong so mat hang: " + n);
+		System.out.println("=== THONG KE KHO HANG HOA ===");
+		System.out.println("Tong so mat hang: " + n);
 
-    int tongSoLuong = 0;
-    double tongGiaTri = 0.0;
+		int tongSoLuong = 0;
+		double tongGiaTri = 0.0;
 
-    double giaCaoNhat = ds[0].getDonGia();
-    double giaThapNhat = ds[0].getDonGia();
-    String tenGiaCao = ds[0].getTenHang();
-    String tenGiaThap = ds[0].getTenHang();
+		double giaCaoNhat = ds[0].getDonGia();
+		double giaThapNhat = ds[0].getDonGia();
+		String tenGiaCao = ds[0].getTenHang();
+		String tenGiaThap = ds[0].getTenHang();
 
-    int giaRe = 0;
-    int giaTrungBinh = 0;
-    int giaCao = 0;
+		int giaRe = 0;
+		int giaTrungBinh = 0;
+		int giaCao = 0;
 
-    for (int i = 0; i < n; i++) {
-        if (ds[i] != null) {
-            int soLuong = ds[i].getSoLuong();
-            double donGia = ds[i].getDonGia();
+		for (int i = 0; i < n; i++) {
+			if (ds[i] != null) {
+				int soLuong = ds[i].getSoLuong();
+				double donGia = ds[i].getDonGia();
 
-            tongSoLuong += soLuong;
-            tongGiaTri += soLuong * donGia;
+				tongSoLuong += soLuong;
+				tongGiaTri += soLuong * donGia;
 
-            // Tìm giá cao/ thấp
-            if (donGia > giaCaoNhat) {
-                giaCaoNhat = donGia;
-                tenGiaCao = ds[i].getTenHang();
-            }
-            if (donGia < giaThapNhat) {
-                giaThapNhat = donGia;
-                tenGiaThap = ds[i].getTenHang();
-            }
+				// Tìm giá cao/ thấp
+				if (donGia > giaCaoNhat) {
+					giaCaoNhat = donGia;
+					tenGiaCao = ds[i].getTenHang();
+				}
+				if (donGia < giaThapNhat) {
+					giaThapNhat = donGia;
+					tenGiaThap = ds[i].getTenHang();
+				}
 
-            // Phân loại giá
-            if (donGia < 10000) {
-                giaRe++;
-            } else if (donGia <= 30000) {
-                giaTrungBinh++;
-            } else {
-                giaCao++;
-            }
-        }
-    }
+				// Phân loại giá
+				if (donGia < 10000) {
+					giaRe++;
+				} else if (donGia <= 30000) {
+					giaTrungBinh++;
+				} else {
+					giaCao++;
+				}
+			}
+		}
 
-    System.out.println("Tong so luong hang: " + tongSoLuong);
-    System.out.printf("Tong gia tri hang hoa: %.2f VND\n", tongGiaTri);
+		System.out.println("Tong so luong hang: " + tongSoLuong);
+		System.out.printf("Tong gia tri hang hoa: %.2f VND\n", tongGiaTri);
 
-    System.out.println("\n--- PHAN LOAI THEO DON GIA ---");
-    System.out.println("Gia re (<10k): " + giaRe + " mat hang");
-    System.out.println("Gia trung binh (10k-30k): " + giaTrungBinh + " mat hang");
-    System.out.println("Gia cao (>30k): " + giaCao + " mat hang");
+		System.out.println("\n--- PHAN LOAI THEO DON GIA ---");
+		System.out.println("Gia re (<10k): " + giaRe + " mat hang");
+		System.out.println("Gia trung binh (10k-30k): " + giaTrungBinh + " mat hang");
+		System.out.println("Gia cao (>30k): " + giaCao + " mat hang");
 
-    System.out.println("\n--- GIA MAX/MIN ---");
-    System.out.printf("Gia cao nhat: %.2f VND (%s)\n", giaCaoNhat, tenGiaCao);
-    System.out.printf("Gia thap nhat: %.2f VND (%s)\n", giaThapNhat, tenGiaThap);
+		System.out.println("\n--- GIA MAX/MIN ---");
+		System.out.printf("Gia cao nhat: %.2f VND (%s)\n", giaCaoNhat, tenGiaCao);
+		System.out.printf("Gia thap nhat: %.2f VND (%s)\n", giaThapNhat, tenGiaThap);
 
-    System.out.println("\n--- TY LE PHAN TRAM ---");
-    System.out.printf("Gia re: %.1f%%\n", (double) giaRe / n * 100);
-    System.out.printf("Gia trung binh: %.1f%%\n", (double) giaTrungBinh / n * 100);
-    System.out.printf("Gia cao: %.1f%%\n", (double) giaCao / n * 100);
-}
+		System.out.println("\n--- TY LE PHAN TRAM ---");
+		System.out.printf("Gia re: %.1f%%\n", (double) giaRe / n * 100);
+		System.out.printf("Gia trung binh: %.1f%%\n", (double) giaTrungBinh / n * 100);
+		System.out.printf("Gia cao: %.1f%%\n", (double) giaCao / n * 100);
+	}
 
-
-
-	//Doc file
-	public void docFile(String tenFile) {
+	// Doc file
+	public void docFile() {
 		try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_KHO.txt"))) {
 			String line;
 			KHO x = null;
@@ -286,7 +289,7 @@ class List_KHO {
 					ds = Arrays.copyOf(ds, ds.length + 1);
 					ds[ds.length - 1] = x;
 					n++;
-					System.out.println("Doc: " + x.maHang + " - " + x.tenHang);
+
 				}
 			}
 			System.out.println("Da doc file thanh cong.");
@@ -296,8 +299,8 @@ class List_KHO {
 		}
 	}
 
-		//Ghi file
-	public void ghiFile(String tenFile) {
+	// Ghi file
+	public void ghiFile() {
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/data/List_KHO.txt"))) {
 			bw.write("=== DANH SACH HANG HOA ===\n");
 			bw.write("So luong hang hoa: " + n + "\n");
@@ -312,9 +315,7 @@ class List_KHO {
 			System.out.println("Loi ghi file: " + e.getMessage());
 		}
 	}
-	
 
-	// get/set
 	public KHO[] getDs() {
 		return ds;
 	}

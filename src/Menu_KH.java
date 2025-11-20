@@ -1,20 +1,6 @@
-import java.util.Scanner;
 
-public class Menu_KH {
-    private List_KHACHHANG quanLy;
-    private String fileName;
-    private Scanner sc;
-    public static void main(String[] args) {
-        Menu_KH menu = new Menu_KH();
-        menu.menu();
-    }
-    public Menu_KH() {
-        quanLy = new List_KHACHHANG();
-        sc = new Scanner(System.in);
-        fileName = "src/data/List_KHACHHANG.txt";
-        quanLy.docfile(fileName);
-    }
-
+public class Menu_KH extends Menu_Main {
+    @Override
     public void menu() {
         int luaChon = -1;
 
@@ -37,36 +23,36 @@ public class Menu_KH {
 
             switch (luaChon) {
                 case 1:
-                    quanLy.nhap();
-                    quanLy.ghiFile(fileName);
+                    DSKH.nhap();
+                    DSKH.ghiFile();
                     break;
                 case 2:
-                    quanLy.xuat();
+                    DSKH.xuat();
                     break;
                 case 3:
-                    quanLy.themkhachhang();
-                    quanLy.ghiFile(fileName);
+                    DSKH.themkhachhang();
+                    DSKH.ghiFile();
                     break;
                 case 4:
-                    quanLy.docfile(fileName);
-                    quanLy.suakhachhang();
+                    DSKH.suakhachhang();
+                    DSKH.ghiFile();
                     break;
                 case 5:
                     System.out.print("Nhap ma khach hang can xoa: ");
                     String maCanXoa = sc.nextLine().trim();
-                    quanLy.xoakhachhang(maCanXoa);
-                    quanLy.ghiFile(fileName);
+                    DSKH.xoakhachhang(maCanXoa);
+                    DSKH.ghiFile();
                     break;
                 case 6:
                     System.out.print("Nhap ma can tim: ");
                     String maCanTim = sc.nextLine().trim();
-                    quanLy.timkiemtheoma(maCanTim);
+                    DSKH.timkiemtheoma(maCanTim);
                     break;
                 case 7:
-                    quanLy.timkiemtheoten();
+                    DSKH.timkiemtheoten();
                     break;
                 case 8:
-                    quanLy.thongKeKhachHangTheoHo();
+                    DSKH.thongKeKhachHangTheoHo();
                     break;
                 case 9:
                     System.out.println("Quay lai menu chinh...");
@@ -80,6 +66,5 @@ public class Menu_KH {
             }
         } while (luaChon != 0 && luaChon != 9);
     }
-
 
 }

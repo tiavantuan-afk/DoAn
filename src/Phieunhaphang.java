@@ -28,7 +28,6 @@ public class Phieunhaphang {
     Phieunhaphang(Phieunhaphang t) {
         maPNH = t.maPNH;
         maNV = t.maNV;
-        ngay = t.ngay;
         maNcc = t.maNcc;
         tongtien = t.tongtien;
     }
@@ -98,7 +97,8 @@ public class Phieunhaphang {
         return tongtien;
     }
 
-    public void settongtien(String tongtien) {
+    public void settongtien(Double tongtien) {
+        this.tongtien = tongtien;
     }
 
 }

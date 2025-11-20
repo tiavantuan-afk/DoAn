@@ -1,17 +1,8 @@
-import java.util.Scanner;
 
-public class Menu_KHO {
-	private List_KHO quanLy;
-	private Scanner sc;
-
-	public Menu_KHO() {
-		quanLy = new List_KHO();
-		sc = new Scanner(System.in);
-	}
-
+public class Menu_KHO extends Menu_Main {
+	@Override
 	public void menu() {
 		int luaChon = -1;
-		quanLy.docFile(String.valueOf("src/data/List_KHO.txt"));
 		do {
 			System.out.println("\n--- MENU QUAN LY KHO HANG ---");
 			System.out.println("1. Nhap danh sach hang hoa: ");
@@ -30,45 +21,42 @@ public class Menu_KHO {
 			sc.nextLine();
 			switch (luaChon) {
 				case 1:
-					quanLy.nhap();
+					DSK.nhap();
 					break;
 				case 2:
-					quanLy.xuat();
+					DSK.xuat();
 					break;
 				case 3:
-					quanLy.them();
+					DSK.them();
+					DSK.ghiFile();
 					break;
 				case 4:
-					quanLy.suahang();
+					DSK.suahang();
+					DSK.ghiFile();
 					break;
 				case 5:
 					System.out.print("Nhap ma hang can xoa: ");
 					String maCanXoa = sc.nextLine();
-					quanLy.xoahang(maCanXoa);
+					DSK.xoahang(maCanXoa);
 					break;
 				case 6:
 					System.out.print("Nhap ten can xoa: ");
 					String tenCanXoa = sc.nextLine();
-					quanLy.xoahangtheoten(tenCanXoa);
+					DSK.xoahangtheoten(tenCanXoa);
 					break;
 				case 7:
 					System.out.print("Nhap ma hang can tim: ");
 					String maCanTim = sc.nextLine();
-					quanLy.timkiemtheoma(maCanTim);
+					DSK.timkiemtheoma(maCanTim);
 					break;
 				case 8:
 					System.out.print("Nhap ten hang can tim: ");
 					String tenCanTim = sc.nextLine();
-					quanLy.timkiemtheoten();
+					DSK.timkiemtheoten();
 					break;
 				case 9:
-					quanLy.thongkeKho();
+					DSK.thongkeKho();
 					break;
-				case 10:
-					System.out.println("Quay lai menu chinh...");
-					Menu_Main mainMenu =  new Menu_Main();
-					mainMenu.menuChinh();
-					return;
 				case 0:
 					System.out.println("Thoat chuong trinh.");
 					break;
@@ -77,11 +65,6 @@ public class Menu_KHO {
 					break;
 			}
 		} while (luaChon != 0);
-		sc.close();
 	}
 
-	public static void main(String[] args) {
-		Menu_KHO menu = new Menu_KHO();
-		menu.menu();
-	}
 }

@@ -1,17 +1,9 @@
-import java.util.Scanner;
 
-public class Menu_Nguyenlieu {
-	private List_Nguyenlieu quanLy;
-	private Scanner sc;
-
-	public Menu_Nguyenlieu() {
-		quanLy = new List_Nguyenlieu();
-		sc = new Scanner(System.in);
-	}
-
+public class Menu_Nguyenlieu extends Menu_Main {
+	@Override
 	public void menu() {
 		int luaChon = -1;
-		quanLy.docFile(String.valueOf("src/data/List_Nguyenlieu.txt"));
+
 		do {
 			System.out.println("\n--- MENU QUAN LY NGUYEN LIEU ---");
 			System.out.println("1. Nhap danh sach nguyen lieu: ");
@@ -30,44 +22,39 @@ public class Menu_Nguyenlieu {
 			sc.nextLine();
 			switch (luaChon) {
 				case 1:
-					quanLy.nhap();
+					DSNL.nhap();
 					break;
 				case 2:
-					quanLy.xuat();
+					DSNL.xuat();
 					break;
 				case 3:
-					quanLy.them();
+					DSNL.them();
 					break;
 				case 4:
-					quanLy.suanguyen();
+					DSNL.suanguyen();
 					break;
 				case 5:
 					System.out.print("Nhap ma nguyen lieu can xoa: ");
 					String maCanXoa = sc.nextLine();
-					quanLy.xoanguyen(maCanXoa);
+					DSNL.xoanguyen(maCanXoa);
 					break;
 				case 6:
 					System.out.print("Nhap ten can xoa: ");
 					String tenCanXoa = sc.nextLine();
-					quanLy.xoanguyentheoten(tenCanXoa);
+					DSNL.xoanguyentheoten(tenCanXoa);
 					break;
 				case 7:
 					System.out.print("Nhap ma can tim: ");
 					String maCanTim = sc.nextLine();
-					quanLy.timkiemtheoma(maCanTim);
+					DSNL.timkiemtheoma(maCanTim);
 				case 8:
 					System.out.print("Nhap ten can tim: ");
 					String tenCanTim = sc.nextLine();
-					quanLy.timkiemtheoten();
+					DSNL.timkiemtheoten();
 					break;
 				case 9:
-					quanLy.thongkeNguyenLieu();
+					DSNL.thongkeNguyenLieu();
 					break;
-				case 10:
-					System.out.println("Quay lai menu chinh...");
-					Menu_Main mainMenu =  new Menu_Main();
-					mainMenu.menuChinh();
-					return;
 				case 0:
 					System.out.println("Thoat chuong trinh.");
 					break;
@@ -79,8 +66,4 @@ public class Menu_Nguyenlieu {
 		sc.close();
 	}
 
-	public static void main(String[] args) {
-		Menu_Nguyenlieu menu = new Menu_Nguyenlieu();
-		menu.menu();
-	}
 }
