@@ -94,8 +94,9 @@ public class List_KHACHHANG {
         }
         return false;
     }
-    public void themkhachhang(KHACHHANG khMoi){
-        if (khMoi == null){
+
+    public void themkhachhang(KHACHHANG khMoi) {
+        if (khMoi == null) {
             return;
         }
         if (!OneIDKH(khMoi.getMaKH())) {
@@ -113,9 +114,6 @@ public class List_KHACHHANG {
         System.out.println("\n---- THEM KHACH HANG MOI ----");
         KHACHHANG khMoi = new KHACHHANG();
         khMoi.nhap();
-
-            } 
-
         // Add vào mảng giống MonAn
         dskh = Arrays.copyOf(dskh, dskh.length + 1);
         dskh[dskh.length - 1] = khMoi;
@@ -357,13 +355,15 @@ public class List_KHACHHANG {
             System.out.println("Loi doc file: " + e.getMessage());
         }
     }
+
     public String getTenKhachHang(String maKHCantim) {
-    for (int i = 0; i < dskh.length; i++) {
-        if (dskh[i] != null && dskh[i].getMaKH() != null && dskh[i].getMaKH().equalsIgnoreCase(maKHCantim)) {
-            return dskh[i].getHo() + " " + dskh[i].getTen(); 
-            // Hoặc nếu chỉ có 1 biến HoTen: return dskh[i].getHoTen();
+        for (int i = 0; i < dskh.length; i++) {
+            if (dskh[i] != null && dskh[i].getMaKH() != null && dskh[i].getMaKH().equalsIgnoreCase(maKHCantim)) {
+                return dskh[i].getHo() + " " + dskh[i].getTen();
+                // Hoặc nếu chỉ có 1 biến HoTen: return dskh[i].getHoTen();
+            }
         }
+        return "khong tim tha"; // Nếu không tìm thấy
     }
-    return "khong tim tha"; // Nếu không tìm thấy
-}
+
 }

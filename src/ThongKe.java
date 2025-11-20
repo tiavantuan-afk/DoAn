@@ -5,19 +5,19 @@ public class ThongKe {
     private Scanner sc = new Scanner(System.in);
     private List_MonAn dsMonAn;
     private List_NhanVien dsNhanVien;
-    private List_TonKho dsTonKho;
+    private List_Cook dsCook;
     private List_KHO dsKHO;
     private List_Nguyenlieu dsNguyenLieu;
     private List_COMBO dsCOMBO;
-
     private List_CTPN dsCTPN;
     private List_PN dsPN;
     private List_NCC dsNCC;
+    String name;
 
     public ThongKe() {
         dsMonAn = new List_MonAn();
         dsNhanVien = new List_NhanVien();
-        dsTonKho = new List_TonKho();
+        dsCook = new List_Cook();
         dsKHO = new List_KHO();
         dsNguyenLieu = new List_Nguyenlieu();
         dsCOMBO = new List_COMBO();
@@ -25,12 +25,12 @@ public class ThongKe {
         dsPN = new List_PN();
         dsNCC = new List_NCC();
         // Đọc dữ liệu từ file
-        dsMonAn.docFile();
+        dsMonAn.docFile(name);
         dsNhanVien.docFile();
         dsKHO.docFile();
         dsNguyenLieu.docFile();
         dsCOMBO.docFile();
-        dsCTPN.docFile();
+        dsCTPN.docFile(name);
         dsPN.docFile();
         dsNCC.docFile();
     }
@@ -86,7 +86,7 @@ public class ThongKe {
         System.out.printf("%-15s |", "Tong So");
 
         // Tổng số từng loại
-        double[] tongSo = { dsMonAn.getN(), dsNhanVien.getN(), dsTonKho.getN() };
+        double[] tongSo = { dsMonAn.getN(), dsNhanVien.getN(), dsCook.getN() };
         for (int i = 0; i < tongSo.length; i++) {
             System.out.printf(/* format: */ "%-15.0f |", tongSo[i]);
         }
@@ -111,7 +111,7 @@ public class ThongKe {
         }
 
         double tongGiaTriTK = 0;
-        TonKho[] dsTK = dsTonKho.getDs();
+        Cook[] dsTK = dsCook.getDs();
         for (int i = 0; i < dsTK.length; i++) {
             if (dsTK[i] != null) {
                 tongGiaTriTK += dsTK[i].getSoLuongTon() * dsTK[i].getGiaNhap();
@@ -158,7 +158,7 @@ public class ThongKe {
                 }
             } else { // Tồn kho
             } else if (i == 2) { // Tồn kho
-                TonKho[] ds = dsTonKho.getDs();
+                Cook[] ds = dsCook.getDs();
                 for (int j = 0; j < ds.length; j++) {
                     if (ds[j] != null) {
                         tongGiaTri += ds[j].getSoLuongTon() * ds[j].getGiaNhap();

@@ -253,48 +253,55 @@ class List_Nguyenlieu {
 
 	// Doc ghi file
 	public void docFile() {
-		{
-			try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_Nguyenlieu.txt"))) {
-				String line;
-				Nguyenlieu x = null;
+		try (BufferedReader br = new BufferedReader(new FileReader("data/List_Nguyenlieu.txt"))) {
+			String line;
+			ds = new Nguyenlieu[0];
+			n = 0;
 
-				ds = new Nguyenlieu[0];
-				n = 0;
-
-				while ((line = br.readLine()) != null) {
-					if (line.startsWith("===") || line.startsWith("So luong")) {
-						continue;
-					}
-					String[] t = line.split("-");
-					if (t.length >= 3) {
-						x = new Nguyenlieu(t[0], t[1], Double.parseDouble(t[2]));
-
-						// add vao mang
-						ds = Arrays.copyOf(ds, ds.length + 1);
-						ds[ds.length - 1] = x;
-						n++;
-
-					}
+			while ((line = br.readLine()) != null) {
+				if (line.trim().isEmpty() || line.startsWith("===") || line.startsWith("So luong")) {
+					continue;
 				}
-				System.out.println("Da doc file thanh cong.");
-				System.out.println("So luong nguyen lieu: " + n);
-
-			} catch (IOException e) {
-				System.out.println("Loi doc file: " + e.toString());
+				String[] t = line.split("-");
+				if (t.length >= 4) {
+					Nguyenlieu x = new Nguyenlieu(t[0], t[1], Double.parseDouble(t[2]), Integer.parseInt(t[3]));
+					ds = Arrays.copyOf(ds, ds.length + 1);
+					ds[ds.length - 1] = x;
+					n++;
+				}
 			}
+			System.out.println("Đã đọc file thành công. Số lượng nguyên liệu: " + n);
+		} catch (IOException e) {
+			System.out.println("Lỗi đọc file: " + e.toString());
+		}
+	}
 
+	public void CapNhatSoLuong(String maNL, int SL) {
+		for (int i = 0; i < ds.length; i++) {
+			if (ds[i].maNL.equalsIgnoreCase(maNL)) {
+				ds[i].setSL(ds[i].SL + SL);
+				ghiFile();
+				return;
+			}
+		}
+	}
+
+	public void GiamSoLuong(String maNL, int SL) {
+		for (int i = 0; i < ds.length; i++) {
+			if (ds[i].maNL.equalsIgnoreCase(maNL)) {
+				ds[i].setSL(ds[i].SL - SL);
+				ghiFile();
+				return;
+			}
 		}
 	}
 
 	// ghi file
 	public void ghiFile() {
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/data/List_Nguyenlieu.txt"))) {
-			bw.write("==== DANH SACH NGUYEN LIEU ====\n");
-			bw.write("So luong nguyen lieu: " + n + "\n");
-
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("data/List_Nguyenlieu.txt"))) {
 			for (int i = 0; i < n; i++) {
 				if (ds[i] != null) {
-					bw.write("NGUYENLIEU-" + ds[i].maNL + "-" + ds[i].tenNL + "-" + ds[i].dongia + "\n");
+					bw.write(ds[i].maNL + "-" + ds[i].tenNL + "-" + ds[i].dongia + "-" + ds[i].SL + "\n");
 				}
 			}
 			System.out.println("Da ghi file thanh cong.");

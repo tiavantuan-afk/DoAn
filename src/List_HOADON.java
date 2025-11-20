@@ -12,6 +12,7 @@ public class List_HOADON {
 
     public List_HOADON() {
         dshd = new HOADON[0];
+        docFile();
     }
 
     public List_HOADON(int n) {

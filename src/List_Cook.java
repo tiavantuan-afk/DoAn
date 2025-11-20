@@ -7,22 +7,22 @@ import java.io.IOException;
 import java.util.*;
 
 //TRAN CHI LOC HAS BEEN HERE
-public class ListCook {
+public class List_Cook {
     public cook[] ds;
     private int n;
     private Scanner sc = new Scanner(System.in);
 
-    ListCook() {
+    List_Cook() {
         n = 0;
         ds = new cook[0];
     }
 
-    ListCook(int n) {
+    List_Cook(int n) {
         this.n = n;
         ds = new cook[n];
     }
 
-    ListCook(ListCook x) {
+    List_Cook(List_Cook x) {
         this.n = ds.length;
         this.ds = Arrays.copyOf(ds, ds.length);
     }
@@ -47,13 +47,13 @@ public class ListCook {
     }
 
     public void fileReader() {
-        File f = new File();
+        File f = new File("\"src/data/List_Cook.txt\"");
         if (!f.exists()) {
             System.out.println("File chưa tồn tại!");
             return;
         }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_Cook.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] t = line.split("-");
@@ -70,7 +70,7 @@ public class ListCook {
     }
 
     public void fileWriterALL() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter())) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/data/List_Cook.txt"))) {
             for (int i = 0; i < n; i++) {
                 bw.write(ds[i].toString());
                 bw.newLine();

@@ -1,7 +1,8 @@
 import java.util.*;
 
-public class QLC extends Menu_Main {
+public class Menu_Cook extends Menu_Main {
     private Scanner sc = new Scanner(System.in);
+    String name;
 
     @Override
     public void menu() {
@@ -22,37 +23,37 @@ public class QLC extends Menu_Main {
                     do {
                         System.out.print("Nhap ma cong thuc: ");
                         id = sc.nextLine();
-                        if (!LisC.OneIDPN(id)) {
+                        if (!DSCOOK.OneID(id)) {
                             System.out.println("Ma cong thuc da ton tai! Vui long nhap lai.");
                         }
-                    } while (!ListC.OneIDPN(id));
-                    ListMA.CapNhatSoLuong(ListC.getIDSP(id), 1);
-                    ListMA.fileWriter();
-                    String[] idnl = ListC.getCNL(id);
+                    } while (!DSCOOK.OneID(id));
+                    DSMA.CapNhatSoLuong(DSCOOK.getIDSP(id), 1);
+                    DSMA.ghiFile(name);
+                    String[] idnl = DSCOOK.getCNL(id);
                     for (int i = 0; i < n; i++) {
-                        ListNL.giamsoluong(idnl[i], 1);
+                        DSNL.GiamSoLuong(idnl[i], 1);
                     }
-                    ListNL.fileWriter();
+                    DSNL.ghiFile();
                 case 1:
-                    ListC.xuat();
+                    DSCOOK.xuat();
                     break;
                 case 2:
                     String id;
                     do {
                         System.out.print("Nhap ma cong thuc: ");
                         id = sc.nextLine();
-                        if (!LisC.OneIDPN(id)) {
+                        if (!DSCOOK.OneID(id)) {
                             System.out.println("Ma cong thuc da ton tai! Vui long nhap lai.");
                         }
-                    } while (!ListC.OneIDPN(id));
+                    } while (!DSCOOK.OneID(id));
                     String idsp;
                     do {
                         System.out.print("Nhap ma san pham: ");
                         idsp = sc.nextLine();
-                        if (!ListMA.TonTai(id)) {
+                        if (!DSMA.TonTai(id)) {
                             System.out.println("Ma san pham khong ton tai! Vui long nhap lai.");
                         }
-                    } while (!ListMa.TonTai(id));
+                    } while (!DSMA.TonTai(id));
                     System.out.println("nhap so luong nguyen: ");
                     int n = sc.nextInt();
                     sc.nextLine();
@@ -61,30 +62,30 @@ public class QLC extends Menu_Main {
                         do {
                             System.out.println("nhap nguyen lieu thu " + (i + 1) + ":");
                             idnl[i] = sc.nextLine();
-                            if (!ListNL.TonTai(idnl)) {
+                            if (!DSNL.TonTai(idnl)) {
                                 System.out.println("ma nguyen lieu nay khong ton tai");
                             }
-                        } while (!ListNL.TonTai(idnl));
+                        } while (!DSNL.TonTai(idnl));
                     }
-                    ListC.them(id, idsp, idnl);
-                    ListC.fileWriter();
+                    DSCOOK.them(id, idsp, idnl);
+                    DSCOOK.fileWriterALL();
                     break;
                 case 3:
                     System.out.println("nhap chi tiet phieu nhap");
                     String ID_nhap = sc.nextLine();
-                    ListPN.xoa(ID_nhap);
-                    ListPN.fileWriterALL();
-                    ListCTN.xoaALL(ID_nhap);
-                    ListCTN.fileWriterALL();
+                    DSPN.xoa(ID_nhap);
+                    DSPN.ghiFile();
+                    DSCOOK.xoaALL(ID_nhap);
+                    DSCOOK.fileWriterALL();
                     break;
                 case 4:
                     System.out.print("Nhap ma phieu can sua: ");
-                    ListPN.sua(sc.nextLine());
-                    ListPN.fileWriterALL();
+                    DSPN.sua(sc.nextLine());
+                    DSPN.fileWriterALL();
                     break;
                 case 5:
                     System.out.print("Nhap ma phieu can tim: ");
-                    ListPN.timkiemID(sc.nextLine());
+                    DSPN.timkiem(sc.nextLine());
                     break;
                 case 0:
                     System.out.println("Thoat chuong trinh quan ly phieu nhap.");

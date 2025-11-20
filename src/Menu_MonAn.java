@@ -1,5 +1,7 @@
 
 public class Menu_MonAn extends Menu_Main {
+    String name;
+
     @Override
     public void menu() {
         int luaChon = -1;
@@ -22,7 +24,7 @@ public class Menu_MonAn extends Menu_Main {
             switch (luaChon) {
                 case 1:
                     DSMA.nhapds();
-                    DSMA.ghiFile();
+                    DSMA.ghiFile(name);
                     break;
                 case 2:
                     DSMA.xuat();
@@ -42,18 +44,18 @@ public class Menu_MonAn extends Menu_Main {
 
                     } while (loai != 1 && loai != 2);
                     DSMA.themloaisp(loai);
-                    DSMA.ghiFile();
+                    DSMA.ghiFile(name);
                     break;
                 case 4:
-                    DSMA.docFile();
+                    DSMA.docFile(name);
                     DSMA.sua();
-                    DSMA.ghiFile();
+                    DSMA.ghiFile(name);
                     break;
                 case 5:
                     System.out.print("Nhap ma san pham can xoa: ");
                     String maCanXoa = sc.nextLine().trim();
                     DSMA.xoaTheoMa(maCanXoa);
-                    DSMA.ghiFile();
+                    DSMA.ghiFile(name);
                     break;
                 case 6:
                     System.out.print("Nhap ma can tim: ");
