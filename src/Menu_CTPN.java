@@ -47,6 +47,7 @@ public class Menu_CTPN extends Menu_Main {
                 case 3:
                     timkiemVaHienThiKetQua();
                     break;
+<<<<<<< HEAD
                 case 4:
                     DSCTPN.sua();
                     DSCTPN.ghiFile();
@@ -59,6 +60,16 @@ public class Menu_CTPN extends Menu_Main {
                     break;
                 case 6:
                     DSCTPN.thongketheongay();
+=======
+                case 4: 
+                    list.timtheoma(fileName);
+                    break;
+                case 5: 
+                    list.suatheoma(fileName);
+                    break;
+                case 6:
+                    list.xoatheoma(fileName);
+>>>>>>> c2f8e2ac9b0667321a94bad01043749a22dd6288
                     break;
 
                 case 0:

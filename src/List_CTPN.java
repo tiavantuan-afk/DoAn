@@ -17,7 +17,7 @@ public class List_CTPN {
         n = sc.nextInt();
         sc.nextLine();
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < ds.length; i++) {
             System.out.println("Chi tiet phieu nhap " + (i + 1) + ":");
             ds[i] = new Chitietphieunhap();
             ds[i].nhap();
@@ -27,7 +27,7 @@ public class List_CTPN {
     // Xuất danh sách
     public void xuat() {
         System.out.println("DANH SACH CHI TIET PHIEU NHAP");
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < ds.length; i++) {
             if (ds[i] != null)
                 System.out.println(ds[i]);
         }
@@ -139,7 +139,7 @@ public class List_CTPN {
     public void themTheoMa(){
         System.out.println("Them nha cung cap");
         Chitietphieunhap ctpnmoi = new Chitietphieunhap();
-        ctpnmoi.nhap(true);
+        ctpnmoi.nhap();
         if(!OneIDNCC(ctpnmoi.getmaNH())){
             System.out.print("Ma nha cung cap" + ctpnmoi.getmaNH()+ "da ton tai");
         }

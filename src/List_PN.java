@@ -72,12 +72,20 @@ public class List_PN {
             System.out.println("Loi ghi file");
         }
     }
+<<<<<<< HEAD
 
     public boolean OneIDPN(String mapn) {
         if (mapn == null)
             return false;
         for (int i = 0; i < ds.length; i++) {
             if (ds[i] != null && ds[i].getmaPNH() != null && ds[i].getmaPNH().equalsIgnoreCase(mapn)) {
+=======
+     public boolean OneIDPN(String mapn){
+        if(mapn == null)
+        return false;
+        for(int i = 0;i < n;i++){
+            if(ds[i] != null && ds[i].getmaPNH() != null && ds[i].getmaPNH().equalsIgnoreCase(mapn)){
+>>>>>>> c2f8e2ac9b0667321a94bad01043749a22dd6288
                 return true;
             }
         }
@@ -113,6 +121,7 @@ public class List_PN {
 
     }
 
+<<<<<<< HEAD
     public void timTheoMa(String macantim) {
         boolean tim = false;
         for (int i = 0; i < ds.length; i++) {
@@ -120,6 +129,15 @@ public class List_PN {
                 ds[i].toString();
                 tim = true;
                 break;
+=======
+    public void timtheoma(String macantim) {
+         boolean tim = false;
+          for(int i = 0;i < ds.length; i++){
+            if (ds[i] != null && ds[i].getmaPNH() != null && ds[i].getmaPNH().equalsIgnoreCase(macantim)){
+            ds[i].toString();
+            tim = true;
+            break;  
+>>>>>>> c2f8e2ac9b0667321a94bad01043749a22dd6288
             }
         }
         if (!tim)

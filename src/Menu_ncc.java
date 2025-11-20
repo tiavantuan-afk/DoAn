@@ -7,12 +7,10 @@ public class Menu_ncc extends Menu_Main {
             System.out.println("2.Xuat danh sach nha cung cap");
             System.out.println("3.Tim kiem nha cung cap theo ma");
             System.out.println("4.Them nha cung cap theo ma");
-            System.out.println("5.Them nha cung cap theo đia chi");
-            System.out.println("6.Xoa nha cung cap theo ma");
-            System.out.println("7.Xoa nha cung cap theo so đien thoai");
-            System.out.println("8.Sua nha cung cap theo ma");
-            System.out.println("9.Thong ke nha cung cap theo ho");
-            System.out.println("10.Quay lai Menu chinh");
+            System.out.println("5.Xoa nha cung cap theo ma");
+            System.out.println("6.Sua nha cung cap theo ma");
+            System.out.println("7.Thong ke nha cung cap theo ho");
+            System.out.println("8.Quay lai Menu chinh");
             System.out.println("0.Thoat");
             System.out.print("Chon chuc nang: ");
             chon = sc.nextInt();
@@ -25,14 +23,19 @@ public class Menu_ncc extends Menu_Main {
                     DSNCC.xuat();
                     break;
                 case 3:
+<<<<<<< HEAD
                     System.out.print("Nhập tên nhà cung cấp cần tìm: ");
                     String ten = sc.nextLine();
                     DSNCC.timKiemTheoTen(ten);
+=======
+                    list.timtheoma(fileName);
+>>>>>>> c2f8e2ac9b0667321a94bad01043749a22dd6288
                     break;
                 case 4:
                     DSNCC.themtheoma();
                     break;
                 case 5:
+<<<<<<< HEAD
                     DSNCC.themtheodiachi();
                     break;
                 case 6:
@@ -48,6 +51,20 @@ public class Menu_ncc extends Menu_Main {
                     DSNCC.thongketheohoncc();
                     break;
 
+=======
+                    list.xoatheoma(fileName);
+                    break;
+                case 6:
+                    list.suatheoma(fileName);
+                    break;
+                case 7:
+                    list.thongketheohoncc();
+                    break;
+                case 8:
+                    System.out.print("Quay ve menu chinh");
+                    Menu_Main menuMain = new Menu_Main();
+                    menuMain.menuChinh();
+>>>>>>> c2f8e2ac9b0667321a94bad01043749a22dd6288
                 case 0:
                     System.out.println("Thoát");
                     return;
