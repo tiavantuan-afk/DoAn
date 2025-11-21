@@ -9,7 +9,6 @@ public class ThongKe {
     private List_KHO dsKHO;
     private List_Nguyenlieu dsNguyenLieu;
     private List_COMBO dsCOMBO;
-
     private List_CTPN dsCTPN;
     private List_PN dsPN;
     private List_NCC dsNCC;
@@ -30,7 +29,7 @@ public class ThongKe {
         dsKHO.docFile();
         dsNguyenLieu.docFile();
         dsCOMBO.docFile();
-        dsCTPN.docFile();
+        dsCTPN.docFile("src/data/List_CTPN.txt");
         dsPN.docFile();
         dsNCC.docFile();
     }
@@ -110,21 +109,21 @@ public class ThongKe {
             }
         }
 
-        double tongGiaTriTK = 0;
-        TonKho[] dsTK = dsTonKho.getDs();
-        for (int i = 0; i < dsTK.length; i++) {
-            if (dsTK[i] != null) {
-                tongGiaTriTK += dsTK[i].getSoLuongTon() * dsTK[i].getGiaNhap();
-            }
-        }
+        // double tongGiaTriTK = 0;
+        // TonKho[] dsTK = dsTonKho.getDs();
+        // for (int i = 0; i < dsTK.length; i++) {
+        //     if (dsTK[i] != null) {
+        //         tongGiaTriTK += dsTK[i].getSoLuongTon() * dsTK[i].getGiaNhap();
+        //     }
+        // }
 
-        double[] giaTris = { tongGiaTriMonAn, tongLuongNV, tongGiaTriTK };
-        for (int i = 0; i < giaTris.length; i++) {
-            System.out.printf(/* format: */ "%-15s |", df.format(giaTris[i]));
-        }
+    //     double[] giaTris = { tongGiaTriMonAn, tongLuongNV, tongGiaTriTK };
+    //     for (int i = 0; i < giaTris.length; i++) {
+    //         System.out.printf(/* format: */ "%-15s |", df.format(giaTris[i]));
+    //     }
 
-        System.out.println("\n" +
-                "x: \"\\n---------------------------------------------------------------\"");
+    //     System.out.println("\n" +
+    //             "x: \"\\n---------------------------------------------------------------\"");
     }
 
     private void thongKeQuy() {
@@ -135,7 +134,6 @@ public class ThongKe {
         System.out.printf(/*format:*/ "%-11s | %-10s | %-10s | %-10s |%n", "Quy 1", "Quy 2", "Quy 3", "Quy 4");
 
         // Giả lập dữ liệu theo quý
-        String[] boPhan = {"Mon An", "Nhan Vien", "Ton Kho"};
         String[] boPhan = { "Mon An", "Nhan Vien", "Ton Kho", "COMBO", "Nguyen lieu", "Kho" };
         for (int i = 0; i < boPhan.length; i++) {
             double[] quy = new double[4];
@@ -156,19 +154,19 @@ public class ThongKe {
                         tongGiaTri += ds[j].getLuongCoBan() * 3; // 3 tháng/quý
                     }
                 }
-            } else { // Tồn kho
-            } else if (i == 2) { // Tồn kho
-                TonKho[] ds = dsTonKho.getDs();
-                for (int j = 0; j < ds.length; j++) {
-                    if (ds[j] != null) {
-                        tongGiaTri += ds[j].getSoLuongTon() * ds[j].getGiaNhap();
-                    }
-                }
+            // } else { // Tồn kho
+            // } else if (i == 2) { // Tồn kho
+            //     TonKho[] ds = dsTonKho.getDs();
+            //     for (int j = 0; j < ds.length; j++) {
+            //         if (ds[j] != null) {
+            //             tongGiaTri += ds[j].getSoLuongTon() * ds[j].getGiaNhap();
+            //         }
+            //     }
             } else if (i == 3) { // COMBO
                 COMBO[] ds = dsCOMBO.getDs();
                 for (int j = 0; j < ds.length; j++) {
                     if (ds[j] != null) {
-                        tongGiaTri += ds[j].getdonGia();
+                        tongGiaTri += ds[j].getGiaNiemYet();
                     }
                 }
             } else if (i == 4) { //NGUYÊN LIỆU 

@@ -23,24 +23,28 @@ public class Menu_ncc extends Menu_Main {
                     DSNCC.xuat();
                     break;
                 case 3:
-                    list.timtheoma(fileName);
+                    System.out.println("Tim nha cung cung cap theo ma: ");
+                    String macantim = sc.nextLine();
+                    DSNCC.timtheoma(macantim);
                     break;
                 case 4:
                     DSNCC.themtheoma();
                     break;
                 case 5:
-
                     DSNCC.themtheodiachi();
                     break;
                 case 6:
-                    DSNCC.xoatheoma();
+                    System.out.println("Xoa nha cung cap theo ma: ");
+                    String macanxoa = sc.nextLine();
+                    DSNCC.xoatheoma(macanxoa);
                     break;
-                    list.thongketheohoncc();
+                case 7:
+                    DSNCC.thongketheohoncc();
                     break;
                 case 8:
                     System.out.print("Quay ve menu chinh");
                     Menu_Main menuMain = new Menu_Main();
-                    menuMain.menuChinh();
+                    menuMain.menu();
 
                 case 0:
                     System.out.println("Thoát");
