@@ -67,7 +67,7 @@ public class Menu_Nguyenlieu extends Menu_Main {
 					break;
 			}
 		} while (luaChon != 0);
-		sc.close();
+
 	}
 
 }
