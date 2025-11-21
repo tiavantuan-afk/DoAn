@@ -12,28 +12,34 @@ public class Menu_Main {
     protected List_Nguyenlieu DSNL = new List_Nguyenlieu();
     protected List_KHO DSK = new List_KHO();
     protected List_COMBO DSC = new List_COMBO();
+    protected List_Cook DSCOOK = new List_Cook();
     private Menu_Main QL;
     protected Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        Menu_Main a = new Menu_Main();
+        a.menu();
+    }
 
     public void menu() {
         int luaChon = -1;
         docdulieuFile();
         do {
             System.out.println("\n===============================================");
-            System.out.println("         CHUONG TRINH QUAN LY CUA HANG");
+            System.out.println("         CHUONG TRINH CUA HANG");
             System.out.println("===============================================");
-            System.out.println("1. Quan ly Mon An");
-            System.out.println("2. Quan ly Nhan Vien");
-            System.out.println("3. Quan ly Khach Hang");
-            System.out.println("4. Quan ly Hoa Don");
-            System.out.println("5. Quan ly Chi Tiet Hoa Don");
-            System.out.println("6. Quan ly Kho Hang");
-            System.out.println("7. Quan ly Ton Kho");
-            System.out.println("8. Quan ly Combo");
-            System.out.println("9. Quan ly chi tiet phieu nhap");
-            System.out.println("10. Quan ly phieu nhap");
-            System.out.println("11. Quan ly nha cung cap");
-            System.out.println("12. Quan ly Nguyen Lieu");
+            System.out.println("1. Mon An");
+            System.out.println("2. Nhan Vien");
+            System.out.println("3. Khach Hang");
+            System.out.println("4. Hoa Don");
+            System.out.println("5. Chi Tiet Hoa Don");
+            System.out.println("6. Kho Hang");
+            System.out.println("7. Nau An");
+            System.out.println("8. Combo");
+            System.out.println("9. Chi tiet phieu nhap");
+            System.out.println("10. phieu nhap");
+            System.out.println("11. nha cung cap");
+            System.out.println("12. Nguyen Lieu");
             System.out.println("13. Thong ke tong quan");
             System.out.println("0. Thoat chuong trinh");
             System.out.println("===============================================");
@@ -73,9 +79,10 @@ public class Menu_Main {
                     ChiaSeDuLieu(QL);
                     QL.menu();
                     break;
-                // case 7:
-                // quanLyTonKho();
-                // break;
+                case 7:
+                    QL = new Menu_Cook();
+                    ChiaSeDuLieu(QL);
+                    break;
                 case 8:
                     QL = new Menu_COMBO();
                     ChiaSeDuLieu(QL);
@@ -122,7 +129,7 @@ public class Menu_Main {
             DSCTPN.docFile("src/data/List_CTPN.txt");
             DSCTHD.docFile();
             DSHD.docFile();
-            DSMA.docFile();
+            DSMA.docFile("src/data/List_MonAn.txt");
             DSNV.docFile();
             DSKH.docFile();
             DSK.docFile();

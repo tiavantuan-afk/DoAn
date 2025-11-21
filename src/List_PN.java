@@ -44,13 +44,13 @@ public class List_PN {
                 if (t.length >= 3) {
                     x = new Phieunhaphang();
                     x.setmaPNH(t[0]);
-                    x.setmaNV(t[1]);
+                    x.setmaSP(t[1]);
                     x.setngay(t[2]);
                     x.setmaNcc((t[3]));
                     ds = Arrays.copyOf(ds, ds.length + 1);
                     ds[ds.length - 1] = x;
                     System.out.println(
-                            "Doc: " + x.getmaPNH() + " - " + x.getmaNV() + " " + x.getngay() + " " + x.getmaNcc());
+                            "Doc: " + x.getmaPNH() + " - " + x.getmaSP() + " " + x.getngay() + " " + x.getmaNcc());
 
                 }
             }
@@ -72,11 +72,24 @@ public class List_PN {
             System.out.println("Loi ghi file");
         }
     }
-     public boolean OneIDPN(String mapn){
-        if(mapn == null)
+
+    public boolean ONEID(String mapn) {
+        if (mapn == null)
+            return false;
+        for (int i = 0; i < n; i++) {
+            if (ds[i] != null && ds[i].getmaPNH() != null && ds[i].getmaPNH().equalsIgnoreCase(mapn)) {
+                return true;
+            }
+        }
         return false;
-        for(int i = 0;i < n;i++){
-            if(ds[i] != null && ds[i].getmaPNH() != null && ds[i].getmaPNH().equalsIgnoreCase(mapn)){
+    }
+
+    public boolean TonTai(String maSP) {
+        if (maSP == null)
+            return false;
+        for (int i = 0; i < ds.length; i++) {
+            if (ds[i] != null && ds[i].getmaPNH() != null &&
+                    ds[i].getmaPNH().equalsIgnoreCase(maSP)) {
                 return true;
             }
         }
@@ -97,7 +110,7 @@ public class List_PN {
         System.out.println("Nhap ma: ");
 
         pnmoi.nhap(maPNH, 0);
-        if (!OneIDPN(pnmoi.getmaPNH())) {
+        if (!ONEID(pnmoi.getmaPNH())) {
             System.out.print("Ma nha cung cap" + pnmoi.getmaPNH() + "da ton tai");
         }
         ds = Arrays.copyOf(ds, ds.length + 1);
@@ -113,12 +126,12 @@ public class List_PN {
     }
 
     public void timtheoma(String macantim) {
-         boolean tim = false;
-          for(int i = 0;i < ds.length; i++){
-            if (ds[i] != null && ds[i].getmaPNH() != null && ds[i].getmaPNH().equalsIgnoreCase(macantim)){
-            ds[i].toString();
-            tim = true;
-            break;  
+        boolean tim = false;
+        for (int i = 0; i < ds.length; i++) {
+            if (ds[i] != null && ds[i].getmaPNH() != null && ds[i].getmaPNH().equalsIgnoreCase(macantim)) {
+                ds[i].toString();
+                tim = true;
+                break;
             }
         }
         if (!tim)
@@ -171,7 +184,7 @@ public class List_PN {
         do {
             System.out.println("\n=== CHON THUOC TINH CAN SUA ===");
             System.out.println("1. Sua Ma Phieu Nhap Hang (MaPNH)");
-            System.out.println("2. Sua Ma Nhan Vien (MaNV)");
+            System.out.println("2. Sua Ma Nhan Vien (maSP)");
             System.out.println("3. Sua Ngay Nhap");
             System.out.println("4. Sua Ma Nha Cung Cap (MaNCC)");
             System.out.println("9. Sua tat ca (Nhap lai)");
@@ -196,8 +209,8 @@ public class List_PN {
 
                 case 2:
                     System.out.print("Nhap Ma NV moi: ");
-                    String maNVMoi = sc.nextLine().trim();
-                    ds[v].setmaNV(maNVMoi);
+                    String maSPMoi = sc.nextLine().trim();
+                    ds[v].setmaSP(maSPMoi);
                     System.out.println(" Da cap nhat Ma NV.");
                     break;
 

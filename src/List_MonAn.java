@@ -16,6 +16,7 @@ public class List_MonAn implements dataB {
     public List_MonAn() {
         n = 0;
         ds = new MonAn[0];
+        docFile("src/data/List_MonAn.txt");
     }
 
     public List_MonAn(int n) {
@@ -112,22 +113,29 @@ public class List_MonAn implements dataB {
 
     public void CapNhatSoLuong(String maSP, int soLuong) {
         for (int i = 0; i < ds.length; i++) {
-            if (ds[i].maSP.equalsIgnoreCase(maSP)) {
+            if (ds[i].getMaSP().equalsIgnoreCase(maSP)) {
                 ds[i].setSoLuong(ds[i].getSoLuong() + soLuong);
-                ghiFile();
+                tuDongCapNhatFile();
+                System.out.println(" Da cong them " + soLuong + " vao kho.");
                 return;
             }
         }
     }
 
-    public void GiamSoLuong(String maSP, int soluong) {
+    public boolean GiamSoLuong(String maSP, int soluong) {
         for (int i = 0; i < ds.length; i++) {
-            if (ds[i].maSP.equalsIgnoreCase(maSP)) {
-                ds[i].setSoLuong(ds[i].getSoLuong() - soluong);
-                ghiFile();
-                return;
+            if (ds[i].getMaSP().equalsIgnoreCase(maSP)) {
+                if (ds[i].getSoLuong() >= soluong) {
+                    ds[i].setSoLuong(ds[i].getSoLuong() - soluong);
+                    tuDongCapNhatFile();
+                    return true;
+                } else {
+                    System.out.println(" Kho khong du hang! Hien chi con: " + ds[i].getSoLuong());
+                    return false;
+                }
             }
         }
+        return false;
     }
 
     public boolean TonTai(String maSP) {
@@ -484,78 +492,63 @@ public class List_MonAn implements dataB {
 
     }
 
-    public void docFile() {
-        try (BufferedReader br = new BufferedReader(new FileReader("src/data/List_MonAn.txt"))) {
-            // Reset mảng trước khi đọc
+    public void docFile(String name) {
+        try (BufferedReader br = new BufferedReader(new FileReader(name))) {
             ds = new MonAn[0];
-
             String line;
-            MonAn x = null;
             while ((line = br.readLine()) != null) {
-                if (line.trim().isEmpty()) {
+                if (line.trim().isEmpty())
                     continue;
-                }
-
                 String[] t = line.split("-");
-                if (t.length >= 8) {
-                    String type = t[0].toUpperCase();
-
-                    if (type.contains("T")) {
+                if (t.length >= 5) {
+                    MonAn x = null;
+                    // Xử lý dữ liệu mẫu của bạn (T-MA001-Com Ga...)
+                    if (t[0].trim().equalsIgnoreCase("T")) {
                         x = new ThucAn(t[1], t[2], Double.parseDouble(t[3]), Integer.parseInt(t[4]),
-                                Boolean.parseBoolean(t[5]), Boolean.parseBoolean(t[6]),
-                                Boolean.parseBoolean(t[7]));
-
-                    } else if (type.contains("N") && t.length >= 9) {
+                                Boolean.parseBoolean(t[5]), Boolean.parseBoolean(t[6]), Boolean.parseBoolean(t[7]));
+                    } else if (t[0].trim().equalsIgnoreCase("N")) {
                         x = new NuocUong(t[1], t[2], Double.parseDouble(t[3]), Integer.parseInt(t[4]),
-                                Boolean.parseBoolean(t[5]), Boolean.parseBoolean(t[6]),
-                                Boolean.parseBoolean(t[7]), Boolean.parseBoolean(t[8]));
-                    } else {
-                        System.out.println("Bo qua dong khong hop le: " + line);
-                        continue;
+                                Boolean.parseBoolean(t[5]), Boolean.parseBoolean(t[6]), Boolean.parseBoolean(t[7]),
+                                Boolean.parseBoolean(t[8]));
                     }
-
                     if (x != null) {
                         ds = Arrays.copyOf(ds, ds.length + 1);
                         ds[ds.length - 1] = x;
                     }
                 }
             }
-            System.out.println("Doc file thanh cong! So mon: " + ds.length);
-
+            n = ds.length;
         } catch (IOException e) {
-            System.out.println("Loi doc file: " + e.getMessage());
+            System.out.println("Lỗi đọc file MonAn: " + e.getMessage());
         }
     }
 
-    public void ghiFile() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/data/List_MonAn.txt"))) {
-            for (int i = 0; i < n; i++) {
-                MonAn sp = ds[i];
+    public void ghiFile(String name) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(name))) {
+            for (MonAn sp : ds) {
                 if (sp instanceof ThucAn) {
                     ThucAn ta = (ThucAn) sp;
-                    bw.write(ta.getMaSP() + "," + ta.getTenSP() + "," +
-                            ta.getdonGia() + "," + ta.getSoLuong());
+                    bw.write("T-" + ta.getMaSP() + "-" + ta.getTenSP() + "-" + (long) ta.getdonGia() + "-"
+                            + ta.getSoLuong() + "-" +
+                            ta.isCoThit() + "-" + ta.isCoBotNgot() + "-" + ta.isCoTinhBot());
                 } else if (sp instanceof NuocUong) {
                     NuocUong nu = (NuocUong) sp;
-                    bw.write(nu.getMaSP() + "," + nu.getTenSP() + "," +
-                            nu.getdonGia() + "," + nu.getSoLuong() + "," +
-                            nu.isCoGas() + "," + nu.isCoDa() + "," +
-                            nu.isLoaiChai() + "," + nu.isLoaiLon());
+                    bw.write("N-" + nu.getMaSP() + "-" + nu.getTenSP() + "-" + (long) nu.getdonGia() + "-"
+                            + nu.getSoLuong() + "-" +
+                            nu.isCoGas() + "-" + nu.isCoDa() + "-" + nu.isLoaiChai() + "-" + nu.isLoaiLon());
                 }
-
                 bw.newLine();
             }
-
         } catch (IOException e) {
-            System.out.println("Lỗi ghi file: " + e.getMessage());
         }
     }
+
     public double getDonGia(String maCanTim) {
-    for (int i = 0; i < ds.length; i++) {
-        if (ds[i] != null && ds[i].getMaSP() != null && ds[i].getMaSP().equalsIgnoreCase(maCanTim)) {
-            return ds[i].getdonGia();
+        for (int i = 0; i < ds.length; i++) {
+            if (ds[i] != null && ds[i].getMaSP() != null && ds[i].getMaSP().equalsIgnoreCase(maCanTim)) {
+                return ds[i].getdonGia();
+            }
         }
+        return 0;
     }
-    return 0;
-}
 }

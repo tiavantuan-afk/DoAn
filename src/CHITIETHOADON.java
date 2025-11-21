@@ -6,21 +6,19 @@ public class CHITIETHOADON {
     public int SL;
     public double DG;
     public double Thanhtien;
-    Scanner sc = new Scanner(System.in);
+    public Scanner sc = new Scanner(System.in);
 
     public CHITIETHOADON() {
         Mahd = "";
         Masp = "";
-        Makh = "";
         SL = 0;
         DG = 0;
         Thanhtien = 0.0;
     }
 
-    public CHITIETHOADON(String Mahd, String Masp, String Makh, int SL, double DG, double Thanhtien) {
+    public CHITIETHOADON(String Mahd, String Masp, int SL, double DG, double Thanhtien) {
         this.Mahd = Mahd;
         this.Masp = Masp;
-        this.Makh = Makh;
         this.SL = SL;
         this.DG = DG;
         this.Thanhtien = Thanhtien;
@@ -30,29 +28,30 @@ public class CHITIETHOADON {
         if (t != null) {
             this.Mahd = t.Mahd;
             this.Masp = t.Masp;
-            this.Makh = t.Makh;
             this.SL = t.SL;
             this.DG = t.DG;
             this.Thanhtien = t.Thanhtien;
         }
     }
 
-    public void nhap(String Mahd, String Masp, String Makh, double DG) {
+    public void nhap(String Mahd, String Masp, double DG) {
         this.Mahd = Mahd;
         this.Masp = Masp;
-        this.Makh = Makh;
         System.out.print("Nhap so luong: ");
         SL = sc.nextInt();
         sc.nextLine();
         this.DG = DG;
-        Thanhtien = DG * SL;
+        this.Thanhtien = this.DG * this.SL;
+    }
+
+    public void tinhLaiThanhTien() {
+        this.Thanhtien = this.SL * this.DG;
     }
 
     public void xuat() {
         System.out.println("Chi tiet hoa don: ");
         System.out.println("Ma hoa don: " + Mahd);
         System.out.println("Ma san pham: " + Masp);
-        System.out.println("Ma khach hang: "+Makh);
         System.out.println("So luong: " + SL);
         System.out.println("Don gia: " + DG);
         System.out.println("Thanh tien: " + Thanhtien);
@@ -64,10 +63,6 @@ public class CHITIETHOADON {
 
     public String getMasp() {
         return Masp;
-    }
-
-    public String getMakh() {
-        return Makh;
     }
 
     public int getSL() {
@@ -90,10 +85,6 @@ public class CHITIETHOADON {
         this.Masp = Masp;
     }
 
-    public void setMakh(String Makh) {
-        this.Makh = Makh;
-    }
-
     public void setSL(int SL) {
         this.SL = SL;
     }
@@ -108,6 +99,6 @@ public class CHITIETHOADON {
 
     @Override
     public String toString() {
-        return Mahd + "-" + Masp + "-" + Makh + "-" + SL + "-" + DG + "-" + Thanhtien;
+        return Mahd + "-" + Masp + "-" + SL + "-" + DG + "-" + Thanhtien;
     }
 }

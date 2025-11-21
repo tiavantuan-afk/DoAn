@@ -4,22 +4,22 @@ import java.util.Scanner;
 public class Phieunhaphang {
     Scanner sc = new Scanner(System.in);
     public String maPNH;
-    public String maNV;
+    public String maSP;
     public String ngay;
     public String maNcc;
     public double tongtien;
 
     Phieunhaphang() {
         maPNH = "";
-        maNV = "";
+        maSP = "";
         ngay = "";
         maNcc = "";
         tongtien = 0;
     }
 
-    Phieunhaphang(String maPNH, String maNV, String ngay, String maNcc, double tongtien) {
+    Phieunhaphang(String maPNH, String maSP, String ngay, String maNcc, double tongtien) {
         this.maPNH = maPNH;
-        this.maNV = maNV;
+        this.maSP = maSP;
         this.ngay = ngay;
         this.maNcc = maNcc;
         this.tongtien = tongtien;
@@ -27,20 +27,20 @@ public class Phieunhaphang {
 
     Phieunhaphang(Phieunhaphang t) {
         maPNH = t.maPNH;
-        maNV = t.maNV;
+        maSP = t.maSP;
         maNcc = t.maNcc;
         tongtien = t.tongtien;
     }
 
     @Override
     public String toString() {
-        return String.join("-", maPNH, maNV, ngay, maNcc, String.valueOf(tongtien));
+        return String.join("-", maPNH, maSP, ngay, maNcc, String.valueOf(tongtien));
     }
 
     public void nhap(String maPNH, double tongtien) {
         this.maPNH = maPNH;
         System.out.println("Mã nhân viên: ");
-        maNV = sc.nextLine();
+        maSP = sc.nextLine();
         System.out.println("Ngày nhập hàng: ");
         ngay = sc.nextLine();
         System.out.println("Nhà cung cấp: ");
@@ -55,7 +55,7 @@ public class Phieunhaphang {
         System.out.println("╠══════════════════════════════════════════════╣");
         System.out.printf("║ %-17s: %-25s ║%n", "Ma phieu nhap hang", maPNH);
         System.out.printf("║ %-17s: %-25s ║%n", "Ngay nhap", ngay);
-        System.out.printf("║ %-17s: %-25s ║%n", "Ma nhan vien", maNV);
+        System.out.printf("║ %-17s: %-25s ║%n", "Ma nhan vien", maSP);
         System.out.printf("║ %-17s: %-25.0f ║%n", "Ma nha cung cap", maNcc);
         System.out.printf("║ %-17s: %-25s ║%n", "Tong tien", tongtien);
         System.out.println("╚══════════════════════════════════════════════╝");
@@ -69,12 +69,12 @@ public class Phieunhaphang {
         this.maPNH = maPNH;
     }
 
-    public String getmaNV() {
-        return maNV;
+    public String getmaSP() {
+        return maSP;
     }
 
-    public void setmaNV(String maNV) {
-        this.maNV = maNV;
+    public void setmaSP(String maSP) {
+        this.maSP = maSP;
     }
 
     public String getngay() {

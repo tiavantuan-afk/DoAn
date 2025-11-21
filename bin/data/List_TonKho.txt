@@ -1,5 +1,0 @@
-KHO001-Gao Tam Xoan-500-15000-01/11/2025-Cong ty Gao Sai Gon
-KHO002-Duong Bien Hoa-200-12000-05/11/2025-Cong ty Duong Bien Hoa
-KHO003-Nuoc mam Phu Quoc-150-25000-10/11/2025-Cong ty Nuoc mam PQ
-KHO004-Dau an Neptune-80-45000-15/11/2025-Cong ty Dau thuc vat
-KHO005-Bot mi Lam Dong-300-8000-20/11/2025-Cong ty Bot mi LD

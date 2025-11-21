@@ -1,5 +1,6 @@
-
 public class Menu_CTPN extends Menu_Main {
+    String name;
+
     @Override
     public void menu() {
         int chon = -1;
@@ -42,19 +43,22 @@ public class Menu_CTPN extends Menu_Main {
                     DSPN.capnhattongtien(maPNH, DSCTPN.Tinhtongtien(maPNH));
                     DSMA.CapNhatSoLuong(maSP, DSCTPN.Soluongmon(maPNH, maSP));
                     DSPN.ghiFile();
-                    DSMA.ghiFile();
+                    DSMA.ghiFile(name);
                     break;
                 case 3:
                     timkiemVaHienThiKetQua();
                     break;
-                case 4: 
-                    list.timtheoma(fileName);
+                case 4:
+                    DSCTPN.sua();
                     break;
-                case 5: 
-                    list.suatheoma(fileName);
+                case 5:
+                    System.out.print("Nhap ma phieu nhap can xoa: ");
+                    String maXoa = sc.nextLine();
+                    DSCTPN.xoaALL(maXoa);
+                    DSCTPN.ghiFile();
                     break;
                 case 6:
-                    list.xoatheoma(fileName);
+                    DSCTPN.thongketheongay();
                     break;
 
                 case 0:
@@ -76,39 +80,6 @@ public class Menu_CTPN extends Menu_Main {
                 ct.xuat();
             }
         }
-    }
-
-    private void them() {
-        System.out.println("\n--- THÊM MỘT CHI TIẾT PHIẾU NHẬP ---");
-
-        // Nhap maPNH
-        System.out.print("Nhap Ma Phieu Nhap Hang (PNH): ");
-        String maPNH = sc.nextLine().trim();
-
-        // Nhap maSP
-        System.out.print("Nhap Ma San Pham (SP) can nhap: ");
-        String maSP = sc.nextLine().trim();
-
-        // Nhập maNV
-        System.out.print("Nhap Ma Nhan Vien (NV): ");
-        String maNV = sc.nextLine().trim();
-
-        // Nhập DG
-        System.out.print("Nhap Don Gia nhap vao: ");
-        double donGia;
-        if (sc.hasNextDouble()) {
-            donGia = sc.nextDouble();
-            sc.nextLine();
-        } else {
-            System.out.println(" Loi: Don gia khong hop le.");
-            sc.nextLine();
-            return;
-        }
-        Chitietphieunhap ctMoi = new Chitietphieunhap();
-        double thanhTienPlaceholder = 0.0;
-
-        ctMoi.nhap(maPNH, maNV, donGia, thanhTienPlaceholder);
-        DSCTPN.them(ctMoi);
     }
 
 }

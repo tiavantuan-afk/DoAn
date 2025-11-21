@@ -4,20 +4,24 @@ public class Nguyenlieu {
     public String maNL;
     public String tenNL;
     public double dongia;
+    public int SL;
     Scanner sc = new Scanner(System.in);
 
     // hàm thiết lập không tham số
     public Nguyenlieu() {
-        this.maNL = "";
-        this.tenNL = "";
-        this.dongia = 0.0;
+        maNL = "";
+        tenNL = "";
+        SL = 0;
+        dongia = 0.0;
+
     }
 
     // hàm thiết lập có tham số
-    public Nguyenlieu(String maNL, String tenNL, double dongia) {
+    public Nguyenlieu(String maNL, String tenNL, double dongia, int SL) {
         this.maNL = maNL;
         this.tenNL = tenNL;
         this.dongia = dongia;
+        this.SL = SL;
     }
 
     // hàm sao chép
@@ -26,6 +30,7 @@ public class Nguyenlieu {
             this.maNL = n.maNL;
             this.tenNL = n.tenNL;
             this.dongia = n.dongia;
+            this.SL = n.SL;
         }
     }
 
@@ -36,6 +41,10 @@ public class Nguyenlieu {
 
         System.out.print("Ten nguyen lieu: ");
         tenNL = sc.nextLine();
+
+        System.out.print("So luong nguyen lieu: ");
+        SL = sc.nextInt();
+        sc.nextLine();
 
         System.out.print("Don gia: ");
         dongia = Double.parseDouble(sc.nextLine());
@@ -48,7 +57,7 @@ public class Nguyenlieu {
 
     @Override
     public String toString() {
-        return "Nguyenlieu [maNL=" + maNL + ", tenNL=" + tenNL + ", dongia=" + dongia + "]";
+        return "Nguyenlieu [maNL=" + maNL + ", tenNL=" + tenNL + ",SL=" + SL + ", dongia=" + dongia + "]";
     }
 
     public void xuat() {
@@ -80,5 +89,13 @@ public class Nguyenlieu {
 
     public void setdongia(double dongia) {
         this.dongia = dongia;
+    }
+
+    public int SL() {
+        return SL;
+    }
+
+    public void setSL(int SL) {
+        this.SL = SL;
     }
 }
