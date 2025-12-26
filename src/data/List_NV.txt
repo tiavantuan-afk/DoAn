@@ -1,6 +1,0 @@
-NV001-Tia Binh-An-5000000.0
-NV002-Tran Van-Doanh-7500000.0
-NV003-Tran Chi-Loc-1.2E7
-NV004-Huynh Qui-Bao-4500000.0
-NV005-Nguyen Van-Hoang-8000000.0
-NV006-Nguyen-Van Bao-700000.0
